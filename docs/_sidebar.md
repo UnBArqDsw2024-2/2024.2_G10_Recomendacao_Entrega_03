@@ -2,6 +2,9 @@
 
 - [Home](/docs)
 - [Projetos](/docs/Projetos/Projetos.md)
+- [Reuniões](/docs/atas-reuniao)
+  - [Template de ata](/docs/atas-reuniao/template-ata.md)
+  - [Reunião 1 - 10.12.2024](/docs/atas-reuniao/ata-reuniao-10-12.md)
 
 - **Padrões de Projeto**
   - [3. Desenho de Software (Padrões de Projeto)](/docs/PadroesDeProjeto/3.PadroesDeProjeto.md)
@@ -11,3 +14,4 @@
     - [3.4. Participações - Padrões de Projeto](/docs/PadroesDeProjeto/3.4.ParticipacoesPadroes.md)
     - [3.5. Iniciativas Extras - Padrões de Projeto](/docs/PadroesDeProjeto/3.5.IniciativasExtras.md)
       
+
