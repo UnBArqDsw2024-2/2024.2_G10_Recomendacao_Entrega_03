@@ -1,0 +1,61 @@
+version: "1.0"
+name: "chefindica-backend"
+
+services:
+  api:
+    container_name: 'chefindica-api'
+    build: 
+      target: prod
+      dockerfile: Dockerfile
+    ports: 
+      - '8080:8080'
+
+    # a api só pode ser iniciada depois do bd
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+
+    # para ter certeza disso, vamos realizar um healthcheck no banco de dados.
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h mysql -u root --password=verysecret || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+
+    # o banco e a API devem pertencer à mesma rede
+    networks:
+      - chefindica-network
+
+    restart: always
+    volumes:
+      - .m2:/root/.m2
+      - ./src:/api/src
+      - ./target:/api/target
+
+
+  mysql:
+    container_name: 'chefindica-mysql'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_USER=myuser'
+      - 'MYSQL_PASSWORD=secret'
+      - 'MYSQL_DATABASE=mydatabase'
+      - 'MYSQL_ROOT_PASSWORD=verysecret'
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=verysecret"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+    # o banco e a API devem pertencer à mesma rede
+    networks:
+      - chefindica-network
+    restart: always
+    ports:
+      - '3306:3306'
+
+networks:
+  chefindica-network:

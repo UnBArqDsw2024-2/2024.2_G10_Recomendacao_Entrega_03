@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  
+  dev:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=dev
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    command: ["npm", "start"] 
+
+# ------------------
+
+  prod:
+    build:
+      context: .
+      target: prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=prod
+    command: ["npx", "serve", "-s", "build", "-l", "3000"]
