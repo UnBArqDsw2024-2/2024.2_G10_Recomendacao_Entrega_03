@@ -1,8 +1,16 @@
-# GoFs Criacionais
+# Nome do Padrão
 
 ## Introdução
 
 ## Metodologia
+
+## Nome do Padrão
+
+## Conclusão
+
+## Referências Bibliográficas
+
+## Bibliografia
 
 ## Histórico de Versões
 
