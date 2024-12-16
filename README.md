@@ -2,7 +2,7 @@
 
 **Código da Disciplina**: FGA0208<br>
 **Número do Grupo**: 10<br>
-**Entrega**: 02<br>
+**Entrega**: 03<br>
 
 ## Alunos
 
@@ -28,7 +28,7 @@ Este repositório tem como principal objetivo auxiliar no registro dos artefatos
 
 Chef Indica é um aplicativo para criar e participar de fóruns dedicados a restaurantes, com filtros por região, tipo de comida, restrições e muito mais.
 
-## Screenshots da Segunda Entrega
+## Screenshots da Terceira Entrega
 
 
 ## Há algo a ser executado?
