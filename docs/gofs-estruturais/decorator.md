@@ -1,4 +1,4 @@
-# Nome do Padrão
+# Decorator
 
 ## Introdução
 
