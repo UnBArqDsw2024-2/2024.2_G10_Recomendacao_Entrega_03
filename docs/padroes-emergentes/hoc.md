@@ -120,6 +120,17 @@ const UserProfile = () => {
 export default withAuth(UserProfile);
 ```
 
+6. <b>Exemplo de diagrama</b>
+
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Exemplo de diagrama para o padrão HOC do React</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/exemploHOC.png?raw=true" alt="Imagem do HOC" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> Cecília Quaresma, 2024</p></font>
+</center>
+
 ## Referências Bibliográficas
 
 > [1] FREEMAN, Eric; ROBSON, Elisabeth. Head first design patterns: a brain-friendly guide. Sebastopol: O'Reilly Media, 2020.
@@ -135,3 +146,4 @@ export default withAuth(UserProfile);
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Descrição da introdução e da metodologia | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding)  |
+| `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
