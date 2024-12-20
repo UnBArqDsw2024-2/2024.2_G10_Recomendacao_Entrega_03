@@ -85,9 +85,9 @@ Na tabela 3 encontram-se as atividades definidas e os responsáveis por cada uma
 | GOF estrutural 1  - composite(back)            | Izabella(x), Luana, Zenilda, Pedro, Mateus      |
 | GOF estrutural 2  - adapter(front)             | Maria Alice(x), Lucas Victor, Júlia, Cecília    |
 | GOF estrutural 3  -  decorator(front)          | Lucas Queiroz, Guilherme, Caio(x), Larissa      |
-| GOF comportamental 1  - iterator(back)         | Zenilda, Pedro(x), Guilherme, Caio, Mateus      |
+| GOF comportamental 1  - iterator(back)         | Zenilda, Pedro(x), Guilherme, Lucas Queiroz, Mateus      |
 | GOF comportamental 2  - observer(front)        | Cecília, Maria Alice, Júlia, Larissa(x)         |
-| GOF comportamental 3  - mediator(back)         | Lucas Victor, Luana(x), Izabella, Lucas Queiroz |
+| GOF comportamental 3  - mediator(back)         | Lucas Victor, Luana(x), Izabella, Caio |
 
 
 <font size="3"><p><b>Fonte:</b> Todos, 2024</p></font>
