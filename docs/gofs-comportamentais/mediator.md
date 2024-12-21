@@ -1,6 +1,7 @@
 # Mediator
 
 ## Introdução
+No projeto Chef Indica, focamos na aplicação do padrão de projeto Mediator, um dos padrões comportamentais do GoF, para organizar a comunicação entre diferentes componentes do sistema. Nosso objetivo é criar uma estrutura que facilite a troca de informações entre classes, promovendo um design mais limpo e desacoplado. Essa abordagem é fundamental para implementar funcionalidades como os fóruns de restaurantes, onde diferentes entidades interagem, como usuários, tópicos e mensagens.
 
 ## Metodologia
 
