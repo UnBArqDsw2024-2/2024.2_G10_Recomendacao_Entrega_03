@@ -22,7 +22,7 @@
     - [3.5. Refatorações](/refatoracoes/refatoracoes.md)
       - [3.5.1. Diagrama de Classes](/refatoracoes/diagrama-de-classes.md)
       - [3.5.2. Modelo Conceitual](/refatoracoes/modelo-conceitual.md)
-      - [3.5.3. Modelo Lógico](/refatoracoes/modelo-lógico.md)
+      - [3.5.3. Modelo Lógico](/refatoracoes/modelo-logico.md)
     - [3.5. Participações - Padrões de Projeto](/PadroesDeProjeto/3.4.ParticipacoesPadroes.md)
     - [3.6. Iniciativas Extras - Padrões de Projeto](/PadroesDeProjeto/3.5.IniciativasExtras.md)
       
