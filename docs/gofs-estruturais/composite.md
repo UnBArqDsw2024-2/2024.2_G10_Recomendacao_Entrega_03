@@ -31,6 +31,28 @@ Podemos interpretar as classes descritas na imagem da seguinte forma:
 
 ## Metodologia
 
+A construção do modelo utilizando o padrão de projeto Composite iniciou-se com a identificação da necessidade de representar um cardápio hierárquico. Esse cardápio deveria incluir itens simples, como sobremesas individuais, e itens compostos, como categorias que agrupam várias sobremesas. O objetivo era criar uma solução uniforme para tratar todos os elementos, facilitando operações como cálculo de preços e gerenciamento de itens.
+
+O padrão Composite mostrou-se adequado para resolver problemas de hierarquias uniformes. Ele permite tratar todos os elementos por meio de uma interface comum, suportando aninhamento e extensibilidade. Os requisitos do projeto alinhavam-se diretamente a essas vantagens.
+
+O modelo foi desenvolvido iterativamente, começando pela definição de uma interface comum chamada ItemCardapio. Essa interface incluiu métodos como getCategoria() e getPreco(), além de operações de composição, como Add(), Remove() e GetChild(). Embora métodos de composição não fossem úteis para itens simples, sua inclusão era necessária para manter a uniformidade do modelo.
+
+Para demonstrar o uso do padrão, foram implementados dois tipos principais de componentes:
+
+- Itens simples, como Tiramisu e Pudim, que atuam como folhas na hierarquia, sem conter outros componentes.
+
+- Itens compostos, como a categoria Sobremesas, que agrupam outros itens e oferecem métodos para adicionar, remover e acessar componentes filhos.
+
+Esses exemplos foram escolhidos para ilustrar o modelo, mas poderiam ser substituídos por outros conforme necessário.
+
+Durante o desenvolvimento, diversas ideias foram apresentadas, o que gerou dúvidas naquele momento. No entanto, ao compreendermos melhor o padrão de design, conseguimos esclarecer os pontos:
+
+- Sobre os métodos Add() e Remove() na interface: Questionamos inicialmente se seria necessário implementá-los, considerando que itens simples, que não utilizariam esses métodos, ainda assim teriam acesso a eles. Entendemos, porém, que esses métodos são essenciais para manter a uniformidade da interface, já que o objetivo principal é ter uma única interface padronizada.
+
+- Sobre operações recursivas: Também discutimos como seria a implementação de operações recursivas, como o cálculo do preço total em categorias com múltiplos níveis de itens agrupados. Caso decidíssemos implementar algo assim, percebemos que seria possível navegar pela estrutura dos itens a partir da classe de itens compostos, acessando seus elementos filhos.
+
+Consideramos alternativas, como dividir a interface ItemCardapio ou usar herança múltipla, mas descartamos essas opções por comprometerem a uniformidade e simplicidade do padrão. O modelo final seguiu rigorosamente a definição clássica do Composite, garantindo que itens simples e compostos compartilhassem a mesma interface.
+
 ## Modelagem
 
 A primeira versão do diagrama de classes criado para modelar como o padrão de projeto Composite será utilizado na aplicação Chef Indica está disponível na figura 2. Na figura, temos "ItemCardapio" como interface comum, que vai definir as operações comuns (```getCategoria() e getPreco()```) e as operações utilizadas somente por alguma das classes.
