@@ -23,7 +23,7 @@ Para sua criação, utilizou-se a ferramenta [BrModelo](http://www.sis4.com/brMo
 <center>
 <p style="text-align: center"><b>Figura 2:</b> Versão 2 - Diagrama Entidade-Relacionamento</p>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagConceitual.png?raw=true" >
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/chefindica_conceitual2.png?raw=true" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/VieiraLaris">Larissa Vieira</a>, 2024.</p></font>
 </center>
@@ -38,4 +38,4 @@ Para sua criação, utilizou-se a ferramenta [BrModelo](http://www.sis4.com/brMo
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |21/12/2024| Adição do diagrama entidade-relacionamento e informações atreladas | [Larissa Vieira](https://github.com/VieiraLaris) | |
+| `1.0`  |21/12/2024| Adição do diagrama entidade-relacionamento e informações atreladas | [Larissa Vieira](https://github.com/VieiraLaris) | [Izabella Alves](https://github.com/izabellaalves) |
