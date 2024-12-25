@@ -26,10 +26,17 @@ A introdução da classe **RecommendationFactory** unifica a lógica comum a tod
 
 ## Referências Bibliográficas
 
+> [1] Baeldung. "Design Patterns in the Spring Framework". Disponível em: https://www.baeldung.com/spring-framework-design-patterns
+>
+> [2] Medium. "Exploring the Factory Method Design Pattern". Disponível em: https://medium.com/@eshikashah2001/exploring-the-factory-method-design-pattern-4d270b6ff935
+>
+> [3] Devmedia. "Design Patterns: Padrões “GoF”". Disponível em: https://www.devmedia.com.br/design-patterns-padroes-gof/16781
+
 ## Bibliografia
 
 ## Histórico de Versões
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |25/12/2024| Criação da introdução e da Modelagem| [Guilherme Brito](https://github.com/GuilhermeB12) |[xxxx](xxxx)  |
+| `1.0`  |25/12/2024| Criação da introdução e da Modelagem| [Guilherme Brito](https://github.com/GuilhermeB12) | |
+| `1.1`  |25/12/2024| Adição das referências bibliográficas| [Guilherme Brito](https://github.com/GuilhermeB12) | |
