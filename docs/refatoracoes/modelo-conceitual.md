@@ -11,7 +11,7 @@ A segunda versão do Diagrama Entidade-Relacionamento(DER) foi desenvolvida com 
 
 Para sua criação, utilizou-se a ferramenta [BrModelo](http://www.sis4.com/brModelo/), reconhecida pela facilidade de uso e pela eficiência na conversão entre diferentes níveis de abstração de diagramas. Uma das principais vantagens do BrModelo é a possibilidade de modelar o DER e, a partir dele, derivar o [Diagrama Lógico de Dados](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-l%C3%B3gico) e o Modelo Físico do banco de dados, promovendo uma integração contínua.
 
-## Modelo conceitual
+## Modelo Conceitual
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Versão 1 - Diagrama Entidade-Relacionamento</p>
 <div align="center">

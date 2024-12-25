@@ -11,7 +11,7 @@ A segunda versão do Diagrama Lógico de Dados(DLD) foi desenvolvida com base na
 
 Para sua criação, utilizou-se a ferramenta [BrModelo](http://www.sis4.com/brModelo/), destacando-se pela sua facilidade de uso e pela eficiente conversão entre os diferentes níveis de modelagem de dados.
 
-## Modelo lógico
+## Modelo Lógico
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Versão 1 - Diagrama Lógico de Dados</p>
 <div align="center">
