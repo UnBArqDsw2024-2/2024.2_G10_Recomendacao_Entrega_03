@@ -7,6 +7,11 @@ O padrão Iterator é um padrão de projeto comportamental que permite percorrer
 Esse padrão é amplamente utilizado para aumentar a flexibilidade e reduzir o acoplamento entre a coleção e o código que interage com ela, promovendo maior aderência ao princípio de responsabilidade única e ao princípio aberto/fechado. No contexto de sistemas complexos, o Iterator simplifica o trabalho com estruturas de dados heterogêneas ou personalizadas, facilitando sua integração e manipulação [2].
 
 ## Metodologia
+No sistema de recomendação de restaurantes, o padrão de projeto Iterator é utilizado para gerenciar a relação entre as classes Restaurante e Menu, permitindo que itens do menu de um restaurante sejam percorridos de forma encapsulada e uniforme, sem expor detalhes sobre a estrutura interna da coleção de itens.A implementação segue uma abordagem estruturada, onde é definida uma interface de iterador, que contém os métodos necessários para navegar pela coleção, como proximo() e anterior(). Essa interface é implementada por uma classe concreta, que fornece a lógica de iteração sobre os itens do menu.
+
+Simultaneamente, a classe Menu implementa uma interface de coleção que define um método para criar instâncias do iterador, permitindo que os clientes obtenham o iterador sem precisar conhecer os detalhes da coleção. Cada restaurante possui um menu associado, e esse menu pode ser percorrido usando o iterador fornecido. Dessa forma, a lógica de navegação é centralizada, promovendo encapsulamento e flexibilidade, ao mesmo tempo que a estrutura de dados subjacente pode ser alterada sem impactar o código cliente. Essa metodologia garante uma separação clara de responsabilidades, tornando o sistema modular, reutilizável e fácil de manter.
+
+Essa metodologia garante que a lógica de navegação esteja desacoplada da estrutura dos menus, facilitando alterações futuras, como a inclusão de novos tipos ou reorganização das categorias. Além disso, promove modularidade, reutilização e alinhamento com os princípios de design orientado a objetos, como encapsulamento e separação de responsabilidades, tornando o sistema mais robusto e de fácil manutenção.
 
 ## Modelagem
 
@@ -38,4 +43,5 @@ A modelagem apresentada na Figura 1 descreve os métodos e atributos das classes
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |24/12/2024| Adição do modelo e da introdução | [Pedro Sampaio](https://github.com/PedroSampaioDias) | |
+| `1.0`  |24/12/2024| Adição do modelo e da introdução | [Pedro Sampaio](https://github.com/PedroSampaioDias) | [Guilherme Brito](https://github.com/GuilhermeB12) |
+| `1.1`  |24/12/2024| Adição da metodologia| [Guilherme Brito](https://github.com/GuilhermeB12) | |
