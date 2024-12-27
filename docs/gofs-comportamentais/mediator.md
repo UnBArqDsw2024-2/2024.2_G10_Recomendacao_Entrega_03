@@ -18,6 +18,19 @@ Além disso, todos os membros contribuíram no processo de revisão do artefato 
 
 ## Modelagem
 
+O diagrama apresentado ilustra a aplicação do padrão comportamental Mediator no contexto de um sistema de recomendação de restaurantes. O objetivo principal do Mediator é centralizar e organizar a comunicação entre diferentes componentes do sistema, reduzindo o acoplamento e facilitando a manutenção. 
+
+Os principais elementos do diagrama incluem a interface Mediator, que gerencia a comunicação entre os componentes, e a interface Component, que define as operações básicas que cada componente deve implementar. O ConcreteMediator coordena os componentes concretos, como UserComponent, RestaurantComponent e FilterComponent, representando funcionalidades específicas como envio de feedback, atualização de detalhes e aplicação de filtros. 
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Diagrama UML para o Mediator utilizado no projeto.</p>
+<div align="center">
+  <img src="https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/docs/imagens/Diagrama_Mediator.jpeg" alt="Diagrama de classes do Mediator" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>, 2024</p></font>
+</center>
+
+
 ## Código
 
 ## Conclusão
@@ -31,3 +44,4 @@ Além disso, todos os membros contribuíram no processo de revisão do artefato 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |24/12/2024| Adiciona metodologia | [Izabella Alves](https://github.com/izabellaalves)|[Caio Mesquita](https://github.com/Caiomesvie)|
+| `1.`  |24/12/2024| Adição Introdução e Modelagem | [Luana Medeiros](https://github.com/LuaMedeiros||
