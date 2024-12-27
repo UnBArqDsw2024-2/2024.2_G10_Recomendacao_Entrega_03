@@ -44,4 +44,4 @@ Os principais elementos do diagrama incluem a interface Mediator, que gerencia a
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |24/12/2024| Adiciona metodologia | [Izabella Alves](https://github.com/izabellaalves)|[Caio Mesquita](https://github.com/Caiomesvie)|
-| `1.`  |24/12/2024| Adição Introdução e Modelagem | [Luana Medeiros](https://github.com/LuaMedeiros)||
+| `1.1`  |24/12/2024| Adição Introdução e Modelagem | [Luana Medeiros](https://github.com/LuaMedeiros)||
