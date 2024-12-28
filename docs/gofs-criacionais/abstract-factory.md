@@ -2,6 +2,43 @@
 
 ## Introdução
 
+Os padrões GoF (Gang of Four) foram definidos pelos autores Erich Gamma, Richard Helm, Ralph Johnson e John Vlissides no livro Design Patterns: Elements of Reusable Object-Oriented Software [1]. Eles são classificados em três categorias:
+
+* Padrões Criacionais: Lidam com a criação de objetos.
+* Padrões Estruturais: Lidam com a composição de classes e objetos.
+* Padrões Comportamentais: Lidam com a interação entre objetos.
+
+Destacando os padrões criacionais de design, eles têm como objetivo principal abstrair e otimizar o processo de criação de objetos. Eles ajudam a tornar os sistemas mais independentes de como os objetos são criados, compostos e representados. Em vez de instanciar diretamente objetos concretos, esses padrões promovem o uso de interfaces e classes abstratas, permitindo maior flexibilidade, reuso de código e desacoplamento.
+
+Existem vários padrões criacionais destacados pelos GoF, tais como:
+
+* Factory Method: Define uma interface para criar um objeto, mas permite que as subclasses decidam qual classe será instanciada.
+* Abstract Factory: Oferece uma interface para criar famílias de objetos relacionados ou interdependentes sem especificar suas classes concretas.
+* Builder: Separa a construção de um objeto complexo de sua representação.
+* Prototype: Cria novos objetos copiando uma instância existente.
+* Singleton: Garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global.
+  
+Esse documento trata da implementação do padrão de design *Abstract Factory* devido à escolha feita pelo grupo (conforme é descrito no tópico Metodologia mais abaixo).
+
+### O Padrão Abstract Factory
+
+O Abstract Factory é um padrão criacional que abstrai o processo de criação de famílias de objetos relacionados. Seu principal objetivo é garantir que o código cliente permaneça independente das implementações concretas dos objetos que utiliza e reduzir sua carga de processamento.
+
+Para uma implementação de vários produtos e várias hierarquias, como o exemplo a seguir, o padrão geralmente segue esta estrutura:
+
+* Client: Usa apenas interfaces fornecidas pelas fábricas e produtos abstratos.
+* AbstractProductA, AbstractProductB: Define uma interface para cada tipo de produto.
+* ProductA1, ProductA2, ProductB1, ProductB2: Implementa a interface de cada produto abstrato.
+* AbstractFactory: Declara métodos para criar cada tipo de produto abstrato.
+* ConcreteFactory1, ConcreteFactory2: Implementa os métodos declarados, criando produtos concretos.
+
+O uso do padrão de design criacional *Abstract Factory* se justifica principalmente quando a entidade Cliente apresenta baixo desempenho, com sobrecarga de atividades. Assim, a criação de uma hierarquia com a única função de criar as instâncias alivia o processamento da entidade Cliente e traz também outros benefícios:
+
+1. Isolamento de Classes Concretas: Os clientes manipulam objetos através de suas interfaces, sem precisar conhecer as classes concretas.
+2. Facilidade de Troca de Famílias de Produtos: Alterar uma família de produtos envolve apenas trocar a fábrica concreta usada pelo sistema.
+3. Consistência entre Produtos: Como as fábricas criam objetos interdependentes, garantem que os objetos produzidos sejam compatíveis entre si.
+4. Modularidade na inclusão de novas Família de Produtos: Para acrescentar uma família de produtos, basta adicionar a fábrica concreta correspondente e fazer poucas adições aos códigos existentes (basicamente alguns métodos e criações de instâncias).
+
 ## Metodologia
 
 ### Processo de tomada de decisão para o uso de Abstract Factory 
@@ -54,16 +91,41 @@
 
 ## Modelagem
 
+Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Factory* seria aplicado à criação de objetos relacionados aos tipos de avaliação do sistema Chef Indica, pois cada tipo de avaliação possui características distintas (texto, vídeo, imagem), mas compartilham a mesma interface base. Observou-se que se o sistema precisasse trocar o tipo de avaliação (por exemplo, migrar para avaliações exclusivamente por vídeo), bastaria mudar a fábrica utilizada, sem alterar o código cliente.
+
+* Implementação:
+    - Client: Avaliacao
+    - AbstractProducts:
+        . AvaliaçaoTexto, AvaliaçaoVideo, AvaliaçaoImagem.
+    - AbstractFactory: AvaliacaoFactory
+        . Métodos: criarAvaliacaoTexto(), criarAvaliacaoVideo(), criarAvaliacaoImagem()
+    - ConcreteFactories:
+        . AvaliacaoCompletaFactory - fábrica que cria instâncias de todos os tipos.
+        . AvaliacaoTextoFactory - fábrica que cria instâncias apenas de textos, para ambientes com foco textual.
+
+Na figura 1 é possível observar o modelo de domínio criado:
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Modelo de domínio do Abstract Factory utilizado no projeto.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-abstract-factory.png?raw=true" alt="Modelo de domínio do Abstract Factory" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+</center>
+
 ## Código
 
 ## Conclusão
 
 ## Referências Bibliográficas
-
+> [1] GAMMA, Erich; HELM, Richard; JOHNSON, Ralph; VLISSIDES, John. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1994.
+>
+> 
 ## Bibliografia
 
 ## Histórico de Versões
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |25/12/2024| Adição da tomada de decisão | [Júlia Yoshida](https://github.com/juliaryoshida) |[xxxx](xxxx)  |
+| `1.0`  |25/12/2024| Adição da tomada de decisão | [Júlia Yoshida](https://github.com/juliaryoshida) |[Zenilda Vieira](https://github.com/zenildavieira)  |
+| `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Júlia Yoshida](https://github.com/juliaryoshida) |[Zenilda Vieira](https://github.com/zenildavieira)  |
