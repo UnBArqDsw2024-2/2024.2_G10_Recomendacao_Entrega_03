@@ -26,6 +26,14 @@ Citando outro exemplo, pode-se ver como o Adapter é representado por meio de um
 
 ## Metodologia
 
+Para a metodologia, ficou definido após a aula de dúvidas, do dia 20/12/24, em qual parte do código se encaixaria melhor o uso do padrão de projeto Adapter. A ideia escolhida foi a de adaptar os 3 tipos diferentes de modalidade de avaliação (imagem, texto, vídeo) para interagirem melhor com a classe Avaliação.
+
+Foram separadas as responsabilidades para alguns membros do grupo, visando sempre a maior quantidade de participantes envolvidos, porém mantendo a qualidade e eficiência dentro do projeto.
+
+**Maria Alice** ficou com a introdução e a modelagem, **Cecília** com a metodologia, **Lucas Victor** com o código e **Júlia** com a conclusão do Adapter.
+
+Além da discussão de ideias durante a aula presencial, dúvidas eventuais sobre o projeto foram esclarecidas nos grupos de Whatsapp criados para cada um dos padrões de projeto desta entrega. Acreditamos que fazer de forma assíncrona foi a melhor maneira de conciliar os horários dos membros antes de o prazo terminar.
+
 ## Modelagem
 
 Para o presente projeto, o **Adapter** foi desenvolvido para adaptar os diferentes tipos de formatos de avaliação, de forma que eles possam interagir com a classe `Avaliação`.
@@ -61,5 +69,6 @@ REFACTORING GURU. **Exemplo de Adapter em TypeScript**. Disponível em: <https:/
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |25/12/2024| Adição da Modelagem do Adapter | [Maria Alice](https://github.com/maliz30) |[xxxx](xxxx)  |
-| `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[xxxx](xxxx)  |
+| `1.0`  |25/12/2024| Adição da Modelagem do Adapter | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
+| `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
+| `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  (xxxx)[xxxx] |
