@@ -107,7 +107,7 @@ Na figura 1 é possível observar o modelo de domínio criado:
 
 <p style="text-align: center"><b>Figura 1:</b> Modelo de domínio do Abstract Factory utilizado no projeto.</p>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-abstract-factory.png?raw=true" alt="Modelo de domínio do Abstract Factory" >
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-abstract-factory2.png?raw=true" alt="Modelo de domínio do Abstract Factory" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
