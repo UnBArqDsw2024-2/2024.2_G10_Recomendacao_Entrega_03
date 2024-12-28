@@ -91,17 +91,18 @@ O uso do padrão de design criacional *Abstract Factory* se justifica principalm
 
 ## Modelagem
 
-Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Factory* seria aplicado à criação de objetos relacionados aos tipos de avaliação do sistema Chef Indica, pois cada tipo de avaliação possui características distintas (texto, vídeo, imagem), mas compartilham a mesma interface base. Observou-se que se o sistema precisasse trocar o tipo de avaliação (por exemplo, migrar para avaliações exclusivamente por vídeo), bastaria mudar a fábrica utilizada, sem alterar o código cliente.
+Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Factory* seria aplicado à criação de objetos relacionados aos tipos de avaliação do sistema Chef Indica, pois cada tipo de avaliação possui características distintas (texto, vídeo, imagem), mas compartilham a mesma interface base. Observou-se que se o sistema precisasse trocar o tipo de avaliação (por exemplo, migrar para avaliações exclusivamente por vídeo), bastaria mudar a fábrica utilizada, sem alterar o código cliente. Como nosso projeto é apenas didático, não foi possível fazer testes de desempenho para avaliar a real necessidade da aplicação desse padrão de design. Dessa forma, implementamos uma adaptação do padrão de design *Abstract Factory* no nosso projeto apenas a título de aprendizagem.
 
 * Implementação:
-    - Client: Avaliacao
-    - AbstractProducts:
+    - AbstractProductA: Avaliacao
+    - ProductA1, ProductA2 e ProductA3:
         . AvaliaçaoTexto, AvaliaçaoVideo, AvaliaçaoImagem.
     - AbstractFactory: AvaliacaoFactory
-        . Métodos: criarAvaliacaoTexto(), criarAvaliacaoVideo(), criarAvaliacaoImagem()
-    - ConcreteFactories:
-        . AvaliacaoCompletaFactory - fábrica que cria instâncias de todos os tipos.
-        . AvaliacaoTextoFactory - fábrica que cria instâncias apenas de textos, para ambientes com foco textual.
+        . Método: criarAvaliacao()
+    - ConcreteFactory1, ConcreteFactory2 e ConcreteFactory3:
+        . AvaliacaoTextoFactory - fábrica que cria instâncias de textos.
+        . AvaliacaoVideoFactory - fábrica que cria instâncias de vídeos.
+        . AvaliacaoImagemFactory - fábrica que cria instâncias de imagens.
 
 Na figura 1 é possível observar o modelo de domínio criado:
 
