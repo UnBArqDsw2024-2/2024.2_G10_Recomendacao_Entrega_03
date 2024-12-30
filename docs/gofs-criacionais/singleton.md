@@ -8,6 +8,16 @@ No presente projeto, arquivos de log (contendo erros, acesso ao banco de dados, 
 
 ## Metodologia
 
+Temos como objetivo realizar a implementação do padrão de design Singleton para garantir que o sistema de logs seja acessado e manipulado de forma segura e eficiente, onde nos reunimos presencialmente após a aula de Arquitetura e Desenho de Software do dia 16/12. Nesta reunião, surgiram debates sobre a melhor dorma de realizar a instancia e manipulação efciente do sistema dependente dos logs, dessa forma chegamos nos seguintes tópicos a serem tratados:
+
+- Unicidade: Garantir que apenas uma instância da classe Logger seja criada durante todo o ciclo de vida da aplicação, evitando múltiplas instâncias que possam levar a inconsistências nos registros de log.
+
+- Sincronização: Prevenir condições de corrida (“race conditions”) em ambientes multi-threaded, onde múltiplas threads possam tentar acessar ou modificar os logs simultaneamente.
+
+- Organização: Estruturar os registros de eventos de forma clara e consistente, permitindo fácil rastreamento e auditoria de ações importantes no sistema, como o cadastro/exclusão de restaurantes e a avaliação de restaurantes por clientes.
+
+- Escalabilidade: Facilitar a integração futura com outras partes do sistema, como armazenamento em banco de dados ou serviços externos de monitoramento de logs.
+
 ## Modelagem
 
 No nosso sistema, poderíamos utilizar arquivos de log para vários contextos. No entanto, desejamos logs apenas para:
@@ -46,3 +56,4 @@ A modelagem, na Figura 1, abstrai o conteúdo (métodos e atributos) das classes
 | Versão | Data       | Descrição                                       | Autor                                              | Revisor |
 |:------:| ---------- | ----------------------------------------------- | -------------------------------------------------- | ------- |
 | `1.0`  | 24/12/2024 | Criação do documento com introdução e modelagem | [Lucas Queiroz](https://github.com/lucasqueiroz23) |         |
+| `1.1` | 30/12/2024 | Adição da metodologia | [Mateus Fidelis](https://github.com/MatsFidelis) | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
