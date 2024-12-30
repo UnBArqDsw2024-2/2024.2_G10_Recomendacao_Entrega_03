@@ -1,24 +1,41 @@
-# Abstract Factory
+# Factory Method
 
 ## Introdução
 
 Os padrões GoF (Gang of Four) foram definidos pelos autores Erich Gamma, Richard Helm, Ralph Johnson e John Vlissides no livro Design Patterns: Elements of Reusable Object-Oriented Software [1]. Eles são classificados em três categorias:
 
-* Padrões Criacionais: Lidam com a criação de objetos.
-* Padrões Estruturais: Lidam com a composição de classes e objetos.
-* Padrões Comportamentais: Lidam com a interação entre objetos.
+* Padrões Criacionais: lidam com a criação de objetos.
+* Padrões Estruturais: lidam com a composição de classes e objetos.
+* Padrões Comportamentais: lidam com a interação entre objetos.
 
 Destacando os padrões criacionais de design, eles têm como objetivo principal abstrair e otimizar o processo de criação de objetos. Eles ajudam a tornar os sistemas mais independentes de como os objetos são criados, compostos e representados. Em vez de instanciar diretamente objetos concretos, esses padrões promovem o uso de interfaces e classes abstratas, permitindo maior flexibilidade, reuso de código e desacoplamento.
 
 Existem vários padrões criacionais destacados pelos GoF, tais como:
 
-* Factory Method: Define uma interface para criar um objeto, mas permite que as subclasses decidam qual classe será instanciada.
-* Abstract Factory: Oferece uma interface para criar famílias de objetos relacionados ou interdependentes sem especificar suas classes concretas.
-* Builder: Separa a construção de um objeto complexo de sua representação.
-* Prototype: Cria novos objetos copiando uma instância existente.
-* Singleton: Garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global.
+* Factory Method: define uma interface para criar um objeto, mas permite que as subclasses decidam qual classe será instanciada.
+* Abstract Factory: oferece uma interface para criar famílias de objetos relacionados ou interdependentes sem especificar suas classes concretas.
+* Builder: separa a construção de um objeto complexo de sua representação.
+* Prototype: cria novos objetos copiando uma instância existente.
+* Singleton: garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global.
   
-Esse documento trata da implementação do padrão de design *Abstract Factory* devido à escolha feita pelo grupo (conforme é descrito no tópico Metodologia mais abaixo).
+Esse documento trata da implementação do padrão de design *Factory Method* adaptado, devido à escolha feita pelo grupo (conforme é descrito no tópico Metodologia mais abaixo).
+
+### O Padrão Factory Method
+
+O Factory Method é um padrão de projeto criacional utilizado para delegar a responsabilidade da criação de objetos a subclasses específicas, promovendo a reutilização de código, flexibilidade e aderência ao princípio de programação para interfaces. Ele desacopla o código cliente do código de implementação concreta, reduzindo a dependência direta entre os dois, aumentando a coesão e o encapsulamento. Promove também a reutilização de código ao centralizar a criação em um método específico e permite que o sistema seja facilmente expandido sem alterar o código cliente.
+
+Esse padrão é implementado através de um espelhamento da hierarquia inicial do projeto seguindo a estrutura abaixo:
+
+* Creator: define uma interface ou classe abstrata que declara o método fábrica.
+* ConcreteCreator: subclasse do criador que implementa o método fábrica, retornando instâncias de produtos concretos.
+* Product: define a interface comum que todos os produtos devem implementar.
+* ConcreteProduct: subclasse que implementa a interface do produto, fornecendo comportamentos específicos.
+
+O uso do padrão de design criacional *Factory Method* se justifica principalmente quando a entidade Produto apresenta baixo desempenho, com sobrecarga de atividades. Assim, a criação de uma hierarquia espelho com a única função de criar as instâncias alivia o processamento dessa entidade e traz outros benefícios, como:
+
+1. Flexibilidade: facilita a adição de novos produtos sem modificar o código existente.
+2. Desacoplamento:o cliente depende da abstração do produto, e não de sua implementação concreta.
+3. Reutilização: o código relacionado à criação de objetos pode ser reutilizado em diferentes partes do sistema.
 
 ### O Padrão Abstract Factory
 
@@ -32,7 +49,7 @@ Para uma implementação de vários produtos e várias hierarquias, como o exemp
 * AbstractFactory: Declara métodos para criar cada tipo de produto abstrato.
 * ConcreteFactory1, ConcreteFactory2: Implementa os métodos declarados, criando produtos concretos.
 
-O uso do padrão de design criacional *Abstract Factory* se justifica principalmente quando a entidade Cliente apresenta baixo desempenho, com sobrecarga de atividades. Assim, a criação de uma hierarquia com a única função de criar as instâncias alivia o processamento da entidade Cliente e traz também outros benefícios:
+O uso do padrão de design criacional *Abstract Factory* também se justifica quando a entidade Cliente apresenta baixo desempenho, com sobrecarga de atividades. Assim, a criação de uma hierarquia separada com a função de criar as instâncias de cada família alivia o processamento da entidade Cliente e traz também outros benefícios:
 
 1. Isolamento de Classes Concretas: Os clientes manipulam objetos através de suas interfaces, sem precisar conhecer as classes concretas.
 2. Facilidade de Troca de Famílias de Produtos: Alterar uma família de produtos envolve apenas trocar a fábrica concreta usada pelo sistema.
@@ -41,7 +58,7 @@ O uso do padrão de design criacional *Abstract Factory* se justifica principalm
 
 ## Metodologia
 
-### Processo de tomada de decisão para o uso de Abstract Factory 
+### Processo de tomada de decisão para o uso de Factory Method
 
 <p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes refatorado</a>, é possível perceber que o sistema Chef Indica lida com uma grande variedade de entidades inter-relacionadas, como Usuários, Restaurantes, Pratos, Avaliações (texto, vídeo, imagem) e seus atributos específicos. Assim, o projeto requer a criação consistente de objetos complexos para suportar:</p>
 
@@ -76,22 +93,22 @@ O uso do padrão de design criacional *Abstract Factory* se justifica principalm
 
 #### Escolha
 
-<p style="text-align: justify; text-indent: 2em;">A escolha pelo Abstract Factory foi definida em consenso após considerar:</p>
+<p style="text-align: justify; text-indent: 2em;">A princípio, a escolha do padrão de design Abstract Factory foi definida em consenso após considerar:</p>
 
 <b>1. Consistência com o diagrama de classes</b>
 
 - Entidades como AvaliaçãoTexto, AvaliaçãoImagem e AvaliaçãoVídeo pertencem à mesma família de objetos e compartilham características comuns.
-- O uso de fábricas permite criar diferentes variações de Avaliação ou Notificação sem duplicação de código.
+- O uso de fábricas permite criar diferentes variações de Avaliação sem duplicação de código.
 
 <b>2. Modularidade e Escalabilidade</b>
-- <p style="text-align: justify;">A arquitetura proposta requer módulos independentes para funcionalidades como Favoritos, Destaques e Notificações. O Abstract Factory garante que novos tipos de módulos possam ser adicionados sem impactar o restante do sistema.</p>
+- <p style="text-align: justify;">O Abstract Factory garante que novos tipos de módulos possam ser adicionados sem impactar o restante do sistema.</p>
 
 <b>3. Requisitos de extensibilidade</b>
 - O padrão atende ao princípio Open/Closed, facilitando a adição de novos tipos de avaliações ou categorias de restaurantes sem alterar implementações existentes.
 
 ## Modelagem
 
-Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Factory* seria aplicado à criação de objetos relacionados aos tipos de avaliação do sistema Chef Indica, pois cada tipo de avaliação possui características distintas (texto, vídeo, imagem), mas compartilham a mesma interface base. Observou-se que se o sistema precisasse trocar o tipo de avaliação (por exemplo, migrar para avaliações exclusivamente por vídeo), bastaria mudar a fábrica utilizada, sem alterar o código cliente. Como nosso projeto é apenas didático, não foi possível fazer testes de desempenho para avaliar a real necessidade da aplicação desse padrão de design. Dessa forma, implementamos uma adaptação do padrão de design *Abstract Factory* no nosso projeto apenas a título de aprendizagem.
+Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Factory* seria aplicado à criação de objetos relacionados aos tipos de avaliação do sistema Chef Indica, pois cada tipo de avaliação possui características distintas (texto, vídeo, imagem), mas compartilham a mesma interface base (mesma família). Observou-se que se o sistema precisasse trocar o tipo de avaliação (por exemplo, migrar para avaliações exclusivamente por vídeo), bastaria mudar a fábrica utilizada, sem alterar o código cliente. Como nosso projeto é apenas didático, não foi possível fazer testes de desempenho para avaliar a real necessidade da aplicação desse padrão de design. Dessa forma, tentamos implementar uma o padrão de design *Abstract Factory* no nosso projeto apenas a título de aprendizagem.
 
 * Implementação:
     - AbstractProductA: Avaliacao
@@ -104,11 +121,11 @@ Após a escolha do grupo, ficou decidido que o padrão de design *Abstract Facto
         . AvaliacaoVideoFactory - fábrica que cria instâncias de vídeos.
         . AvaliacaoImagemFactory - fábrica que cria instâncias de imagens.
 
-Na figura 1 é possível observar o modelo de domínio criado:
+Porém, ao modelarmos essa estrutura, observamos que tínhamos apenas uma família de produtos, a *Avaliacao*. Então, concluímos que o uso do *Abstract Factory* em sua essência não seria viável, pois sua principal característica é a de instanciar objetos de diferentes famílias relacionadas entre si. Assim, nos voltamos para o *Method Factory* que trabalha com um produto só (e não com famílias). Mas, como a nossa hierarquia contém 3 subprodutos, formando uma família do produto *Avaliacao*, resolvemos implementar uma adaptação do padrão *Method Factory* espelhando a estrutura inicial, porém instanciando a família de produtos existente com diferentes fábricas. Na figura 1 é possível observar o modelo de domínio criado:
 
-<p style="text-align: center"><b>Figura 1:</b> Modelo de domínio do Abstract Factory utilizado no projeto.</p>
+<p style="text-align: center"><b>Figura 1:</b> Modelo de domínio do Factory Method adaptado utilizado no projeto.</p>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-abstract-factory.png?raw=true" alt="Modelo de domínio do Abstract Factory" >
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-abstract-factory-method.png?raw=true" alt="Modelo de domínio do Abstract Factory" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
@@ -128,4 +145,5 @@ Na figura 1 é possível observar o modelo de domínio criado:
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |25/12/2024| Adição da tomada de decisão | [Júlia Yoshida](https://github.com/juliaryoshida) |[Zenilda Vieira](https://github.com/zenildavieira)  |
-| `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Júlia Yoshida](https://github.com/juliaryoshida) |[Zenilda Vieira](https://github.com/zenildavieira)  |
+| `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Zenilda Vieira](https://github.com/zenildavieira)| [Izabella Alves](https://github.com/izabellaalves) |
+| `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
