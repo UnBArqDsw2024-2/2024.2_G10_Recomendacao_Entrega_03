@@ -1,4 +1,4 @@
-package com.api.API.models.abstractFactory;
+package com.api.API.models.factoryMethod;
 
 import com.api.API.models.Avaliacao;
 import com.api.API.models.AvaliacaoTexto;

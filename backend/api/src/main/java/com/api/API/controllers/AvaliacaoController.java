@@ -1,7 +1,7 @@
 package com.api.API.controllers;
 
 import com.api.API.models.Avaliacao;
-import com.api.API.models.abstractFactory.AvaliacaoFactory;
+import com.api.API.models.factoryMethod.AvaliacaoFactory;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
