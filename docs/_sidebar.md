@@ -19,6 +19,7 @@
       - [3.3.2. Iterator](/gofs-comportamentais/iterator.md)
       - [3.3.3. Mediator](/gofs-comportamentais/mediator.md)
     - [3.4. Padrões de Projeto Emergentes](/padroes-emergentes/padroes-emergentes.md)
+      - [3.4.1. Template Method](/padroes-emergentes/services-repositories.md)
     - [3.5. Refatorações](/refatoracoes/refatoracoes.md)
       - [3.5.1. Diagrama de Classes](/refatoracoes/diagrama-de-classes.md)
       - [3.5.2. Modelo Conceitual](/refatoracoes/modelo-conceitual.md)
