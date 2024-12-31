@@ -132,7 +132,7 @@ Porém, ao modelarmos essa estrutura, observamos que tínhamos apenas uma famíl
 
 ## Código
 
-As classes utilizadas para implementar o Fctaory Method em Java foram a AvaliacaoFactory, AvaliacaoImagemFactory, AvaliacaoTextoFactory, AvaliacaoVideoFactory entre outras mais genéricas como AvaliacaoImagem, AvaliacaoTexto e AvaliacaoVideo
+As classes utilizadas para implementar o Factory Method em Java foram a [AvaliacaoFactory](backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoFactory.java), [AvaliacaoImagemFactory](backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoImagemFactory.java), [AvaliacaoTextoFactory](backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoTextoFactory.java), [AvaliacaoVideoFactory](backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoVideoFactory.java) entre outras mais genéricas como [AvaliacaoImagem](backend/api/src/main/java/com/api/API/models/AvaliacaoImagem.java), [AvaliacaoTexto](backend/api/src/main/java/com/api/API/models/AvaliacaoTexto.java) e [AvaliacaoVideo](backend/api/src/main/java/com/api/API/models/AvaliacaoVideo.java) além da classe abstrata principal da [Avaliação](backend/api/src/main/java/com/api/API/models/Avaliacao.java). A controladora fica definida pela [AvaliacaoController](backend/api/src/main/java/com/api/API/controllers/AvaliacaoController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto criacional Factory Method no projeto Chef Indica.
 
 ```Java
 
