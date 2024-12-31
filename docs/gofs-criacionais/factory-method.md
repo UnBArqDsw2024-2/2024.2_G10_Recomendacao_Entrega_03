@@ -132,6 +132,232 @@ Porém, ao modelarmos essa estrutura, observamos que tínhamos apenas uma famíl
 
 ## Código
 
+As classes utilizadas para implementar o Fctaory Method em Java foram a AvaliacaoFactory, AvaliacaoImagemFactory, AvaliacaoTextoFactory, AvaliacaoVideoFactory entre outras mais genéricas como AvaliacaoImagem, AvaliacaoTexto e AvaliacaoVideo
+
+```Java
+
+// Classe abstrata Avaliacao - estrutura básica
+@Data
+public abstract class Avaliacao {
+
+    private Usuario autor;
+    private Restaurante restaurante;
+    private Estado estado;
+    private Tag tags[];
+
+    public abstract String publicar();
+    public abstract String arquivar();
+    public abstract String validar();
+    public abstract String editar();
+}
+
+
+// Classe AvaliacaoFactory - cria objetos Avaliacao
+@Component
+public abstract class AvaliacaoFactory {
+
+    public AvaliacaoFactory obterFactory(String tipo) {
+        switch (UrlUtils.obterUltimoParametroDaURL(tipo)) {
+            case "avaliacaoImagem":
+                return new AvaliacaoImagemFactory();
+            case "avaliacaoTexto":
+                return new AvaliacaoTextoFactory();
+            case "avaliacaoVideo":
+                return new AvaliacaoVideoFactory();
+            default:
+                throw new IllegalArgumentException("Tipo de avaliação inválido: " + tipo);
+        }
+    }
+
+    public abstract Avaliacao criaAvaliacao();
+
+}
+
+
+@Component
+@Primary
+public class AvaliacaoImagemFactory extends AvaliacaoFactory{
+
+    @Override
+    public Avaliacao criaAvaliacao() {
+        return new AvaliacaoImagem();
+    }
+}
+
+
+@Component
+public class AvaliacaoTextoFactory extends AvaliacaoFactory {
+
+    @Override
+    public Avaliacao criaAvaliacao() {
+        return new AvaliacaoTexto();
+    }
+}
+
+
+@Component
+public class AvaliacaoVideoFactory extends AvaliacaoFactory{
+    @Override
+    public Avaliacao criaAvaliacao() {
+        return new AvaliacaoVideo();
+    }
+}
+
+@Data
+@NoArgsConstructor
+public class AvaliacaoImagem extends Avaliacao{
+
+    private String urlImagem;
+
+    public AvaliacaoImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
+    }
+
+    @Override
+    public String publicar() {
+        return "Avaliação de imagem publicada com sucesso!";
+    }
+
+    @Override
+    public String arquivar() {
+        return "Avaliação de imagem arquivada com sucesso!";
+    }
+
+    @Override
+    public String validar() {
+        return "Avaliação de imagem validada com sucesso!";
+    }
+
+    @Override
+    public String editar() {
+        return "Avaliação de imagem editada com sucesso!";
+    }
+}
+
+
+
+@Data
+@NoArgsConstructor
+public class AvaliacaoTexto extends Avaliacao {
+
+    private String texto;
+    private int tamanhoTexto;
+
+    public AvaliacaoTexto(String texto, int tamanhoTexto) {
+        this.texto = texto;
+        this.tamanhoTexto = tamanhoTexto;
+    }
+
+    @Override
+    public String publicar() {
+        return "Avaliação de texto publicada com sucesso!";
+    }
+
+    @Override
+    public String arquivar() {
+        return "Avaliação de texto arquivada com sucesso!";
+    }
+
+    @Override
+    public String validar() {
+        return "Avaliação de texto validada com sucesso!";
+    }
+
+    @Override
+    public String editar() {
+        return "Avaliação de texto editada com sucesso!";
+    }
+}
+
+
+@Data
+@NoArgsConstructor
+public class AvaliacaoVideo extends Avaliacao{
+
+    private String urlVideo;
+    private double duracao;
+
+    public AvaliacaoVideo(String url, double duracao) {
+        this.urlVideo = url;
+        this.duracao = duracao;
+    }
+
+    @Override
+    public String publicar() {
+        return "Avaliação de vídeo publicada com sucesso!";
+    }
+
+    @Override
+    public String arquivar() {
+        return "Avaliação de vídeo arquivada com sucesso!";
+    }
+
+    @Override
+    public String validar() {
+        return "Avaliação de vídeo validada com sucesso!";
+    }
+
+    @Override
+    public String editar() {
+        return "Avaliação de vídeo editada com sucesso!";
+    }
+}
+
+// define a controladora
+@RestController
+@RequestMapping("/avaliacoes")
+public class AvaliacaoController {
+
+    private final AvaliacaoFactory avaliacaoFactory;  //injeta a factory principal
+
+    public AvaliacaoController(
+        AvaliacaoFactory avaliacaoFactory
+
+    ) {
+        this.avaliacaoFactory = avaliacaoFactory;
+
+    }
+
+// funcao main
+    @PostMapping("/criarAvaliacao")
+    public ResponseEntity<String> criarAvaliacao(@RequestParam String tipo, @RequestBody Map<String, Object> parametros) {
+        try {
+            AvaliacaoFactory factory = avaliacaoFactory.obterFactory(tipo);  // obtem a factory correta
+            Avaliacao avaliacao = factory.criaAvaliacao();  // cria a avaliacao
+
+            return ResponseEntity.ok(avaliacao.publicar());  // retorna mensagem de publicacao
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());  // retorna erro em caso inválido
+        }
+    }
+}
+
+```
+
+### Imagens
+
+
+<p style="text-align: center"><b>Figura 2:</b> Local Host Avaliação Vídeo</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/avaliacao1.png?raw=true" alt="AvaliacaoVideo" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a>, 2024</p></font>
+
+
+<p style="text-align: center"><b>Figura 3:</b> Local Host Avaliação Texto</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/avaliacao2.png?raw=true" alt="AvaliacaoTexto" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a>, 2024</p></font>
+
+
+<p style="text-align: center"><b>Figura 4:</b> Local Host Avaliação Imagem</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/avaliacao3.png?raw=true" alt="AvaliacaoImagem" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a>, 2024</p></font>
+
+
 ## Conclusão
 
 ## Referências Bibliográficas
@@ -147,3 +373,4 @@ Porém, ao modelarmos essa estrutura, observamos que tínhamos apenas uma famíl
 | `1.0`  |25/12/2024| Adição da tomada de decisão | [Júlia Yoshida](https://github.com/juliaryoshida) |[Zenilda Vieira](https://github.com/zenildavieira)  |
 | `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Zenilda Vieira](https://github.com/zenildavieira)| [Izabella Alves](https://github.com/izabellaalves) |
 | `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
+| `1.3`  |31/12/2024| Adição do código e imagens| [Cecília Quaresma](https://github.com/cqcoding) <br> [Izabella Alves](https://github.com/izabellaalves) |  |
