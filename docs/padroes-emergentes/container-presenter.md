@@ -22,6 +22,50 @@
 
 ## Modelagem
 
+<p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico de</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Diagrama UML do Container Presenter.</p>
+<div align="center">
+  <img src="./imagens/containerpresenter.png" alt="Diagrama UML do Container Presenter" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/juliaryoshida">Júlia Yoshida</a>, 2024</p></font>
+</center>
+
+<p style="text-align: justify; text-indent: 2em;">  Como o foco do diagrama é demonstrar como utilizamos o padrão Container-Presenter no projeto Chef Indica, optamos por não incluir diretamente outras classes, como Restaurante, Avaliação e Usuário, no diagrama. No entanto, essas classes desempenham um papel importante no funcionamento da funcionalidade representada. Por exemplo, o Container interage com essas classes para buscar os dados necessários, como as informações do restaurante (classe Restaurante), as avaliações associadas (classe Avaliação) e os detalhes do cliente (classe Cliente, que está associada à classe Usuário). O Presenter, por sua vez, utiliza essas informações para exibi-las na interface, mas de forma indireta, acessando-as através de suas propriedades (props). Assim, enquanto as classes mencionadas não estão explicitamente representadas no diagrama, elas são utilizadas nos atributos e métodos do Container e do Presenter, mostrando sua importância na implementação da funcionalidade.</p>
+
+<b>RestauranteAvaliacaoContainer</b>
+
+<p style="text-align: justify; text-indent: 2em;"> Esta classe atua como o controlador da aplicação, sendo responsável pela lógica de negócio e manipulação dos dados relacionados ao restaurante e suas avaliações.</p>
+
+- Atributos:
+    - restaurante: Representa um objeto da classe Restaurante, contendo informações como nome, endereço, e outros atributos relacionados ao restaurante.
+    - cliente: Representa o cliente (usuário autenticado) que está interagindo com o sistema.
+    - avaliacoes: Um array de objetos da classe Avaliacao, que armazena as avaliações associadas ao restaurante.
+
+- Métodos:
+    - buscarDadosRestaurante(idRestaurante: int): void: Este método busca os dados do restaurante no banco de dados, utilizando o identificador do restaurante (idRestaurante) para carregar informações relacionadas.
+    - publicarAvaliacao(dadosAvaliacao: Avaliacao): void: Responsável por processar e enviar uma nova avaliação do cliente para o restaurante.
+    - arquivarAvaliacao(idAvaliacao: int): void: Método que atualiza o estado de uma avaliação específica para "arquivada", usando o identificador da avaliação (idAvaliacao).
+
+Essa classe centraliza a lógica de interação com o banco de dados e manipulação dos dados, sendo uma ponte entre as camadas de apresentação e persistência.
+
+<b>RestauranteAvaliacaoPresenter</b>
+
+<p style="text-align: justify; text-indent: 2em;"> Essa classe é responsável pela apresentação dos dados gerenciados pelo Container. Sua principal função é renderizar as informações de forma adequada e delegar ações ao Container através de callbacks.</p>
+
+- Atributos (props):
+    - props.restaurante: Recebe os dados do restaurante fornecidos pelo Container.
+    - props.cliente: Recebe os dados do cliente autenticado.
+    - props.avaliacoes: Recebe a lista de avaliações carregadas pelo Container.
+    - props.onPublicarAvaliacao: Callback que permite que o Presenter informe ao Container sobre uma nova avaliação a ser enviada.
+    - props.onArquivarAvaliacao: Callback que permite que o Presenter solicite ao Container que uma avaliação seja arquivada.
+
+- Métodos de renderização:
+    - renderizarDetalhesRestaurante(): JSX: Renderiza os detalhes do restaurante, como nome, endereço e informações complementares.
+    - renderizarFormularioAvaliacao(): JSX: Renderiza um formulário para o cliente inserir uma nova avaliação do restaurante.
+    - renderizarAvaliacoes(): JSX: Renderiza a lista de avaliações existentes para o restaurante, incluindo opções para arquivar uma avaliação, se aplicável.
+
 ## Código
 
 ## Conclusão
@@ -45,3 +89,4 @@
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |31/12/2024| Adição da introdução do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|--|
+| `1.1`  |31/12/2024| Adição da modelagem do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|--|
