@@ -21,15 +21,19 @@ Na figura 1, é possível observar a estrutura geral desse padrão, oferecendo u
 
 ## Metodologia
 
-Durante a reunião realizada no dia 17 de dezembro de 2024, documentada na [ata da reunião 2](../atas-reuniao/ata-reuniao-17-12.md), a equipe estabeleceu em conjunto a escolha do padrão **Observer**, para solucionar e previnir problemas no sistema Chef Indica. Além disso, as atribuições foram divididas entre os membros e foram definidas datas de entrega, para que todos conseguissem revisar o tabalho desenvolvido. O padrão **Observer** foi escolhido devido a sua fácil aplicação na biblioteca React, que será utilizada no projeto juntamente a linguagem typescript. A biblioteca React já apresenta ferramentas para o gerenciamento de estados, o que facilita grandemente a utilização do padrão de projeto **Observer**. 
+Durante a reunião realizada no dia 17 de dezembro de 2024, documentada na [ata da reunião 2](../atas-reuniao/ata-reuniao-17-12.md), a equipe decidiu, em conjunto, pela adoção do padrão **Observer** para solucionar e prevenir problemas no sistema *Chef Indica*. Além disso, as atribuições foram distribuídas entre os membros, e foram definidas datas de entrega para que todos conseguissem revisar o trabalho desenvolvido. O padrão **Observer** foi escolhido devido à sua fácil aplicação na biblioteca React, que será utilizada no projeto juntamente com a linguagem TypeScript. A biblioteca React já oferece ferramentas para o gerenciamento de estados, o que facilita significativamente a implementação do padrão de projeto **Observer**. 
 
-Para o desenvolvimento do padrão no projeto, foram definidas as seguintes responsabilidades para os membros:
-- **Larissa de Jesus Vieira**: desenvolver a introdução teórica e a modelagem do padrão no projeto Chef Indica; 
-- **Maria Alice Bernardo da Costa Silva**: documentar a metodologia da adoção do padrão, evidenciando os passos seguidos para que ele fosse incluído ao projeto;
-- **Júlia Rodrigues Yoshida**: escrever o código referente a modelagem desenvolvida;
-- **Cecília Ernesto Silva Quaresma**: elaborar a conclusão, revisando e reafirmando todos os pontos trabalhados para o padrão;
+Para o desenvolvimento do padrão no projeto, as seguintes responsabilidades foram atribuídas aos membros da equipe:
+- **Larissa de Jesus Vieira**: Desenvolver a introdução teórica e a modelagem do padrão no projeto *Chef Indica*; 
+- **Maria Alice Bernardo da Costa Silva**: Documentar a metodologia de adoção do padrão, evidenciando os passos seguidos para sua inclusão no projeto;
+- **Júlia Rodrigues Yoshida**: Implementar o código correspondente à modelagem desenvolvida;
+- **Cecília Ernesto Silva Quaresma**: Elaborar a conclusão, revisando e reafirmando todos os pontos abordados em relação ao padrão.
 
-Ao final do trabalho, todos os membros ficaram responsáveis por revisar o que foi desenvolvido e realizar alterações, caso necessário, de forma a melhorar a qualidade do produto final.
+A modelagem desenvolvida foi apresentada na aula de dúvidas do dia 20/12/2024 aos demais membros da equipe e à professora, com o objetivo de esclarecer dúvidas, analisar e revisar se o trabalho foi desenvolvido corretamente ou se ajustes eram necessários. 
+
+As demais comunicações entre a equipe ocorreram de forma assíncrona via WhatsApp, permitindo que todos conciliassem seus horários durante o período de recesso.
+
+Ao final do trabalho, todos os membros ficaram responsáveis por revisar o que foi produzido e realizar alterações, caso necessário, visando melhorar a qualidade do produto final.
 
 ## Modelagem
 No diagrama de classes desenvolvido, o Subject é representado pela classe **Restaurante**, enquanto os Observers são instâncias da classe **Favoritos**. Quando um usuário adiciona um restaurante aos seus favoritos, este é incluído na lista correspondente, gerenciada pela classe **Favoritos**.
@@ -65,3 +69,4 @@ Com essa estrutura, a classe **Favoritos** é informada sempre que ocorrem atual
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |22/12/2024| Adiciona introdução e primeira versao do diagrama de classes | [Larissa Vieira](https://github.com/VieiraLaris) | [Izabella Alves](https://github.com/izabellaalves) |
+| `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) |  |
