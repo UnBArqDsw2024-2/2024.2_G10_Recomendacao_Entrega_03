@@ -131,6 +131,195 @@ export default withAuth(UserProfile);
 <font size="3"><p style="text-align: center"><b>Fonte:</b> Cecília Quaresma, 2024</p></font>
 </center>
 
+## Modelagem
+
+## Código
+Abaixo é possível ver a primeira versão das duas HOCs **Funcionário** e **Cliente**.
+
+<b>1.</b> hoc_funcionario.jsx
+
+```javascript
+
+import React from 'react';
+
+//HOC que adiciona as informações específicas de funcionário ao componente base
+const withFuncionario = (WrappedComponent) => {
+  return (props) => {
+    //Define os dados adicionais específicos para funcionário
+    const funcionarioData = {
+      cargo: props.cargo || 'Funcionário', //Cargo dinâmico (ou valor padrão)
+      telefone: props.telefone || 'Não informado', //Telefone dinâmico (ou valor padrão)
+      restaurante: props.restaurante || 'Sem restaurante vinculado', //Restaurante dinâmico (ou valor padrão)
+    };
+
+    //Renderiza o componente base com os dados de funcionário adicionados
+    return <WrappedComponent {...props} funcionario={funcionarioData} />;
+  };
+};
+
+export default withFuncionario;
+
+```
+<b>2.</b> hoc_cliente.jsx
+
+```javascript
+
+import React from 'react';
+
+//HOC que adiciona as informações específicas de cliente ao componente base
+const withCliente = (WrappedComponent) => {
+  return (props) => {
+    //Define os dados adicionais específicos para cliente
+    const clienteData = {
+      avaliacoes: props.avaliacoes || [], //Avaliações dinâmicas (ou array vazio como padrão)
+      destaques: props.destaques || [], //Destaques dinâmicos (ou array vazio como padrão)
+      favoritos: props.favoritos || [], //Favoritos dinâmicos (ou array vazio como padrão)
+    };
+
+    //Renderiza o componente base com os dados de cliente adicionados
+    return <WrappedComponent {...props} cliente={clienteData} />;
+  };
+};
+
+export default withCliente;
+
+```
+Exemplo de renderização utilizando o HOC Funcionário e a classe [Usuario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/Usuario.java):
+
+```javascript
+
+import React, { useEffect, useState } from 'react';
+import withFuncionario from './hoc_funcionario';
+
+const InfoFuncionario = ({ nome, email, senha, funcionario }) => {
+  return (
+    <div>
+      <h1>Nome: {nome}</h1>
+      <p>Email: {email}</p>
+      <p>Senha: {senha}</p>
+      {funcionario && (
+        <div>
+          <h2>Dados do Funcionário:</h2>
+          <p>Cargo: {funcionario.cargo}</p>
+          <p>Telefone: {funcionario.telefone}</p>
+          <p>Restaurante: {funcionario.restaurante}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const FuncionarioUsuario = withFuncionario(InfoFuncionario);
+
+
+const App = () => {
+  const [funcionario, setFuncionario] = useState(null);
+
+  useEffect(() => {
+    //Requisição à API para buscar o usuário
+    fetch('/api/usuario')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUsuario(data); //Dados do usuário vindos do back-end
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar os dados do usuário:', error);
+      });
+  }, []);
+
+  if (!usuario) return <p>Carregando...</p>;
+
+  return (
+    <FuncionarioUsuario
+      nome={funcionario.nome}
+      email={funcionario.email}
+      senha={funcionario.senha}
+      cargo={funcionario.cargo}
+      telefone={funcionario.telefone}
+      restaurante={funcionario.restaurante}
+    />
+  );
+};
+
+export default App;
+
+```
+
+Exemplo de renderização utilizando o HOC Cliente e a classe [Usuario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/Usuario.java):
+
+```javascript
+
+import React, { useEffect, useState } from 'react';
+import withCliente from './hoc_cliente';
+
+const InfoCliente = ({ nome, email, senha, cliente }) => {
+  return (
+    <div>
+      <h1>Nome: {nome}</h1>
+      <p>Email: {email}</p>
+      <p>Senha: {senha}</p>
+      {cliente && (
+        <div>
+          <h2>Dados do Cliente:</h2>
+          <p>Avaliações: {cliente.avaliacoes.join(', ')}</p>
+          <p>Destaques: {cliente.destaques.join(', ')}</p>
+          <p>Favoritos: {cliente.favoritos.join(', ')}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const ClienteUsuario = withCliente(InfoCliente);
+
+const App = () => {
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() => {
+    //Requisição à API para buscar o usuário
+    fetch('/api/usuario')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUsuario(data); //Dados do usuário vindos do back-end
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar os dados do usuário:', error);
+      });
+  }, []);
+
+  if (!usuario) return <p>Carregando...</p>;
+
+  return (
+    <ClienteUsuario
+      nome={usuario.nome}
+      email={usuario.email}
+      senha={usuario.senha}
+      cliente={{
+        avaliacoes: usuario.avaliacoes || [],
+        destaques: usuario.destaques || [],
+        favoritos: usuario.favoritos || [],
+      }}
+    />
+  );
+};
+
+export default App;
+
+```
+<center>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> Larissa Vieira, 2024</p></font>
+</center>
+
 ## Referências Bibliográficas
 
 > [1] FREEMAN, Eric; ROBSON, Elisabeth. Head first design patterns: a brain-friendly guide. Sebastopol: O'Reilly Media, 2020.
@@ -147,3 +336,4 @@ export default withAuth(UserProfile);
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Descrição da introdução e da metodologia | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding)  |
 | `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.2`  |01/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Cecília Quaresma](https://github.com/cqcoding) e [Júlia Yoshida](https://github.com/juliaryoshida) |
