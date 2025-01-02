@@ -52,4 +52,32 @@ public class RestauranteController {
 
         return ResponseEntity.ok(pratos);
     }
+
+    @GetMapping("/menu/reverso")
+    public ResponseEntity<ArrayList<String>> obterMenuReverso() {
+        // Criando restaurante e menu
+        Restaurante restaurante = new Restaurante("Restaurante Chef Indica", 5);
+        preencherMenu(restaurante);
+
+        // Obtendo iterador do menu
+        Iterador iterador = restaurante.getMenu().criarIterador();
+
+        ArrayList<String> pratos = new ArrayList<String>();
+
+        // Percorrendo o menu com o iterador
+        while (iterador.temProximo()) {
+            Prato prato = (Prato) iterador.proximo();
+            System.out.println("- " + prato);
+        }
+
+        System.out.println("Menu do Restaurante " + restaurante.getNome() + " (em ordem reversa):");
+
+        while (iterador.temAnterior()) {
+            Prato prato = (Prato) iterador.anterior();
+            pratos.add(prato.toString());
+            System.out.println("- " + prato);
+        }
+
+        return ResponseEntity.ok(pratos);
+    }
 }
