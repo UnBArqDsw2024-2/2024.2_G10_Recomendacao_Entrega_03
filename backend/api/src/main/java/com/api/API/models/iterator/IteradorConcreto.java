@@ -19,6 +19,29 @@ public class IteradorConcreto implements Iterador {
     }
 
     @Override
+    public boolean temAnterior() {
+        return posicaoAtual > 0;
+    }
+
+    @Override
+    public int posicaoAnterior() {
+
+        if(temAnterior()) 
+            return posicaoAtual - 1;
+        
+        return -1;
+    }
+
+    @Override
+    public int posicaoProximo() {
+
+        if(temProximo()) 
+            return posicaoAtual + 1;
+        
+        return -1;
+    }
+
+    @Override
     public Prato proximo() {
         if (temProximo()) {
             return menu.getPratos()[posicaoAtual++];

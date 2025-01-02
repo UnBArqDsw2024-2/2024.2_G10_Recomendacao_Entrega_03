@@ -14,22 +14,20 @@ import modelo.iterador.Iterador;
 @RequestMapping("/restaurantes")
 public class RestauranteController {
 
-    @GetMapping("/teste")
-    public String teste() {
-        return "teste ok!";
+    // método auxiliar para preencher o menu de um restaurante
+    void preencherMenu(Restaurante restaurante) {
+        restaurante.getMenu().adicionarPrato(new Prato("Spaghetti Carbonara", 35.50));
+        restaurante.getMenu().adicionarPrato(new Prato("Risoto de Cogumelos", 42.00));
+        restaurante.getMenu().adicionarPrato(new Prato("File Mignon ao Molho Madeira", 65.90));
+        restaurante.getMenu().adicionarPrato(new Prato("Salmao Grelhado", 58.00));
+        restaurante.getMenu().adicionarPrato(new Prato("Tiramisu", 25.00));
     }
 
     @GetMapping("/menu")
     public ResponseEntity<ArrayList<String>> obterMenu() {
         // Criando restaurante e menu
         Restaurante restaurante = new Restaurante("Restaurante Chef Indica", 5);
-
-        // Adicionando pratos ao menu
-        restaurante.getMenu().adicionarPrato(new Prato("Spaghetti Carbonara", 35.50));
-        restaurante.getMenu().adicionarPrato(new Prato("Risoto de Cogumelos", 42.00));
-        restaurante.getMenu().adicionarPrato(new Prato("File Mignon ao Molho Madeira", 65.90));
-        restaurante.getMenu().adicionarPrato(new Prato("Salmao Grelhado", 58.00));
-        restaurante.getMenu().adicionarPrato(new Prato("Tiramisu", 25.00));
+        preencherMenu(restaurante);
 
         // Obtendo iterador do menu
         Iterador iterador = restaurante.getMenu().criarIterador();
