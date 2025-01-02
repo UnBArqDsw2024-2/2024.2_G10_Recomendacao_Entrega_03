@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O **Adapter** é um padrão de projeto estrutural que permite que objetos e classes com interfaces diferentes e incompatíveis possam interagir. Esse padrão é geralmente utilizado em código legado ou em sistemas onde não é possível alterar a classe de serviço, seja por existir um grande número de dependências com outras partes do código, seja pela impossibilidade de acesso ao código da classe de serviço.
+O **Adapter** é um padrão de projeto estrutural que permite que objetos e classes com interfaces diferentes e incompatíveis possam interagir. Segundo site Refactoring Guru [1](https://refactoring.guru/pt-br/design-patterns/adapter/typescript/example)  padrão é geralmente utilizado em código legado ou em sistemas onde não é possível alterar a classe de serviço, seja por existir um grande número de dependências com outras partes do código, seja pela impossibilidade de acesso ao código da classe de serviço.
 
 Um exemplo comumente apresentado ao se falar sobre o **Adapter** é o caso do uso de bibliotecas que recebem formatos de dados diferentes. Neste exemplo, temos um código que recebe, da interface, um objeto no formato *x*. Entretanto, a biblioteca que se deseja utilizar trabalha somente com objetos no formato *y*. Para solucionar essa incompatibilidade, cria-se um adaptador que realiza a conversão do objeto de *x* para *y*, permitindo que a biblioteca seja utilizada. Na figura 1, é possível visualizar esse exemplo de forma mais explícita: em uma situação onde é recebida, da interface, uma tabela de dados no formato XML, há uma biblioteca de análise de dados que trabalha somente com dados no formato JSON. Para solucionar o problema, foi criado um adaptador que converte os dados de XML para JSON, possibilitando a comunicação entre a interface e a biblioteca.
 
@@ -14,7 +14,7 @@ Um exemplo comumente apresentado ao se falar sobre o **Adapter** é o caso do us
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://refactoring.guru/pt-br/design-patterns/adapter">Refactoring Guru</a>, 2024.</p></font>
 </center>
 
-Citando outro exemplo, pode-se ver como o Adapter é representado por meio de um diagrama de classes. Neste caso, tem-se pinos quadrados, pinos redondos, um buraco redondo e uma classe com um método que verifica se o pino cabe no buraco. Entretanto, o método foi construído para trabalhar somente com pinos redondos, de forma que ele não consegue realizar os cálculos caso seja chamado para pinos quadrados. Para solucionar esse problema, é criado um adaptador que mascara os dados do pino quadrado, permitindo que ele atue como um pino redondo.
+Citando outro exemplo, também apresentado pelo site Refactoring Guru [2](https://refactoring.guru/pt-br/design-patterns/adapter), é possível ver como o Adapter é representado por meio de um diagrama de classes. Neste caso, tem-se pinos quadrados, pinos redondos, um buraco redondo e uma classe com um método que verifica se o pino cabe no buraco. Entretanto, o método foi construído para trabalhar somente com pinos redondos, de forma que ele não consegue realizar os cálculos caso seja chamado para pinos quadrados. Para solucionar esse problema, é criado um adaptador que mascara os dados do pino quadrado, permitindo que ele atue como um pino redondo.
 
 <center>
 <p style="text-align: center"><b>Figura 2:</b> Exemplo do uso do Adapter em um diagrama de classes </p>
@@ -57,13 +57,12 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 
 ## Referências Bibliográficas
 
+>
+> [1] REFACTORING GURU. **Exemplo de Adapter em TypeScript**. Disponível em: <https://refactoring.guru/pt-br/design-patterns/adapter/typescript/example>. Acesso em: 25 dez. 2024.
+>
+> [2] REFACTORING GURU. **Adapter - Padrão de Projeto**. Disponível em: <https://refactoring.guru/pt-br/design-patterns/adapter>. Acesso em: 25 dez. 2024.
+
 ## Bibliografia
-
-
-REFACTORING GURU. **Adapter - Padrão de Projeto**. Disponível em: <https://refactoring.guru/pt-br/design-patterns/adapter>. Acesso em: 25 dez. 2024.
-
-REFACTORING GURU. **Exemplo de Adapter em TypeScript**. Disponível em: <https://refactoring.guru/pt-br/design-patterns/adapter/typescript/example>. Acesso em: 25 dez. 2024.
-
 
 ## Histórico de Versões
 
@@ -71,4 +70,5 @@ REFACTORING GURU. **Exemplo de Adapter em TypeScript**. Disponível em: <https:/
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |25/12/2024| Adição da Modelagem do Adapter | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
-| `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  (xxxx)[xxxx] |
+| `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
+| `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) | |
