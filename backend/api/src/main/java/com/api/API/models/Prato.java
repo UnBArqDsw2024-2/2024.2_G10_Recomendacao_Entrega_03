@@ -1,4 +1,4 @@
-package modelo.entidades;
+package com.api.API.models;
 
 public class Prato {
     private String nome;

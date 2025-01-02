@@ -1,7 +1,7 @@
 package modelo.implementacao;
 
-import modelo.entidades.Menu;
-import modelo.entidades.Prato;
+import com.api.API.models.Menu;
+import com.api.API.models.Prato;
 import modelo.iterador.Iterador;
 
 public class IteradorConcreto implements Iterador {

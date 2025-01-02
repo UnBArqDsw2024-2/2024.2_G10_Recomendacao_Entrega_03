@@ -1,4 +1,4 @@
-package modelo.entidades;
+package com.api.API.models;
 
 import modelo.iterador.ColecaoIterador;
 import modelo.implementacao.IteradorConcreto;
