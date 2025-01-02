@@ -3,6 +3,16 @@
 ## Introdução
 
 O padrão Decorator é um padrão de projeto estrutural onde há o acomplamento de novos comportamentos à objetos de maneira dinâmica, os inserindo em invólucros de objetos que contém os novos comportamentos [1]. Em sua definição GOF, apresenta o decorator como uma alternativa ao uso de herança no código através do uso de composição. [2]. É um padrão indicado para o uso onde teremos uma classe central básica que poderá ter atributos métodos e acressentados conforme necessidade. É um padrão parecido com o [Composite](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/gofs-estruturais/composite) pelo uso de composição em sua estrutura.
+Abaixo segue um exemplo base de diagrama UML seguindo o padrão decorator:
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Exemplo de Diagrama UML Decorator</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/exemplo_decorator.png?raw=true" alt="Padrão Decorator" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> Vinicius Climaco, 2022.</p></font>
+</center>
+
 
 
 ## Metodologia
