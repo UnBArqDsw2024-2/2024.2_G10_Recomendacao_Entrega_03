@@ -72,6 +72,7 @@ public class RestauranteController {
 
         System.out.println("Menu do Restaurante " + restaurante.getNome() + " (em ordem reversa):");
 
+        // obtendo os pratos na ordem reversa
         while (iterador.temAnterior()) {
             Prato prato = (Prato) iterador.anterior();
             pratos.add(prato.toString());
