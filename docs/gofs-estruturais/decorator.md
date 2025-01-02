@@ -2,7 +2,8 @@
 
 ## Introdução
 
-O padrão Decorator é um padrão de projeto estrutural onde há o acomplamento de novos comportamentos à objetos de maneira dinâmica, os inserindo em invólucros de objetos que contém os novos comportamentos [1]. Em sua definição GOF, apresenta o decorator como uma alternativa ao uso de herança no código através do uso de composição. [2]. É um padrão indicado para o uso onde teremos uma classe central básica que poderá ter atributos métodos e acressentados conforme necessidade. É um padrão parecido com o [Composite](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/gofs-estruturais/composite)pelo uso de composição em sua estrutura.
+O padrão Decorator é um padrão de projeto estrutural onde há o acomplamento de novos comportamentos à objetos de maneira dinâmica, os inserindo em invólucros de objetos que contém os novos comportamentos [1]. Em sua definição GOF, apresenta o decorator como uma alternativa ao uso de herança no código através do uso de composição. [2]. É um padrão indicado para o uso onde teremos uma classe central básica que poderá ter atributos métodos e acressentados conforme necessidade. É um padrão parecido com o [Composite](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/gofs-estruturais/composite) pelo uso de composição em sua estrutura.
+
 
 ## Metodologia
 
@@ -31,13 +32,19 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 ## Referências Bibliográficas
 
+>
 > [1] Refactoring Guru. Decorator Também conhecido como: Decorador, Envoltório, Wrapper. Disponível em <https://refactoring.guru/pt-br/design-patterns/decorator>. Último acesso em 01/01/2025.
+>
 > [2] Climaco, Vinicius. Design Pattern: Decorator (2022). Disponível em <https://climaco.medium.com/design-pattern-decorator-b0ba34ff9da5>. Último acesso em 01/01/2025.
+>
 
 ## Bibliografia
 
+>
 > Decorator Teoria - Padrões de Projeto - Parte 20/45 - Otávio Miranda. Disponível em: <https://www.youtube.com/watch?v=p3Dh7VjxudE>. Último acesso em 01/01/2025.
+>
 > Nuzzi, Jones Roberto. Design Patterns — Parte 11 — Decorator (2019). Disponível em <https://medium.com/@jonesroberto/desing-patterns-parte-11-decorator-ba348f44142f>. Último acesso em 01/01/2025.
+>
 
 ## Histórico de Versões
 
