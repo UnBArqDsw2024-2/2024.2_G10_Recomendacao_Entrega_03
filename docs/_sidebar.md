@@ -22,6 +22,8 @@
       - [3.4.1. High-Order Components](/padroes-emergentes/hoc.md)
       - [3.4.2. CQRS](/padroes-emergentes/cqrs.md)
       - [3.4.3. Repository Pattern](/padroes-emergentes/repository.md)
+      - [3.4.4. Container and Presenter](/padroes-emergentes/container-presenter.md)
+
     - [3.5. Refatorações](/refatoracoes/refatoracoes.md)
       - [3.5.1. Diagrama de Classes](/refatoracoes/diagrama-de-classes.md)
       - [3.5.2. Modelo Conceitual](/refatoracoes/modelo-conceitual.md)
