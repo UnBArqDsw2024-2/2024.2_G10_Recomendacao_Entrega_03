@@ -26,7 +26,13 @@ Essa abordagem colaborativa foi essencial para integrar o padrão Prototype ao p
 
 
 ## Modelagem
-![<img>](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/Prototype_Modelagem/docs/imagens/Prototype%20-%20Modelagem.png?raw=true)
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Diagrama UML para o Prototype utilizado no projeto.</p>
+<div align="center">
+  <img src="https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/Prototype_Modelagem/docs/imagens/Prototype%20-%20Modelagem.png?raw=true" maxwidth="600">
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+</center>
 
 ### Explicação da Modelagem  
 A modelagem apresentada no diagrama demonstra a implementação do padrão Prototype no contexto do projeto.  
