@@ -51,7 +51,7 @@ public class IteradorConcreto implements Iterador {
 
     @Override
     public Prato anterior() {
-        if (posicaoAtual > 0) {
+        if (temAnterior()) {
             return menu.getPratos()[--posicaoAtual];
         }
         return null;
