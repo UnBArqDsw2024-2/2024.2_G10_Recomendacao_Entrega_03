@@ -71,7 +71,7 @@ A classe Sobremesas representa um grupo de itens do cardápio. É uma categoria 
 
 ## Código
 
-As classes utilizadas para implementar o Composite Method em Java foram a [ItemCardapio](/backend/api/src/main/java/com/api/API/models/compositeMethod/compositeSobremesa.java), [Tiramisu](/backend/api/src/main/java/com/api/API/models/compositeMethod/tiramisu.java), [Sobremesa](/backend/api/src/main/java/com/api/API/models/compositeMethod/SobremesaComposite.java), [Pudim](/backend/api/src/main/java/com/api/API/models/compositeMethod/PudimComposite.java), [PetitGateau](/backend/api/src/main/java/com/api/API/models/compositeMethod/PetitComposite.java). A controladora fica definida pela [menuController](/backend/api/src/main/java/com/api/API/controllers/menuController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto Estrutural Composite Method no projeto Chef Indica.
+As classes utilizadas para implementar o Composite Method em Java foram os itens simples [Tiramisu](/backend/api/src/main/java/com/api/API/models/compositeMethod/tiramisu.java), [Pudim](/backend/api/src/main/java/com/api/API/models/compositeMethod/PudimComposite.java), [PetitGateau](/backend/api/src/main/java/com/api/API/models/compositeMethod/PetitComposite.java) que implementam a interface [ItemCardapio](/backend/api/src/main/java/com/api/API/models/compositeMethod/compositeSobremesa.java), com a classe [Sobremesa](/backend/api/src/main/java/com/api/API/models/compositeMethod/SobremesaComposite.java). A controladora fica definida pela [menuController](/backend/api/src/main/java/com/api/API/controllers/menuController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto Estrutural Composite Method no projeto Chef Indica.
 
 ### Controller Menu
 
@@ -241,4 +241,4 @@ public class PetitGateau implements ItemCardapio {
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Adiciona introdução e primeira versao do diagrama de classes |[Izabella Alves](https://github.com/izabellaalves)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
-| `1.1`  |19/12/2024| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.1`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
