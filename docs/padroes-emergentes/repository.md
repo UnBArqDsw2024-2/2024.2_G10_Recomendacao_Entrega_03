@@ -12,6 +12,15 @@ A combinação dos padrões Service e Repository oferece uma arquitetura limpa e
 
 ## Metodologia
 
+Para implementar o Repository Pattern no projeto, além dos demais padrões, foi realizada uma reunião no dia 17/12/2024. Essa reunião definiu quais seriam os padrões a serem implementados e quem faria cada parte da implementação. 
+
+Para o presente pattern, dividimos da seguinte forma: 
+
+- A Introdução (teoria) seria escrita por Mateus Fidelis;
+- A metodologia seria escrita por Lucas Queiroz;
+- A modelagem e o código seriam feitos por Izabella Alves;
+- A conclusão seria escrita por Pedro Sampaio.
+
 ## Modelagem
 
 Para exemplificar o uso do padrão Repository, utilizamos a classe Tag de nossa aplicação. É importante destacar que todas as interações com o banco de dados no projeto serão realizadas exclusivamente por meio de repositories, garantindo a separação entre a lógica de persistência e as demais camadas da aplicação.
@@ -136,3 +145,4 @@ public class TagController {
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |30/12/2024| Adiciona modelagem e código | [Izabella Alves](https://github.com/izabellaalves) e [Zenilda Vieira](https://github.com/ZenildaVieira) | [Mateus Fidelis](https://github.com/MatsFidelis) |
 | `1.1`  |31/12/2024| Criação da Introdução e Referências |[Mateus Fidelis](https://github.com/MatsFidelis) | [Izabella Alves](https://github.com/izabellaalves) |
+| `1.2`  |02/01/2025| Adição de Metodologia |[Lucas Queiroz](https://github.com/lucasqueiroz23) | [Izabella Alves](https://github.com/izabellaalves) |
