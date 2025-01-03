@@ -128,6 +128,10 @@ public class TagController {
 
 ## Conclusão
 
+A implementação do Repository Pattern seguiu os princípios adotados por parte da comunidade de desenvolvimento Java e demonstrou confiabilidade nos testes realizados. Esse padrão foi utilizado para estruturar a aplicação com a interface TagRepository, estendendo a JpaRepository do Spring Data para fornecer métodos padrão, enquanto o serviço TagService gerenciou as operações relacionadas às tags. O controlador TagController expôs essas operações por meio de endpoints HTTP.
+
+Os testes validaram a confiabilidade das funcionalidades implementadas, como a criação e recuperação de tags, confirmando a aplicação eficaz do padrão. O modelo contribuiu para a organização e modularidade da aplicação, garantindo que cada camada desempenhe seu papel de maneira eficiente.
+
 ## Referências Bibliográficas
 
 > [1] FOWLER, Martin. Patterns of Enterprise Application Architecture. Boston: Addison-Wesley, 2003. Disponível em: https://martinfowler.com/eaaCatalog/repository.html. Acesso em: 15 nov. 2024.
@@ -146,3 +150,5 @@ public class TagController {
 | `1.0`  |30/12/2024| Adiciona modelagem e código | [Izabella Alves](https://github.com/izabellaalves) e [Zenilda Vieira](https://github.com/ZenildaVieira) | [Mateus Fidelis](https://github.com/MatsFidelis) |
 | `1.1`  |31/12/2024| Criação da Introdução e Referências |[Mateus Fidelis](https://github.com/MatsFidelis) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.2`  |02/01/2025| Adição de Metodologia |[Lucas Queiroz](https://github.com/lucasqueiroz23) | [Izabella Alves](https://github.com/izabellaalves) |
+| `1.3`  |03/01/2025| Adição de Conclusão | [Pedro Sampaio](https://github.com/PedroSampaioDias) | |
+
