@@ -8,7 +8,7 @@ No presente projeto, arquivos de log (contendo erros, acesso ao banco de dados, 
 
 ## Metodologia
 
-Temos como objetivo realizar a implementação do padrão de design Singleton para garantir que o sistema de logs seja acessado e manipulado de forma segura e eficiente, onde nos reunimos presencialmente após a aula de Arquitetura e Desenho de Software do dia 16/12. Nesta reunião, surgiram debates sobre a melhor dorma de realizar a instancia e manipulação efciente do sistema dependente dos logs, dessa forma chegamos nos seguintes tópicos a serem tratados:
+Temos como objetivo realizar a implementação do padrão de design Singleton para garantir que o sistema de logs seja acessado e manipulado de forma segura e eficiente, onde nos reunimos presencialmente após a aula de Arquitetura e Desenho de Software do dia 16/12. Nesta reunião, surgiram debates sobre a melhor forma de realizar a instância e manipulação eficiente do sistema dependente dos logs, dessa forma chegamos nos seguintes tópicos a serem tratados:
 
 - Unicidade: Garantir que apenas uma instância da classe Logger seja criada durante todo o ciclo de vida da aplicação, evitando múltiplas instâncias que possam levar a inconsistências nos registros de log.
 
@@ -329,6 +329,9 @@ public class AvaliacaoController {
 
 
 ## Conclusão
+Este trabalho demonstrou a implementação do padrão de design Singleton para o sistema de logs do projeto, abordando a necessidade de um acesso sincronizado e seguro a um arquivo de log em um ambiente multi-threaded. A razão para a adoção do Singleton é garantir que haja somente uma instância da classe Logger, o que previne inconsistências e erros que poderiam ocorrer devido ao acesso concorrente ao arquivo de log por múltiplas threads.
+
+Em resumo, a implementação do padrão Singleton com sincronização thread-safe resolveu o problema de concorrência no acesso ao arquivo de log, garantindo a confiabilidade e a organização dos registros. A solução implementada demonstra a eficácia do padrão Singleton em cenários onde é necessário controlar o acesso a um recurso compartilhado, especialmente em ambientes concorrentes.
 
 ## Referências Bibliográficas
 
@@ -348,4 +351,5 @@ public class AvaliacaoController {
 |:------:| ---------- | ----------------------------------------------- | -------------------------------------------------- | ------- |
 | `1.0`  | 24/12/2024 | Criação do documento com introdução e modelagem | [Lucas Queiroz](https://github.com/lucasqueiroz23) |         |
 | `1.1` | 30/12/2024 | Adição da metodologia | [Mateus Fidelis](https://github.com/MatsFidelis) | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
-| `1.1` | 02/01/2025 | Adição dos códigos | [Pedro Sampaio](https://github.com/PedroSampaioDias) | |
+| `1.2` | 02/01/2025 | Adição dos códigos | [Pedro Sampaio](https://github.com/PedroSampaioDias) |  [Guilherme Brito](https://github.com/GuilhermeB12) |
+| `1.3` | 03/01/2025 | Adição da conclusão | [Guilherme Brito](https://github.com/GuilhermeB12) | |
