@@ -134,191 +134,105 @@ export default withAuth(UserProfile);
 ## Modelagem
 
 ## Código
-Abaixo é possível ver a primeira versão das duas HOCs **Funcionário** e **Cliente**.
+Abaixo é possível ver a primeira versão da HOC withUsuario.
 
-<b>1.</b> hoc_funcionario.jsx
+<b>[hocUsuario.jsx](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend/app/src/components/hocFuncionario.tsx):</b>
 
-```javascript
+```typescript
 
-import React from 'react';
+import React, { ComponentType } from 'react';
 
-//HOC que adiciona as informações específicas de funcionário ao componente base
-const withFuncionario = (WrappedComponent) => {
-  return (props) => {
-    //Define os dados adicionais específicos para funcionário
-    const funcionarioData = {
-      cargo: props.cargo || 'Funcionário', //Cargo dinâmico (ou valor padrão)
-      telefone: props.telefone || 'Não informado', //Telefone dinâmico (ou valor padrão)
-      restaurante: props.restaurante || 'Sem restaurante vinculado', //Restaurante dinâmico (ou valor padrão)
+//Define os tipos das props específicas para um Usuário
+interface UsuarioProps {
+  nome: string;
+  senha: string;
+  email: string;
+}
+
+//Define uma HOC que adiciona as props de Usuário ao componente base
+const withUsuario = <P extends object>(
+  WrappedComponent: ComponentType<P & { usuario: UsuarioProps }>
+) => {
+  return (props: P) => {
+    const usuarioData: UsuarioProps = {
+      nome: 'Usuário Padrão',
+      senha: '1234',
+      email: 'usuario@padrao.com',
+      ...props, //Permite que props dinâmicos sobrescrevam os valores padrão
     };
 
-    //Renderiza o componente base com os dados de funcionário adicionados
-    return <WrappedComponent {...props} funcionario={funcionarioData} />;
+    return <WrappedComponent {...props} usuario={usuarioData} />;
   };
 };
 
-export default withFuncionario;
+export default withUsuario;
 
 ```
-<b>2.</b> hoc_cliente.jsx
+Decorando o componente [Funcionario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend/app/src/components/funcionario.tsx) com a HOC Usuario:
 
-```javascript
+```typescript
 
 import React from 'react';
+import withUsuario from './hocUsuario';
 
-//HOC que adiciona as informações específicas de cliente ao componente base
-const withCliente = (WrappedComponent) => {
-  return (props) => {
-    //Define os dados adicionais específicos para cliente
-    const clienteData = {
-      avaliacoes: props.avaliacoes || [], //Avaliações dinâmicas (ou array vazio como padrão)
-      destaques: props.destaques || [], //Destaques dinâmicos (ou array vazio como padrão)
-      favoritos: props.favoritos || [], //Favoritos dinâmicos (ou array vazio como padrão)
-    };
-
-    //Renderiza o componente base com os dados de cliente adicionados
-    return <WrappedComponent {...props} cliente={clienteData} />;
-  };
-};
-
-export default withCliente;
-
-```
-Exemplo de renderização utilizando o HOC Funcionário e a classe [Usuario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/Usuario.java):
-
-```javascript
-
-import React, { useEffect, useState } from 'react';
-import withFuncionario from './hoc_funcionario';
-
-const InfoFuncionario = ({ nome, email, senha, funcionario }) => {
+//Componente Funcionario, que recebe as props do usuário e informações de cargo, telefone e restaurante
+const Funcionario: React.FC<{ usuario: { nome: string, senha: string, email: string }, cargo: string, telefone: string, restaurante: string }> = ({ usuario, cargo, telefone, restaurante }) => {
   return (
     <div>
-      <h1>Nome: {nome}</h1>
-      <p>Email: {email}</p>
-      <p>Senha: {senha}</p>
-      {funcionario && (
-        <div>
-          <h2>Dados do Funcionário:</h2>
-          <p>Cargo: {funcionario.cargo}</p>
-          <p>Telefone: {funcionario.telefone}</p>
-          <p>Restaurante: {funcionario.restaurante}</p>
-        </div>
-      )}
+      <h1>Bem-vindo ao Dashboard, {usuario.nome}!</h1>
+      <p>Email: {usuario.email}</p>
+
+      <h2>Cargo: {cargo}</h2>
+      <p>Telefone: {telefone}</p>
+      <p>Restaurante: {restaurante}</p>
     </div>
   );
 };
 
-const FuncionarioUsuario = withFuncionario(InfoFuncionario);
-
-
-const App = () => {
-  const [funcionario, setFuncionario] = useState(null);
-
-  useEffect(() => {
-    //Requisição à API para buscar o usuário
-    fetch('/api/usuario')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Erro na requisição');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setUsuario(data); //Dados do usuário vindos do back-end
-      })
-      .catch((error) => {
-        console.error('Erro ao buscar os dados do usuário:', error);
-      });
-  }, []);
-
-  if (!usuario) return <p>Carregando...</p>;
-
-  return (
-    <FuncionarioUsuario
-      nome={funcionario.nome}
-      email={funcionario.email}
-      senha={funcionario.senha}
-      cargo={funcionario.cargo}
-      telefone={funcionario.telefone}
-      restaurante={funcionario.restaurante}
-    />
-  );
-};
-
-export default App;
+//Componente Funcionario decorado com HOC withUsuario
+export default withUsuario(Funcionario);
 
 ```
 
-Exemplo de renderização utilizando o HOC Cliente e a classe [Usuario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/Usuario.java):
+Decorando o componente [Cliente](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend/app/src/components/cliente.tsx) com a HOC Usuario:
 
-```javascript
+```typescript
 
-import React, { useEffect, useState } from 'react';
-import withCliente from './hoc_cliente';
+import React from 'react';
+import withUsuario from './hocUsuario';
 
-const InfoCliente = ({ nome, email, senha, cliente }) => {
+//Componente Cliente, que recebe as props do usuário e informações de avaliações, destaques e favoritos
+const Cliente: React.FC<{ usuario: { nome: string, senha: string, email: string }, avaliacoes: string[], destaques: string[], favoritos: string[] }> = ({ usuario, avaliacoes, destaques, favoritos }) => {
   return (
     <div>
-      <h1>Nome: {nome}</h1>
-      <p>Email: {email}</p>
-      <p>Senha: {senha}</p>
-      {cliente && (
-        <div>
-          <h2>Dados do Cliente:</h2>
-          <p>Avaliações: {cliente.avaliacoes.join(', ')}</p>
-          <p>Destaques: {cliente.destaques.join(', ')}</p>
-          <p>Favoritos: {cliente.favoritos.join(', ')}</p>
-        </div>
-      )}
+      <h1>Bem-vindo, {usuario.nome}!</h1>
+      <p>Email: {usuario.email}</p>
+
+      <h2>Avaliações:</h2>
+      <ul>
+        {avaliacoes.length > 0 ? avaliacoes.map((avaliacao, index) => <li key={index}>{avaliacao}</li>) : <li>Sem avaliações ainda</li>}
+      </ul>
+      <h2>Destaques:</h2>
+      <ul>
+        {destaques.length > 0 ? destaques.map((destaque, index) => <li key={index}>{destaque}</li>) : <li>Sem destaques ainda</li>}
+      </ul>
+      <h2>Favoritos:</h2>
+      <ul>
+        {favoritos.length > 0 ? favoritos.map((favorito, index) => <li key={index}>{favorito}</li>) : <li>Sem favoritos ainda</li>}
+      </ul>
     </div>
   );
 };
 
-const ClienteUsuario = withCliente(InfoCliente);
-
-const App = () => {
-  const [usuario, setUsuario] = useState(null);
-
-  useEffect(() => {
-    //Requisição à API para buscar o usuário
-    fetch('/api/usuario')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Erro na requisição');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setUsuario(data); //Dados do usuário vindos do back-end
-      })
-      .catch((error) => {
-        console.error('Erro ao buscar os dados do usuário:', error);
-      });
-  }, []);
-
-  if (!usuario) return <p>Carregando...</p>;
-
-  return (
-    <ClienteUsuario
-      nome={usuario.nome}
-      email={usuario.email}
-      senha={usuario.senha}
-      cliente={{
-        avaliacoes: usuario.avaliacoes || [],
-        destaques: usuario.destaques || [],
-        favoritos: usuario.favoritos || [],
-      }}
-    />
-  );
-};
-
-export default App;
+//Componente Cliente decorado com HOC withUsuario
+export default withUsuario(Cliente);
 
 ```
 <center>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> Larissa Vieira, 2024</p></font>
 </center>
+
+## Conclusão
 
 ## Referências Bibliográficas
 
@@ -336,4 +250,4 @@ export default App;
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Descrição da introdução e da metodologia | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding)  |
 | `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
-| `1.2`  |01/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Cecília Quaresma](https://github.com/cqcoding) e [Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.2`  |02/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Izabella Alves](https://github.com/izabellaalves) |
