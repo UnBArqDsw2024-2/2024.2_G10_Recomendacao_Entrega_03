@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 public class MenuController {
     @GetMapping("/preco-total")
     public double getPrecoTotal() {
-        Sobremesas sobremesas = new Sobremesas();
-        sobremesas.add(new Tiramisu());
-        sobremesas.add(new Pudim());
+        SobremesaComposite sobremesas = new SobremesaComposite();
+        sobremesas.add(new TiramisuComposite());
+        sobremesas.add(new PudimComposite());
         return sobremesas.getPreco();
     }
 }
