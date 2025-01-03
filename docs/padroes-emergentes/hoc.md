@@ -133,6 +133,18 @@ export default withAuth(UserProfile);
 
 ## Modelagem
 
+<center>
+<p style="text-align: center"><b>Figura 2:</b> Modelagem do HOC para ChefIndica</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/HOC.png?raw=true" alt="Imagem do HOC" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> Cecília Quaresma, 2024</p></font>
+</center> 
+
+
+Na modelagem, o componente Usuário pode ser utilizado como base para aplicar Higher-Order Components (HOCs), que encapsulam funcionalidades adicionais para diferentes tipos de usuários. Tanto o funcionário quanto o cliente utilizam as propriedades do componente Usuário, e os HOCs podem ser implementados para adicionar comportamentos ou dados específicos, mantendo uma abordagem funcional e reutilizável. 
+
+
 ## Código
 Abaixo é possível ver a primeira versão da HOC withUsuario.
 
@@ -251,3 +263,4 @@ export default withUsuario(Cliente);
 | `1.0`  |19/12/2024| Descrição da introdução e da metodologia | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding)  |
 | `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
 | `1.2`  |02/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Izabella Alves](https://github.com/izabellaalves) |
+| `1.3`  |04/01/2025| Adição da modelagem | [Cecília Quaresma](https://github.com/cqcoding)  | |
