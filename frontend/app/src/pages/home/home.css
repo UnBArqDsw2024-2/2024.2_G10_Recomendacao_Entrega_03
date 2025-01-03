@@ -1,0 +1,13 @@
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .signup-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+
+  
