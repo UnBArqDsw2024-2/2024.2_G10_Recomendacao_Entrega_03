@@ -22,11 +22,13 @@
       - [3.4.1. High-Order Components](/padroes-emergentes/hoc.md)
       - [3.4.2. CQRS](/padroes-emergentes/cqrs.md)
       - [3.4.3. Repository Pattern](/padroes-emergentes/repository.md)
+      - [3.4.4. Container and Presenter](/padroes-emergentes/container-presenter.md)
     - [3.5. Refatorações](/refatoracoes/refatoracoes.md)
       - [3.5.1. Diagrama de Classes](/refatoracoes/diagrama-de-classes.md)
       - [3.5.2. Modelo Conceitual](/refatoracoes/modelo-conceitual.md)
       - [3.5.3. Modelo Lógico](/refatoracoes/modelo-logico.md)
       - [3.5.4. Modelo Físico](/refatoracoes/modelo-fisico.md)
+      - [3.5.5. Requisitos elicitados](/refatoracoes/novos-requisitos-elicitados.md)
     - [3.5. Participações - Padrões de Projeto](/PadroesDeProjeto/3.4.ParticipacoesPadroes.md)
     - [3.6. Iniciativas Extras - Padrões de Projeto](/PadroesDeProjeto/3.5.IniciativasExtras.md)
       

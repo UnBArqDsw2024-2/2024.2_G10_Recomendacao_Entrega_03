@@ -71,6 +71,152 @@ A classe Sobremesas representa um grupo de itens do cardápio. É uma categoria 
 
 ## Código
 
+As classes utilizadas para implementar o Composite Method em Java foram os itens simples [Tiramisu](/backend/api/src/main/java/com/api/API/models/compositeMethod/tiramisu.java), [Pudim](/backend/api/src/main/java/com/api/API/models/compositeMethod/PudimComposite.java), [PetitGateau](/backend/api/src/main/java/com/api/API/models/compositeMethod/PetitComposite.java) que implementam a interface [ItemCardapio](/backend/api/src/main/java/com/api/API/models/compositeMethod/compositeSobremesa.java), com a classe [Sobremesa](/backend/api/src/main/java/com/api/API/models/compositeMethod/SobremesaComposite.java). A controladora fica definida pela [menuController](/backend/api/src/main/java/com/api/API/controllers/menuController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto Estrutural Composite Method no projeto Chef Indica.
+
+### Controller Menu
+
+``` java
+package com.api.controllers;
+
+import com.api.models.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/menu")
+public class MenuController {
+    @GetMapping("/preco-total")
+    public double getPrecoTotal() {
+        Sobremesas sobremesas = new Sobremesas();
+        sobremesas.add(new Tiramisu());
+        sobremesas.add(new Pudim());
+        return sobremesas.getPreco();
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
+### Interface itemCardapio
+
+``` java
+package com.api.models;
+
+public interface ItemCardapio {
+    String getCategoria();
+    double getPreco();
+
+    default void add(ItemCardapio item) {
+        throw new UnsupportedOperationException("Operação não suportada.");
+    }
+
+    default void remove(ItemCardapio item) {
+        throw new UnsupportedOperationException("Operação não suportada.");
+    }
+
+    default ItemCardapio getChild(int index) {
+        throw new UnsupportedOperationException("Operação não suportada.");
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
+### Classe Sobremesas
+
+``` java
+import java.util.ArrayList;
+import java.util.List;
+
+// Classe Composite Sobremesas
+public class Sobremesas implements ItemCardapio {
+    private List<ItemCardapio> itens = new ArrayList<>();
+
+    @Override
+    public String getCategoria() {
+        return "Sobremesas";
+    }
+
+    @Override
+    public double getPreco() {
+        return itens.stream().mapToDouble(ItemCardapio::getPreco).sum();
+    }
+
+    @Override
+    public void add(ItemCardapio item) {
+        itens.add(item);
+    }
+
+    @Override
+    public void remove(ItemCardapio item) {
+        itens.remove(item);
+    }
+
+    @Override
+    public ItemCardapio getChild(int index) {
+        return itens.get(index);
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
+### Classe Tiramisu
+
+``` java
+package com.api.models;
+
+// Clase Tiramisu
+public class Tiramisu implements ItemCardapio {
+    @Override
+    public String getCategoria() {
+        return "Sobremesa";
+    }
+
+    @Override
+    public double getPreco() {
+        return 15.00;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
+### Classe Pudim
+
+``` java
+package com.api.models;
+
+// Classe Pudim
+public class Pudim implements ItemCardapio {
+    @Override
+    public String getCategoria() {
+        return "Sobremesa";
+    }
+
+    @Override
+    public double getPreco() {
+        return 10.00;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
+### Classe PetitGateau
+
+``` java
+package com.api.models;
+
+// Classe PetitGateau
+public class PetitGateau implements ItemCardapio {
+    @Override
+    public String getCategoria() {
+        return "Sobremesa";
+    }
+
+    @Override
+    public double getPreco() {
+        return 20.00;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
+
 ## Conclusão
 
 ## Referências Bibliográficas
@@ -95,3 +241,4 @@ A classe Sobremesas representa um grupo de itens do cardápio. É uma categoria 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Adiciona introdução e primeira versao do diagrama de classes |[Izabella Alves](https://github.com/izabellaalves)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
+| `1.1`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
