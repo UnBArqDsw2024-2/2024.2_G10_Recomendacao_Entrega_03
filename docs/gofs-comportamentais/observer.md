@@ -52,7 +52,168 @@ Com essa estrutura, a classe **Favoritos** é informada sempre que ocorrem atual
 
 ## Código
 
+<b>RestauranteContext</b>
+
+``````
+import React, { createContext, useState, useContext } from 'react';
+
+const RestauranteContext = createContext();
+
+export const useRestaurante = () => {
+    return useContext(RestauranteContext);
+};
+
+export const RestauranteProvider = ({ children }) => {
+    const [menu, setMenu] = useState([]);
+    const [avaliacoes, setAvaliacoes] = useState([]);
+    const [observadores, setObservadores] = useState([]);
+
+    const adicionarMenu = (item) => {
+        setMenu((prev) => [...prev, item]);
+        notificar();
+    };
+
+    const removerMenu = (item) => {
+        setMenu((prev) => prev.filter((i) => i !== item));
+        notificar();
+    };
+
+    const adicionarAvaliacao = (avaliacao) => {
+        setAvaliacoes((prev) => [...prev, avaliacao]);
+        notificar();
+    };
+
+    const addObservador = (observador) => {
+        setObservadores((prev) => [...prev, observador]);
+    };
+
+    const removeObservador = (observador) => {
+        setObservadores((prev) => prev.filter((obs) => obs !== observador));
+    };
+
+    const notificar = () => {
+        observadores.forEach((observador) => {
+            observador.atualizar(menu, avaliacoes);
+        });
+    };
+
+    return (
+        <RestauranteContext.Provider
+            value={{ menu, avaliacoes, adicionarMenu, removerMenu, adicionarAvaliacao, addObservador, removeObservador }}
+        >
+            {children}
+        </RestauranteContext.Provider>
+    );
+};
+
+``````
+
+O RestauranteContext atua como o Subject do padrão Observer, gerenciando os estados principais relacionados ao restaurante:
+- menu: Armazena os itens do menu.
+- avaliacoes: Armazena avaliações associadas ao restaurante.
+- observadores: Mantém a lista de observadores que precisam ser notificados.
+
+Os métodos disponíveis no contexto incluem:
+- adicionarMenu e removerMenu: Alteram o menu e notificam os observadores.
+- adicionarAvaliacao: Adiciona avaliações e notifica os observadores.
+- addObservador e removeObservador: Gerenciam a lista de observadores.
+
+Esses métodos encapsulam a lógica do Subject, garantindo que qualquer mudança nos dados relevantes resulte em uma notificação aos Observers.
+
+<b>Componente Restaurante</b>
+
+``````
+import React from 'react';
+import { useRestaurante } from '../contexts/RestauranteContext';
+
+const Restaurante = () => {
+    const { menu, adicionarMenu, removerMenu, avaliacoes, adicionarAvaliacao } = useRestaurante();
+
+    return (
+        <div>
+            <h1>Restaurante</h1>
+            <h2>Menu:</h2>
+            <ul>
+                {menu.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+            <button onClick={() => adicionarMenu('Prato Especial')}>Adicionar Prato</button>
+            <button onClick={() => removerMenu('Prato Especial')}>Remover Prato</button>
+
+            <h2>Avaliações:</h2>
+            <ul>
+                {avaliacoes.map((avaliacao, index) => (
+                    <li key={index}>{avaliacao}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default Restaurante;
+
+``````
+
+O componente Restaurante é acessível apenas por usuários do tipo funcionário. Ele fornece a interface para:
+- Adicionar ou remover itens do menu.
+- Visualizar as avaliações feitas no restaurante.
+
+<b>Componente Favoritos</b>
+
+``````
+import React, { useEffect, useState } from 'react';
+import { useRestaurante } from '../contexts/RestauranteContext';
+
+const Favoritos = () => {
+    const { addObservador, removeObservador } = useRestaurante();
+    const [menu, setMenu] = useState([]);
+    const [avaliacoes, setAvaliacoes] = useState([]);
+
+    useEffect(() => {
+        const observador = {
+            atualizar: (novoMenu, novasAvaliacoes) => {
+                setMenu(novoMenu);
+                setAvaliacoes(novasAvaliacoes);
+            },
+        };
+        addObservador(observador);
+        return () => removeObservador(observador);
+    }, [addObservador, removeObservador]);
+
+    return (
+        <div>
+            <h1>Favoritos</h1>
+            <h2>Menu Atualizado:</h2>
+            <ul>
+                {menu.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+            <h2>Avaliações Recentes:</h2>
+            <ul>
+                {avaliacoes.map((avaliacao, index) => (
+                    <li key={index}>{avaliacao}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default Favoritos;
+``````
+O componente Favoritos implementa o papel de Observer, conforme o diagrama de classes. Ele:
+- Inscreve-se no contexto do restaurante ao ser montado (addObservador).
+- Cancela a inscrição ao ser desmontado (removeObservador).
+- Atualiza seu estado local (menu e avaliacoes) toda vez que o Subject (Restaurante) notifica mudanças.
+
+Isso garante que o componente Favoritos sempre exiba o estado atualizado do menu e das avaliações.
+
 ## Conclusão
+
+Em resumo, o padrão Observer foi implementado no ChefIndica como uma solução eficiente para manter a lista de Favoritos sempre atualizada e sincronizada com as alterações no menu e nas avaliações em tempo real. Esse padrão permite que o componente Favoritos reaja automaticamente a qualquer modificação no estado do restaurante, garantindo que os usuários tenham acesso a informações precisas e atualizadas sem a necessidade de ações manuais.
+
+Essa implementação não apenas melhora a experiência do usuário final, mas também contribui para a manutenção de um código mais organizado e escalável, já que separa os componentes, seguindo os princípios da programação orientada a objetos. O uso do Observer reforça a capacidade do sistema de lidar com atualizações dinâmicas de forma eficiente e intuitiva, beneficiando tanto a interface quanto a lógica interna do ChefIndica.
 
 ## Referências Bibliográficas
 
@@ -69,4 +230,6 @@ Com essa estrutura, a classe **Favoritos** é informada sempre que ocorrem atual
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |22/12/2024| Adiciona introdução e primeira versao do diagrama de classes | [Larissa Vieira](https://github.com/VieiraLaris) | [Izabella Alves](https://github.com/izabellaalves) |
-| `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) |  |
+| `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) | [Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.2`  |02/01/2025| Adiciona código | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding) |
+| `1.3` | 04/01/2025 | Adiciona conclusão | [Cecília Quaresma](https://github.com/cqcoding) |  |
