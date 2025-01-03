@@ -211,6 +211,10 @@ Isso garante que o componente Favoritos sempre exiba o estado atualizado do menu
 
 ## Conclusão
 
+Em resumo, o padrão Observer foi implementado no ChefIndica como uma solução eficiente para manter a lista de Favoritos sempre atualizada e sincronizada com as alterações no menu e nas avaliações em tempo real. Esse padrão permite que o componente Favoritos reaja automaticamente a qualquer modificação no estado do restaurante, garantindo que os usuários tenham acesso a informações precisas e atualizadas sem a necessidade de ações manuais.
+
+Essa implementação não apenas melhora a experiência do usuário final, mas também contribui para a manutenção de um código mais organizado e escalável, já que separa os componentes, seguindo os princípios da programação orientada a objetos. O uso do Observer reforça a capacidade do sistema de lidar com atualizações dinâmicas de forma eficiente e intuitiva, beneficiando tanto a interface quanto a lógica interna do ChefIndica.
+
 ## Referências Bibliográficas
 
 >
@@ -227,4 +231,5 @@ Isso garante que o componente Favoritos sempre exiba o estado atualizado do menu
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |22/12/2024| Adiciona introdução e primeira versao do diagrama de classes | [Larissa Vieira](https://github.com/VieiraLaris) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) | [Júlia Yoshida](https://github.com/juliaryoshida) |
-| `1.2`  |02/01/2025| Adiciona código | [Júlia Yoshida](https://github.com/juliaryoshida) |  |
+| `1.2`  |02/01/2025| Adiciona código | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding) |
+| `1.3` | 04/01/2025 | Adiciona conclusão | [Cecília Quaresma](https://github.com/cqcoding) |  |
