@@ -34,79 +34,282 @@ O código do Iterator encontra-se nos arquivos [RestauranteController](https://g
 
 Abaixo, estão imagens da implementação.
 
-<center>
-<p style="text-align: center"><b>Figura 2:</b> Código da interface do iterador </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/iterador-iterator.png" alt="Código da interface de iterator" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+### Código da interface do iterador 
 
-<center>
-<p style="text-align: center"><b>Figura 3:</b> Código do Menu para iterador </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/menu-iterator.png" alt="Código do menu para iterator" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+``` java
+package modelo.iterador;
 
-<center>
-<p style="text-align: center"><b>Figura 4:</b> Código do Prato para iterador </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/prato-iterator.png" alt="Código do prato para iterator" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+public interface Iterador {
+    boolean temProximo();
+    int posicaoProximo();
+    Object proximo();
 
-<center>
-<p style="text-align: center"><b>Figura 5:</b> Código do Restaurante para iterador </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/restaurante-iterator.png" alt="Código do restaurante para iterator" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+    boolean temAnterior();
+    int posicaoAnterior();
+    Object anterior();
 
-<center>
-<p style="text-align: center"><b>Figura 6:</b> Primeira parte do código do iterador concreto </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/iterador-concreto-1-iterator.png" alt="Primeira parte do código do iterador concreto" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+    void reiniciar();
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
+### Código do Menu para iterador 
 
-<center>
-<p style="text-align: center"><b>Figura 7:</b> Segunda parte do código do iterador concreto </p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/iterador-concreto-2-iterator.png" alt="Segunda parte do código do iterador concreto" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+``` java
+package com.api.API.models;
 
-<center>
-<p style="text-align: center"><b>Figura 8:</b> Primeira parte do código do RestauranteController</p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/restaurante-controller-1-iterator.png" alt="Primeira parte do código do restaurantecontroller" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+import modelo.iterador.ColecaoIterador;
+import modelo.implementacao.IteradorConcreto;
 
+public class Menu implements ColecaoIterador {
+    private Prato[] pratos;
+    private int totalPratos;
 
-<center>
-<p style="text-align: center"><b>Figura 9:</b> Segunda parte do código do RestauranteController</p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/restaurante-controller-2-iterator.png" alt="Segunda parte do código do restaurantecontroller" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+    public Menu(int capacidade) {
+        this.pratos = new Prato[capacidade];
+        this.totalPratos = 0;
+    }
 
-<center>
-<p style="text-align: center"><b>Figura 10:</b> Terceira parte do código do RestauranteController</p>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/restaurante-controller-3-iterator.png" alt="Terceira parte do código do restaurantecontroller" >
-</div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
-</center>
+    public void adicionarPrato(Prato prato) {
+        if (totalPratos < pratos.length) {
+            pratos[totalPratos++] = prato;
+        } else {
+            System.out.println("Menu esta cheio. Nao e possivel adicionar mais pratos.");
+        }
+    }
+
+    public Prato[] getPratos() {
+        return pratos;
+    }
+
+    public int getTotalPratos() {
+        return totalPratos;
+    }
+
+    @Override
+    public IteradorConcreto criarIterador() {
+        return new IteradorConcreto(this);
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
+### Código do Prato para iterador 
+
+``` java
+package com.api.API.models;
+
+public class Prato {
+    private String nome;
+    private double preco;
+
+    public Prato(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - R$ " + preco;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
+### Código do Restaurante para iterador
+
+``` java
+package com.api.API.models;
+
+public class Restaurante {
+    private String nome;
+    private Menu menu;
+
+    public Restaurante(String nome, int capacidadeMenu) {
+        this.nome = nome;
+        this.menu = new Menu(capacidadeMenu);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
+### Código do iterador concreto 
+
+``` java
+package modelo.implementacao;
+
+import com.api.API.models.Menu;
+import com.api.API.models.Prato;
+import modelo.iterador.Iterador;
+
+public class IteradorConcreto implements Iterador {
+    private Menu menu;
+    private int posicaoAtual;
+
+    public IteradorConcreto(Menu menu) {
+        this.menu = menu;
+        this.posicaoAtual = 0;
+    }
+
+    @Override
+    public boolean temProximo() {
+        return posicaoAtual < menu.getTotalPratos();
+    }
+
+    @Override
+    public boolean temAnterior() {
+        return posicaoAtual > 0;
+    }
+
+    @Override
+    public int posicaoAnterior() {
+
+        if(temAnterior()) 
+            return posicaoAtual - 1;
+        
+        return -1;
+    }
+
+    @Override
+    public int posicaoProximo() {
+
+        if(temProximo()) 
+            return posicaoAtual + 1;
+        
+        return -1;
+    }
+
+    @Override
+    public Prato proximo() {
+        if (temProximo()) {
+            return menu.getPratos()[posicaoAtual++];
+        }
+        return null;
+    }
+
+    @Override
+    public Prato anterior() {
+        if (temAnterior()) {
+            return menu.getPratos()[--posicaoAtual];
+        }
+        return null;
+    }
+
+    @Override
+    public void reiniciar() {
+        posicaoAtual = 0;
+    }
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
+### Código do RestauranteController
+
+``` java
+package com.api.API.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+
+import com.api.API.models.Restaurante;
+import com.api.API.models.Prato;
+import modelo.iterador.Iterador;
+
+@RestController
+@RequestMapping("/restaurantes")
+public class RestauranteController {
+
+    // método auxiliar para preencher o menu de um restaurante
+    void preencherMenu(Restaurante restaurante) {
+        restaurante.getMenu().adicionarPrato(new Prato("Spaghetti Carbonara", 35.50));
+        restaurante.getMenu().adicionarPrato(new Prato("Risoto de Cogumelos", 42.00));
+        restaurante.getMenu().adicionarPrato(new Prato("File Mignon ao Molho Madeira", 65.90));
+        restaurante.getMenu().adicionarPrato(new Prato("Salmao Grelhado", 58.00));
+        restaurante.getMenu().adicionarPrato(new Prato("Tiramisu", 25.00));
+    }
+
+    @GetMapping("/menu")
+    public ResponseEntity<ArrayList<String>> obterMenu() {
+        // Criando restaurante e menu
+        Restaurante restaurante = new Restaurante("Restaurante Chef Indica", 5);
+        preencherMenu(restaurante);
+
+        // Obtendo iterador do menu
+        Iterador iterador = restaurante.getMenu().criarIterador();
+
+        ArrayList<String> pratos = new ArrayList<String>();
+
+        // Percorrendo o menu com o iterador
+        System.out.println("Menu do Restaurante " + restaurante.getNome() + ":");
+        while (iterador.temProximo()) {
+            Prato prato = (Prato) iterador.proximo();
+            pratos.add(prato.toString());
+            System.out.println("- " + prato);
+        }
+
+        // Reiniciando o iterador
+        iterador.reiniciar();
+        System.out.println("\nIteracao reiniciada:");
+        while (iterador.temProximo()) {
+            Prato prato = (Prato) iterador.proximo();
+            System.out.println("- " + prato);
+        }
+
+        return ResponseEntity.ok(pratos);
+    }
+
+    @GetMapping("/menu/reverso")
+    public ResponseEntity<ArrayList<String>> obterMenuReverso() {
+        // Criando restaurante e menu
+        Restaurante restaurante = new Restaurante("Restaurante Chef Indica", 5);
+        preencherMenu(restaurante);
+
+        // Obtendo iterador do menu
+        Iterador iterador = restaurante.getMenu().criarIterador();
+
+        ArrayList<String> pratos = new ArrayList<String>();
+
+        // Percorrendo o menu com o iterador
+        while (iterador.temProximo()) {
+            Prato prato = (Prato) iterador.proximo();
+            System.out.println("- " + prato);
+        }
+
+        System.out.println("Menu do Restaurante " + restaurante.getNome() + " (em ordem reversa):");
+
+        // obtendo os pratos na ordem reversa
+        while (iterador.temAnterior()) {
+            Prato prato = (Prato) iterador.anterior();
+            pratos.add(prato.toString());
+            System.out.println("- " + prato);
+        }
+
+        return ResponseEntity.ok(pratos);
+    }
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ## Conclusão
 
@@ -130,3 +333,4 @@ Além disso, a implementação do Iterator promoveu maior flexibilidade ao permi
 | `1.1`  | 24/12/2024 | Adição da metodologia            | [Guilherme Brito](https://github.com/GuilhermeB12)                                                      | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
 | `1.2`  | 02/01/2025 | Adição do código                 | [Lucas Queiroz](https://github.com/lucasqueiroz23) e [Zenilda Vieira](https://github.com/zenildavieira) |                                                    |
 | `1.3`  | 03/01/2025 | Adcionando Conclusão             | [Mateus Fidelis](https://github.com/MatsFidelis)                                                        |[Izabella Alves](https://github.com/izabellaalves)  |
+| `1.4`  | 03/01/2025 | Corrigindo formatação dos Códigos | [Mateus Fidelis](https://github.com/MatsFidelis)                                                       |[Izabella Alves](https://github.com/izabellaalves)  |
