@@ -110,6 +110,10 @@ Abaixo, estão imagens da implementação.
 
 ## Conclusão
 
+A adoção do padrão de design Iterator no sistema de recomendação de restaurantes do ChefIndica, foi essencial para resolver o desafio de percorrer as coleções de itens de menu associadas a cada restaurante de maneira eficiente e organizada. A partir desta implementação, foi possível encapsular a lógica de iteração em uma estrutura dedicada, permitindo que o código cliente navegasse pelos itens do menu sem expor os detalhes de sua organização interna. Esta implementação foi especialmente relevante em um sistema que lida com menus dinâmicos e potencialmente heterogêneos, onde cada restaurante pode ter diferentes categorias e estruturas de itens. O iterador garantiu uma navegação uniforme, possibilitando que funcionalidades, como filtros de busca ou classificações personalizadas, fossem integradas sem complicações ou reestruturações complexas.
+
+Além disso, a implementação do Iterator promoveu maior flexibilidade ao permitir alterações na estrutura dos menus sem impactos no restante do sistema. A lógica encapsulada no iterador garantiu que o sistema pudesse lidar com menus de diferentes tamanhos ou formatos, como menus sazonais ou personalizados para cada usuário, sem necessidade de reescrever código. Essa abordagem trouxe não apenas eficiência no acesso aos dados, mas também assegurou uma melhor manutenção e escalabilidade do sistema, alinhando-se diretamente com os requisitos de um ambiente voltado à recomendação personalizada de restaurantes e pratos. Assim, o padrão Iterator mostrou-se indispensável para a evolução e sustentabilidade do sistema.
+
 ## Referências Bibliográficas
 
 > [1] Refactoring Guru. "Iterator Design Pattern". Disponível em: https://refactoring.guru/design-patterns/iterator
@@ -125,3 +129,4 @@ Abaixo, estão imagens da implementação.
 | `1.0`  | 24/12/2024 | Adição do modelo e da introdução | [Pedro Sampaio](https://github.com/PedroSampaioDias)                                                    | [Guilherme Brito](https://github.com/GuilhermeB12) |
 | `1.1`  | 24/12/2024 | Adição da metodologia            | [Guilherme Brito](https://github.com/GuilhermeB12)                                                      | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
 | `1.2`  | 02/01/2025 | Adição do código                 | [Lucas Queiroz](https://github.com/lucasqueiroz23) e [Zenilda Vieira](https://github.com/zenildavieira) |                                                    |
+| `1.3`  | 03/01/2025 | Adcionando Conclusão             | [Mateus Fidelis](https://github.com/MatsFidelis)                                                        |[Izabella Alves](https://github.com/izabellaalves)  |
