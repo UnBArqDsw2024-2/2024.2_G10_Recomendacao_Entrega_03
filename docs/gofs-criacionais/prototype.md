@@ -50,10 +50,6 @@ _Trechos de código relacionados à implementação serão incluídos nesta seç
 
 ## Conclusão
 
-A implementação do padrão Prototype trouxe melhorias significativas para o projeto, particularmente no front-end, onde foi possível criar componentes reutilizáveis e personalizáveis com maior eficiência. O uso de protótipos não apenas otimizou a criação de elementos visuais, mas também reduziu a complexidade do código, facilitando sua manutenção e escalabilidade.
-
-A abordagem colaborativa da equipe foi essencial para o sucesso da integração do padrão Prototype, permitindo uma execução bem planejada e eficiente. Como resultado, o projeto agora conta com uma arquitetura mais modular e preparada para suportar futuras expansões.
-
 
 ## Referências Bibliográficas
 
