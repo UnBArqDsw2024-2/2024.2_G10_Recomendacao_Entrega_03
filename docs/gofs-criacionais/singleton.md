@@ -37,6 +37,297 @@ A modelagem, na Figura 1, abstrai o conteúdo (métodos e atributos) das classes
 
 ## Código
 
+O arquivo Logger.java implementa o padrão de projeto Singleton para garantir uma única instância da classe responsável pelo gerenciamento de logs. A instância singleton controla o acesso exclusivo ao arquivo de log, permitindo que outras classes registrem eventos de maneira sequencial por meio de chamadas ao serviço centralizado de logging.
+
+A implementação foi projetada para ser thread-safe, utilizando um ReentrantLock para gerenciar a sincronização em ambientes multithread. Isso assegura que a instância compartilhada possa ser acessada por múltiplas threads simultaneamente sem risco de condições de corrida ou inconsistências, regulando de forma eficiente o acesso ao recurso compartilhado.
+
+```Java
+// Logger
+package com.api.API.models;
+
+import java.util.concurrent.locks.ReentrantLock;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
+import java.util.HashMap;
+
+public class Logger {
+    private static Logger instance;
+    private static final String LOG_FILE = "log.txt";
+    private static final ReentrantLock lock = new ReentrantLock();
+
+    private Logger() {}
+
+    public static Logger getLogger() {
+        lock.lock();
+        try {
+            if (instance == null) {
+                instance = new Logger();
+            }
+        } finally {
+            lock.unlock();
+        }
+        return instance;
+    }
+
+    private String obterTimestampAtual() {
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return LocalDateTime.now(java.time.ZoneId.of("America/Sao_Paulo")).format(formatador);
+    }
+
+    private void escreverNoArquivo(String nomeArquivo, String mensagem) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
+            escritor.write(mensagem);
+            escritor.newLine();
+        } catch (IOException e) {
+            System.err.println("Falha ao escrever no log: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private String lerArquivo(String nomeArquivo) {
+        StringBuilder conteudo = new StringBuilder();
+        try (BufferedReader leitor = new BufferedReader(new FileReader(nomeArquivo))) {
+            String linha;
+            while ((linha = leitor.readLine()) != null) {
+                conteudo.append(linha).append("\n");
+            }
+        } catch (IOException e) {
+            System.err.println("Falha ao ler o log: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return conteudo.toString();
+    }
+
+    public void registrarAvaliacaoRestaurante(String tipo) {
+        Map<String, String> tipoDescricaoMap = new HashMap<>();
+        tipoDescricaoMap.put("avaliacaoImagem", "Avaliação de imagem registrada.");
+        tipoDescricaoMap.put("avaliacaoTexto", "Avaliação de texto registrada.");
+        tipoDescricaoMap.put("avaliacaoVideo", "Avaliação de vídeo registrada.");
+
+        String descricao = tipoDescricaoMap.get(tipo);
+        if (descricao == null) {
+            throw new IllegalArgumentException("Tipo de avaliação inválido: " + tipo);
+        }
+
+        lock.lock();
+        try {
+            String mensagem = String.format("%s - SUCESSO - REGISTRO AVALIACAO - %s", obterTimestampAtual(), descricao);
+            escreverNoArquivo(LOG_FILE, mensagem);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void registrarTag(String nome) {
+        lock.lock();
+        try {
+            String mensagem = String.format("%s - SUCESSO - REGISTRO TAG - Nova TAG registrada (%s)", obterTimestampAtual(), nome);
+            escreverNoArquivo(LOG_FILE, mensagem);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void registrarErros(String tipo, String erro) {
+        lock.lock();
+        try {
+            String message = String.format("%s - ERRO - %s - %s",
+                obterTimestampAtual(), tipo, erro);
+            escreverNoArquivo(LOG_FILE, message);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public String obterLog() {
+        lock.lock();
+        try {
+            return lerArquivo(LOG_FILE);
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+
+```
+
+O LoggerController é um controlador REST que facilita a interação com o serviço de logging da classe Logger. Ele expõe o endpoint GET /logger/obterLog para recuperar o log completo e encapsula métodos para registrar avaliações, erros e tags no log. O controlador serve como ponte entre os clientes e o sistema de logging, centralizando o acesso e garantindo segurança e organização.
+
+```Java
+// Logger Controller
+package com.api.API.controllers;
+
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import com.api.API.models.Logger;
+import com.api.API.models.Avaliacao;
+
+@RestController
+@RequestMapping("/logger")
+public class LoggerController {
+
+    @GetMapping("/obterLog")
+    public ResponseEntity<String> obterLog() {
+        try {
+            return ResponseEntity.ok(Logger.getLogger().obterLog());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erro ao obter o log: " + e.getMessage());
+        }
+    }
+
+    public void registrarAvaliacaoRestaurante(String tipo) {
+        Logger.getLogger().registrarAvaliacaoRestaurante(tipo);
+    }
+
+    public void registrarErros(String tipo, String erro) {
+        Logger.getLogger().registrarErros(tipo, erro);
+    }
+
+    public void registrarTag(String nome) {
+        Logger.getLogger().registrarTag(nome);
+    }
+}
+
+```
+
+O TagController foi modificado para gerar logs sempre que uma nova tag é criada, registrando o evento no sistema de logging.
+
+```Java
+// TagController
+package com.api.API.controllers;
+
+import com.api.API.models.Tag;
+import com.api.API.services.TagService;
+import org.springframework.http.ResponseEntity;
+import com.api.API.controllers.LoggerController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/tags")
+public class TagController {
+
+    private final TagService tagService;
+    private final LoggerController loggerController;
+
+    public TagController(TagService tagService, LoggerController loggerController) {
+        this.tagService = tagService;
+        this.loggerController = loggerController;
+    }
+
+    @GetMapping("/getAllTags")
+    public ResponseEntity<List<Tag>> getAllTags() {
+        return ResponseEntity.ok(tagService.getAllTags());
+    }
+
+    @PostMapping("/createTag")
+    public ResponseEntity<Tag> createTag(@RequestParam String nome) {
+        Tag newTag = tagService.createTag(nome);
+
+        loggerController.registrarTag(nome);
+        
+        return ResponseEntity.ok(newTag);
+    }
+}
+```
+
+O AvaliacaoController foi modificado para gerar logs sempre que uma avaliação é criada ou ocorre um erro relacionado ao processo de criação, registrando esses eventos no sistema de logging.
+
+```Java
+// Avaliacao Controller
+package com.api.API.controllers;
+
+import com.api.API.models.Avaliacao;
+import com.api.API.models.factoryMethod.AvaliacaoFactory;
+import lombok.Data;
+import com.api.API.controllers.LoggerController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/avaliacoes")
+public class AvaliacaoController {
+
+    private final AvaliacaoFactory avaliacaoFactory;
+    private final LoggerController loggerController;
+
+    @Autowired
+    public AvaliacaoController(AvaliacaoFactory avaliacaoFactory, LoggerController loggerController) {
+        this.avaliacaoFactory = avaliacaoFactory;
+        this.loggerController = loggerController;
+    }
+
+    @PostMapping("/criarAvaliacao")
+    public ResponseEntity<String> criarAvaliacao(@RequestParam String tipo, @RequestBody Map<String, Object> parametros) {
+        try {
+            AvaliacaoFactory factory = avaliacaoFactory.obterFactory(tipo);
+            Avaliacao avaliacao = factory.criaAvaliacao();
+
+            loggerController.registrarAvaliacaoRestaurante(tipo);
+
+            return ResponseEntity.ok(avaliacao.publicar());
+        } catch (IllegalArgumentException e) {
+            loggerController.registrarErros("ACESSO AO TIPO DE AVALIACAO", e.getMessage());
+            
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            loggerController.registrarErros("CRIACAO DE AVALIACAO", e.getMessage());
+            
+            return ResponseEntity.status(500).body("Erro interno do servidor.");
+        }
+    }
+}
+```
+
+## Imagens
+
+<p style="text-align: center"><b>Figura 2:</b> Estado inicial do log.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_primeiro_log.png?raw=true" alt="Estado inicial do log" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+<p style="text-align: center"><b>Figura 3:</b> Adição de uma avaliação de texto.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_primeira_avaliacao.png?raw=true" alt="Adição de uma avaliação de texto" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+<p style="text-align: center"><b>Figura 4:</b> Adição de uma avaliação de vídeo.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_segunda_avaliacao.png?raw=true" alt="Adição de uma avaliação de vídeo" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+<p style="text-align: center"><b>Figura 5:</b> Adição de uma avaliação inválida.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_terceira_avaliacao.png?raw=true" alt="Adição de uma avaliação inválida" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+<p style="text-align: center"><b>Figura 6:</b> Adição de uma TAG.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_criacao_tag.png?raw=true" alt="Adição de uma TAG" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+<p style="text-align: center"><b>Figura 7:</b> Estado final do log.</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/singleton_log.png?raw=true" alt="Estado final do log" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+
 ## Conclusão
 
 ## Referências Bibliográficas
@@ -57,3 +348,4 @@ A modelagem, na Figura 1, abstrai o conteúdo (métodos e atributos) das classes
 |:------:| ---------- | ----------------------------------------------- | -------------------------------------------------- | ------- |
 | `1.0`  | 24/12/2024 | Criação do documento com introdução e modelagem | [Lucas Queiroz](https://github.com/lucasqueiroz23) |         |
 | `1.1` | 30/12/2024 | Adição da metodologia | [Mateus Fidelis](https://github.com/MatsFidelis) | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
+| `1.1` | 02/01/2025 | Adição dos códigos | [Pedro Sampaio](https://github.com/PedroSampaioDias) | |
