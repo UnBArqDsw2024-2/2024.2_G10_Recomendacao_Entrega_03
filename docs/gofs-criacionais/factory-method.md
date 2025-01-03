@@ -360,6 +360,10 @@ public class AvaliacaoController {
 
 ## Conclusão
 
+O uso do padrão Factory Method foi uma escolha estratégica para o projeto Chef Indica, pois permitiu delegar a criação de diferentes tipos de avaliações (texto, imagem e vídeo), promovendo flexibilidade e desacoplamento no código. A adaptação do Factory Method foi adotada após a constatação de que o Abstract Factory não atendia ao contexto de uma única família de produtos, as avaliações, e trouxe vantagens como a modularização e a reutilização de código sem redundâncias.
+
+Isso possibilitou a fácil expansão do sistema com novas variações de avaliações, mantendo o código modular e objetivo. Além disso, garantiu que futuras modificações, como a inclusão de novos tipos de avaliações ou funcionalidades, possam ser implementadas de forma eficiente, sem a necessidade de grandes modificações.
+
 ## Referências Bibliográficas
 > [1] GAMMA, Erich; HELM, Richard; JOHNSON, Ralph; VLISSIDES, John. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1994.
 >
@@ -374,3 +378,4 @@ public class AvaliacaoController {
 | `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Zenilda Vieira](https://github.com/zenildavieira)| [Izabella Alves](https://github.com/izabellaalves) |
 | `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.3`  |31/12/2024| Adição do código e imagens| [Cecília Quaresma](https://github.com/cqcoding) <br> [Izabella Alves](https://github.com/izabellaalves) |  [Zenilda Vieira](https://github.com/zenildavieira)  |
+| `1.4`  |02/01/2025| Adição da conclusão | [Larissa Vieira](https://github.com/VieiraLaris) |  |
