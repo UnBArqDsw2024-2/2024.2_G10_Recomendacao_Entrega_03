@@ -245,6 +245,12 @@ export default withUsuario(Cliente);
 </center>
 
 ## Conclusão
+Este trabalho explorou o conceito de High-Order Components (HOCs) no React, demonstrando sua importância para a reutilização de lógica e organização de código. Através da metodologia proposta, que abrange desde a identificação de padrões repetitivos até a documentação e testes, foi possível evidenciar como os HOCs podem ser aplicados de forma eficaz em projetos reais.
+
+É importante ressaltar que, embora os HOCs ofereçam inúmeras vantagens, a utilização indiscriminada pode levar ao problema conhecido como "Wrapper Hell", dificultando a leitura e a depuração do código.
+
+Os HOCs continuam sendo uma ferramenta valiosa no arsenal do desenvolvedor React, e a compreensão de seus princípios e melhores práticas é fundamental para o desenvolvimento de aplicações robustas e escaláveis.
+
 
 ## Referências Bibliográficas
 
@@ -263,4 +269,5 @@ export default withUsuario(Cliente);
 | `1.0`  |19/12/2024| Descrição da introdução e da metodologia | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding)  |
 | `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
 | `1.2`  |02/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Izabella Alves](https://github.com/izabellaalves) |
-| `1.3`  |04/01/2025| Adição da modelagem | [Cecília Quaresma](https://github.com/cqcoding)  | |
+| `1.3`  |03/01/2025| Adição da modelagem | [Cecília Quaresma](https://github.com/cqcoding)  | [Guilherme Brito](https://github.com/GuilhermeB12) |
+| `1.4`  |03/01/2025| Adição da conclusão | [Guilherme Brito](https://github.com/GuilhermeB12)  | |
