@@ -58,59 +58,59 @@ O padrão de projeto Observer foi implementado para permitir que os usuários ad
 
 
 ``````
-import React, { createContext, useContext, useState } from 'react';
+  import React, { createContext, useContext, useState } from 'react';
 
-const RestauranteContext = createContext();
+  const RestauranteContext = createContext();
 
-export const RestauranteProvider = ({ children }) => {
-  const [restaurantes, setRestaurantes] = useState([]);
-
-  const adicionarRestaurante = (novoRestaurante) => {
-    setRestaurantes([...restaurantes, { ...novoRestaurante, observadores: [] }]);
-  };
-
-  const atualizarRestaurante = (nomeRestaurante, menu, avaliacoes) => {
-    setRestaurantes((prevRestaurantes) =>
-      prevRestaurantes.map((restaurante) =>
-        restaurante.nome === nomeRestaurante
-          ? {
-              ...restaurante,
-              menu,
-              avaliacoes,
-              observadores: restaurante.observadores.forEach((obs) =>
-                obs.atualizar(menu, avaliacoes)
-              ),
+  export const RestauranteProvider = ({ children }) => {
+      const [restaurantes, setRestaurantes] = useState([]);
+    
+      const adicionarRestaurante = (restaurante) => {
+        setRestaurantes((prev) => [...prev, { ...restaurante, observadores: [] }]);
+      };
+    
+      const atualizarRestaurante = (id, menu, avaliacoes) => {
+        setRestaurantes((prev) => {
+          const atualizados = prev.map((restaurante) => {
+            if (restaurante.id === id) {
+              restaurante.observadores.forEach((obs) => {
+                obs.atualizar(menu, avaliacoes);
+              });
+              return { ...restaurante, menu, avaliacoes };
             }
-          : restaurante
-      )
-    );
-  };
-
-  const addObservador = (nomeRestaurante, observador) => {
-    setRestaurantes((prevRestaurantes) =>
-      prevRestaurantes.map((restaurante) =>
-        restaurante.nome === nomeRestaurante
-          ? { ...restaurante, observadores: [...restaurante.observadores, observador] }
-          : restaurante
-      )
-    );
-  };
-
-  return (
-    <RestauranteContext.Provider
-      value={{ restaurantes, adicionarRestaurante, atualizarRestaurante, addObservador }}
-    >
-      {children}
-    </RestauranteContext.Provider>
-  );
-};
-
-export const useRestauranteContext = () => useContext(RestauranteContext);
-
-
+            return restaurante;
+          });
+          return atualizados;
+        });
+      };
+    
+      const addObservador = (id, favorito) => {
+        setRestaurantes((prev) => {
+          return prev.map((restaurante) => {
+            if (restaurante.id === id) {
+              return {
+                ...restaurante,
+                observadores: [...restaurante.observadores, favorito],
+              };
+            }
+            return restaurante;
+          });
+        });
+      };
+    
+      return (
+        <RestauranteContext.Provider
+          value={{ restaurantes, adicionarRestaurante, atualizarRestaurante, addObservador }}
+        >
+          {children}
+        </RestauranteContext.Provider>
+      );
+    };
+    
+    export const useRestaurante = () => useContext(RestauranteContext);
 ``````
 
-<b>Arquivo: frontend/app/src/contexts/favoritoContext.jsx   </b>
+<b>Arquivo: frontend/app/src/contexts/favoritoContext.jsx </b>
 
 ``````
 import React, { createContext, useContext, useState } from 'react';
@@ -149,52 +149,115 @@ export const useFavoritosContext = () => useContext(FavoritosContext);
 import React from 'react';
 import { useRestaurante } from '../../contexts/restauranteContext'; 
 import { useFavoritos } from '../../contexts/favoritoContext'; 
+import { RestauranteProvider } from '../../contexts/restauranteContext';
+import { FavoritosProvider } from '../../contexts/favoritoContext';
 
 const ObserverRestauranteFavorito = () => {
-    const { adicionarRestaurante, atualizarRestaurante, addObservador, restaurantes } = useRestaurante();
-    const { adicionarFavorito, listarFavoritos } = useFavoritos();
+  const { adicionarRestaurante, atualizarRestaurante, addObservador, restaurantes } = useRestaurante();
+  const { adicionarFavorito, listarFavoritos } = useFavoritos();
 
-    const handleAdicionarRestaurante = () => {
-        adicionarRestaurante({ id: 1, nome: 'Restaurante A', menu: [], avaliacoes: [] });
-    };
+  const handleAdicionarRestaurante = () => {
+    adicionarRestaurante({ id: 1, nome: 'Restaurante A', menu: [], avaliacoes: [] });
+  };
 
-    const handleAdicionarFavorito = () => {
-        const restaurante = restaurantes.find((r) => r.id === 1);
-        adicionarFavorito(restaurante);
-        addObservador(1, { atualizar: (menu, avaliacoes) => console.log('Notificado:', menu, avaliacoes) });
-    };
+  const handleAdicionarFavorito = () => {
+    const restaurante = restaurantes.find((r) => r.id === 1);
+    adicionarFavorito(restaurante);
+    addObservador(1, { atualizar: (menu, avaliacoes) => console.log('Notificado:', menu, avaliacoes) });
+  };
 
-    const handleAtualizarRestaurante = () => {
-        atualizarRestaurante(1, ['Prato 1', 'Prato 2'], ['Avaliação 1']);
-    };
+  const handleAtualizarRestaurante = () => {
+    atualizarRestaurante(1, ['Prato 1', 'Prato 2'], ['Avaliação 1']);
+  };
 
-    return (
-        <div>
-            <button onClick={handleAdicionarRestaurante}>Adicionar Restaurante</button>
-            <button onClick={handleAdicionarFavorito}>Adicionar aos Favoritos</button>
-            <button onClick={handleAtualizarRestaurante}>Atualizar Restaurante</button>
-            <h2>Favoritos:</h2>
-            {listarFavoritos().map((fav, index) => (
-                <div key={index}>{fav.nome}</div>
-            ))}
-        </div>
-    );
+  return (
+    <div>
+      <button onClick={handleAdicionarRestaurante}>Adicionar Restaurante</button>
+      <button onClick={handleAdicionarFavorito}>Adicionar aos Favoritos</button>
+      <button onClick={handleAtualizarRestaurante}>Atualizar Restaurante</button>
+      <h2>Favoritos:</h2>
+      {listarFavoritos().map((fav, index) => (
+        <div key={index}>{fav.nome}</div>
+      ))}
+    </div>
+  );
 };
 
 export default () => (
-    <RestauranteProvider>
-        <FavoritosProvider>
-            <ObserverRestauranteFavorito />
-        </FavoritosProvider>
-    </RestauranteProvider>
+  <RestauranteProvider>
+    <FavoritosProvider>
+      <ObserverRestauranteFavorito />
+    </FavoritosProvider>
+  </RestauranteProvider>
 );
-
-
 ``````
 
 - A classe Restaurante atua como o Subject, mantendo o estado e notificando mudanças.
 - A classe Favoritos é o Observer, reagindo às notificações e mantendo os favoritos sincronizados.
 - O componente ObserverRestauranteFavorito funciona como a interface de interação para conectar e demonstrar o funcionamento do padrão Observer.
+
+<b>Arquivo: frontend/app/src/tests/observerRestauranteFavorito.test.jsx</b>
+
+``````
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import ObserverRestauranteFavorito from '../components/observer/observerRestauranteFavorito';
+import { RestauranteProvider } from '../contexts/restauranteContext';
+import { FavoritosProvider } from '../contexts/favoritoContext';
+
+describe('ObserverRestauranteFavorito Component', () => {
+  test('deve notificar observadores ao atualizar um restaurante', () => {
+    const { getByText } = render(
+      <RestauranteProvider>
+        <FavoritosProvider>
+          <ObserverRestauranteFavorito />
+        </FavoritosProvider>
+      </RestauranteProvider>
+    );
+
+    fireEvent.click(getByText('Adicionar Restaurante'));
+    fireEvent.click(getByText('Adicionar aos Favoritos'));
+
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    fireEvent.click(getByText('Atualizar Restaurante'));
+
+    expect(consoleSpy).toHaveBeenCalledWith('Notificado:', ['Prato 1', 'Prato 2'], ['Avaliação 1']);
+    consoleSpy.mockRestore();
+  });
+
+  test('deve listar favoritos corretamente', () => {
+    const { getByText, getByRole } = render(
+      <RestauranteProvider>
+        <FavoritosProvider>
+          <ObserverRestauranteFavorito />
+        </FavoritosProvider>
+      </RestauranteProvider>
+    );
+
+    fireEvent.click(getByText('Adicionar Restaurante'));
+
+    fireEvent.click(getByText('Adicionar aos Favoritos'));
+
+    expect(getByRole('heading', { name: /favoritos:/i })).toBeInTheDocument();
+    expect(getByText('Restaurante A')).toBeInTheDocument();
+  });
+});
+
+``````
+O teste é para validar que o padrão Observer funciona corretamente no frontend, sem depender do backend, já que essa funcionalidade ainda não foi desenvolvida. O padrão Observer foi configurado para que, ao adicionar um restaurante aos favoritos e atualizá-lo, o sistema notifique corretamente os observadores. O foco é garantir que os componentes de UI interajam corretamente com o estado e com as funções de contexto (adicionar restaurante, adicionar aos favoritos e atualizar). 
+Após rodar os testes, temos a seguinte saída:
+
+<center>
+<p style="text-align: center"><b>Figura 3:</b> Teste dos códigos criados</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/mock-observer/docs/imagens/teste_observer.png" alt="Testes do observer" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/juliaryoshida">Júlia Yoshida</a>, 2025.</p></font>
+</center>
+
+## Código
 
 ## Conclusão
 
@@ -221,3 +284,4 @@ Essa implementação não apenas melhora a experiência do usuário final, mas t
 | `1.2`  |02/01/2025| Adiciona código | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding) |
 | `1.3` | 03/01/2025 | Adiciona conclusão | [Cecília Quaresma](https://github.com/cqcoding) | [Júlia Yoshida](https://github.com/juliaryoshida) |
 | `1.4` | 03/01/2025 | Atualiza código | [Júlia Yoshida](https://github.com/juliaryoshida) | [Larissa Vieira](https://github.com/VieiraLaris) |
+| `1.5` | 03/01/2025 | Adiciona o código de teste| [Júlia Yoshida](https://github.com/juliaryoshida) | [Cecília Quaresma](https://github.com/cqcoding) |
