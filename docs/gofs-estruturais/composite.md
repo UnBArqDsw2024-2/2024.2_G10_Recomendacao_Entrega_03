@@ -218,6 +218,9 @@ public class PetitGateau implements ItemCardapio {
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
 
 ## Conclusão
+A implementação do padrão estrutural Composite no projeto Chef Indica demonstrou ser uma abordagem eficiente para organizar e gerenciar itens do cardápio de maneira estruturada e flexível. O diagrama de classes e a codificação detalharam como a interface ItemCardapio e suas implementações (itens simples, como Tiramisu, Pudim, e PetitGateau, e a classe composta Sobremesas) foram utilizadas para modelar a hierarquia de itens no cardápio. O padrão Composite proporcionou uma abstração que facilita a manipulação de elementos individuais e agrupamentos de itens de maneira uniforme, simplificando a lógica de operações como cálculo de preços totais ou categorização. A interface ItemCardapio centralizou as operações principais, enquanto métodos opcionais, como add() e remove(), foram sobrescritos apenas nas classes que necessitam desses comportamentos. No código, a implementação da classe controladora MenuController demonstrou como o padrão pode ser utilizado para criar dinamicamente a estrutura de cardápios e calcular valores de forma eficiente. Essa separação clara de responsabilidades entre componentes contribui para a manutenção e escalabilidade do sistema.
+
+Por fim, o uso do padrão Composite no Chef Indica não apenas facilitou a organização dos elementos do cardápio, mas também estabeleceu uma base robusta para futuras expansões, como a inclusão de novas categorias ou funcionalidades mais complexas. 
 
 ## Referências Bibliográficas
 
@@ -243,3 +246,4 @@ public class PetitGateau implements ItemCardapio {
 | `1.0`  |19/12/2024| Adiciona introdução e primeira versao do diagrama de classes |[Izabella Alves](https://github.com/izabellaalves)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
 | `1.1`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
 | `1.2`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.3`  |03/01/2025| Adição da Conclusão |[Luana Medeiros](https://github.com/LuaMedeiros)||
