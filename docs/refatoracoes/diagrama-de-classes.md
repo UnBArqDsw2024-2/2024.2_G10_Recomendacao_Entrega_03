@@ -19,7 +19,7 @@ O modelo final possui uma estrutura clara, com as seguintes classes principais:
 - Avaliação: Representa as interações entre usuários e restaurantes, armazenando informações específicas das avaliações realizadas.
 - Categoria: Organiza os tipos de classificação de restaurantes utilizando uma estrutura enumerada.
 
-Este diagrama serviu como base para o desenvolvimento também da Modelagem de Dados, e isso pode ser visto nos documentos de: (Modelo Conceitual)[https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-conceitual], (Modelo Lógico)[https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-logico] e (Modelo Físico)[https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-fisico].
+Este diagrama serviu como base para o desenvolvimento também da Modelagem de Dados, e isso pode ser visto nos documentos de: [Modelo Conceitual](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-conceitual), [Modelo Lógico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-logico) e [Modelo Físico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-fisico).
 
 Após a segunda entrega do trabalho, sentimos a necessidade de refatorar e ampliar o diagrama de classes para podermos aplicar padrões de design em nosso projeto para a terceira entrega. Assim, atualizamos essa documentação com o novo diagrama de classes elaborado.
 
@@ -29,7 +29,7 @@ Após a segunda entrega do trabalho, sentimos a necessidade de refatorar e ampli
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Novo Diagrama de Classes</p>
 <div align="center">
-<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama_classes.png" alt="Novo Diagrama de Classes" >
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama-classes.png?raw=true" alt="Novo Diagrama de Classes" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a>,  2024.</p></font>
 </center>
@@ -41,7 +41,7 @@ Por padrão utilizamos os seguintes elementos em nosso diagrama:
 <center>
 <p style="text-align: center"><b>Figura 2:</b>  Legenda Diagrama de Classes</p>
 <div align="center">
-<div align = "center"><img src="https://github.comUnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/legenda_diagrama_de_classes.png?raw=true" alt="Figura 2: Diagrama de Classes Legenda." height="500" width="450">
+<div align = "center"><img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/legenda_diagrama_de_classes.png?raw=true" alt="Figura 2: Diagrama de Classes Legenda." height="500" width="450">
 <p style="text-align: center"><b>Fonte:</b> Projeto Mercado Livre, Grupo 2, 2023</p>
 </center>
 
