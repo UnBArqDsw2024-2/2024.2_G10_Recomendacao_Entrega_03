@@ -20,9 +20,9 @@ Temos como objetivo realizar a implementação do padrão de design Singleton pa
 
 ## Modelagem
 
-No nosso sistema, poderíamos utilizar arquivos de log para vários contextos. No entanto, desejamos logs apenas para a Avaliação de um Restaurante por um Cliente. 
+No nosso sistema, poderíamos utilizar os arquivos de log para atender a diversos contextos. No entanto, nosso foco está na criação de logs específicos para as tags das avaliações e para as próprias avaliações realizadas pelos clientes em relação aos restaurantes.
 
-A modelagem, na Figura 1, abstrai o conteúdo (métodos e atributos) das classes citadas (Avaliação, Cliente e Restaurante), por motivos de simplicidade na visualização do diagrama. Para verificar o conteúdo dessas classes, veja o [Diagrama de Classes](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes).
+A modelagem, na Figura 1, abstrai o conteúdo (métodos e atributos) das classes citadas (Avaliação, Cliente, Restaurante e Tag), por motivos de simplicidade na visualização do diagrama. Para verificar o conteúdo dessas classes, veja o [Diagrama de Classes](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes).
 
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Diagrama UML para o Singleton utilizado no projeto.</p>
