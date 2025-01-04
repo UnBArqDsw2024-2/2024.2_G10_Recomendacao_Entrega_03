@@ -1,9 +1,9 @@
 package com.api.API.models.mediator;
 
-import com.api.API.models.component.Component;
 import java.util.ArrayList;
 import java.util.List;
-import com.api.API.models.mediator.Mediator;
+
+import com.api.API.models.component.Component;
 
 public class ConcreteMediator implements Mediator {
     private final List<Component> componentes = new ArrayList<>();
@@ -22,4 +22,8 @@ public class ConcreteMediator implements Mediator {
             }
         }
     }
+    @Override
+    public List<Component> getComponentes() {
+    return componentes;
+}
 }
