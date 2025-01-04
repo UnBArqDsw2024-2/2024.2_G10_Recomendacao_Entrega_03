@@ -13,8 +13,8 @@ Os artefatos refatorados para a terceira entrega foram:
 1. [Diagrama de Classes](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes)
 2. [Modelo Conceitual](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-conceitual)
 3. [Modelo Lógico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico)
-4. [Modelo Físico](http://localhost:3000/#/refatoracoes/modelo-fisico)
-5. [Requisitos elicitados](http://localhost:3000/#/refatoracoes/novos-requisitos-elicitados)
+4. [Modelo Físico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-fisico)
+5. [Requisitos elicitados](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/novos-requisitos-elicitados)
 
 ## Histórico de Versões
 
