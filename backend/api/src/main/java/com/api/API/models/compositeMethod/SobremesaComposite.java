@@ -1,9 +1,10 @@
+package com.api.models;
 import java.util.ArrayList;
 import java.util.List;
 
 // Classe Composite Sobremesas
-public class Sobremesas implements ItemCardapio {
-    private List<ItemCardapio> itens = new ArrayList<>();
+public class SobremesaComposite implements ItemCardapioComposite {
+    private List<ItemCardapioComposite> itens = new ArrayList<>();
 
     @Override
     public String getCategoria() {
@@ -12,21 +13,21 @@ public class Sobremesas implements ItemCardapio {
 
     @Override
     public double getPreco() {
-        return itens.stream().mapToDouble(ItemCardapio::getPreco).sum();
+        return itens.stream().mapToDouble(ItemCardapioComposite::getPreco).sum();
     }
 
     @Override
-    public void add(ItemCardapio item) {
+    public void add(ItemCardapioComposite item) {
         itens.add(item);
     }
 
     @Override
-    public void remove(ItemCardapio item) {
+    public void remove(ItemCardapioComposite item) {
         itens.remove(item);
     }
 
     @Override
-    public ItemCardapio getChild(int index) {
+    public ItemCardapioComposite getChild(int index) {
         return itens.get(index);
     }
 }

@@ -30,7 +30,10 @@ Para a metodologia, ficou definido após a aula de dúvidas, do dia 20/12/24, em
 
 Foram separadas as responsabilidades para alguns membros do grupo, visando sempre a maior quantidade de participantes envolvidos, porém mantendo a qualidade e eficiência dentro do projeto.
 
-**Maria Alice** ficou com a introdução e a modelagem, **Cecília** com a metodologia, **Lucas Victor** com o código e **Júlia** com a conclusão do Adapter.
+- **Maria Alice** ficou responsável pela introdução e pela modelagem;
+- **Cecília** assumiu a parte da metodologia; 
+- **Lucas Victor** ficou encarregado do desenvolvimento do código;
+- **Júlia** ficou reponsável pela conclusão sobre o padrão Adapter.
 
 Além da discussão de ideias durante a aula presencial, dúvidas eventuais sobre o projeto foram esclarecidas nos grupos de Whatsapp criados para cada um dos padrões de projeto desta entrega. Acreditamos que fazer de forma assíncrona foi a melhor maneira de conciliar os horários dos membros antes de o prazo terminar.
 
@@ -71,4 +74,5 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 | `1.0`  |25/12/2024| Adição da Modelagem do Adapter | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
-| `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) | |
+| `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
+| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |

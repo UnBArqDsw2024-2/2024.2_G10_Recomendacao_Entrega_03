@@ -1,7 +1,7 @@
 package com.api.models;
 
 // Classe PetitGateau
-public class PetitGateau implements ItemCardapio {
+public class PetitComposite implements ItemCardapioComposite {
     @Override
     public String getCategoria() {
         return "Sobremesa";

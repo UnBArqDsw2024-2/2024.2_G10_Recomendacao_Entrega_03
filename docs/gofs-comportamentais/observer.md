@@ -52,7 +52,155 @@ Com essa estrutura, a classe **Favoritos** é informada sempre que ocorrem atual
 
 ## Código
 
+O padrão de projeto Observer foi implementado para permitir que os usuários adicionem restaurantes aos seus favoritos e sejam notificados automaticamente sobre mudanças no menu ou avaliações. A modelagem segue o diagrama de classes especificado e utiliza React com Context API para gerenciar o estado de maneira eficiente.
+
+<b>Arquivo: frontend/app/src/contexts/restauranteContext.jsx</b>
+
+
+``````
+import React, { createContext, useContext, useState } from 'react';
+
+const RestauranteContext = createContext();
+
+export const RestauranteProvider = ({ children }) => {
+  const [restaurantes, setRestaurantes] = useState([]);
+
+  const adicionarRestaurante = (novoRestaurante) => {
+    setRestaurantes([...restaurantes, { ...novoRestaurante, observadores: [] }]);
+  };
+
+  const atualizarRestaurante = (nomeRestaurante, menu, avaliacoes) => {
+    setRestaurantes((prevRestaurantes) =>
+      prevRestaurantes.map((restaurante) =>
+        restaurante.nome === nomeRestaurante
+          ? {
+              ...restaurante,
+              menu,
+              avaliacoes,
+              observadores: restaurante.observadores.forEach((obs) =>
+                obs.atualizar(menu, avaliacoes)
+              ),
+            }
+          : restaurante
+      )
+    );
+  };
+
+  const addObservador = (nomeRestaurante, observador) => {
+    setRestaurantes((prevRestaurantes) =>
+      prevRestaurantes.map((restaurante) =>
+        restaurante.nome === nomeRestaurante
+          ? { ...restaurante, observadores: [...restaurante.observadores, observador] }
+          : restaurante
+      )
+    );
+  };
+
+  return (
+    <RestauranteContext.Provider
+      value={{ restaurantes, adicionarRestaurante, atualizarRestaurante, addObservador }}
+    >
+      {children}
+    </RestauranteContext.Provider>
+  );
+};
+
+export const useRestauranteContext = () => useContext(RestauranteContext);
+
+
+``````
+
+<b>Arquivo: frontend/app/src/contexts/favoritoContext.jsx   </b>
+
+``````
+import React, { createContext, useContext, useState } from 'react';
+
+const FavoritosContext = createContext();
+
+export const FavoritosProvider = ({ children }) => {
+  const [favoritos, setFavoritos] = useState([]);
+
+  const adicionarFavorito = (restaurante) => {
+    setFavoritos([...favoritos, restaurante]);
+    restaurante.addObservador({ atualizar });
+  };
+
+  const listarFavoritos = () => favoritos;
+
+  const atualizar = (menu, avaliacoes) => {
+    console.log('Notificação recebida! Novo menu ou avaliação:', menu, avaliacoes);
+  };
+
+  return (
+    <FavoritosContext.Provider value={{ favoritos, adicionarFavorito, listarFavoritos }}>
+      {children}
+    </FavoritosContext.Provider>
+  );
+};
+
+export const useFavoritosContext = () => useContext(FavoritosContext);
+
+
+``````
+
+<b>Arquivo: frontend/app/src/components/observer/observerRestauranteFavorito.jsx</b>
+
+``````
+import React from 'react';
+import { useRestaurante } from '../../contexts/restauranteContext'; 
+import { useFavoritos } from '../../contexts/favoritoContext'; 
+
+const ObserverRestauranteFavorito = () => {
+    const { adicionarRestaurante, atualizarRestaurante, addObservador, restaurantes } = useRestaurante();
+    const { adicionarFavorito, listarFavoritos } = useFavoritos();
+
+    const handleAdicionarRestaurante = () => {
+        adicionarRestaurante({ id: 1, nome: 'Restaurante A', menu: [], avaliacoes: [] });
+    };
+
+    const handleAdicionarFavorito = () => {
+        const restaurante = restaurantes.find((r) => r.id === 1);
+        adicionarFavorito(restaurante);
+        addObservador(1, { atualizar: (menu, avaliacoes) => console.log('Notificado:', menu, avaliacoes) });
+    };
+
+    const handleAtualizarRestaurante = () => {
+        atualizarRestaurante(1, ['Prato 1', 'Prato 2'], ['Avaliação 1']);
+    };
+
+    return (
+        <div>
+            <button onClick={handleAdicionarRestaurante}>Adicionar Restaurante</button>
+            <button onClick={handleAdicionarFavorito}>Adicionar aos Favoritos</button>
+            <button onClick={handleAtualizarRestaurante}>Atualizar Restaurante</button>
+            <h2>Favoritos:</h2>
+            {listarFavoritos().map((fav, index) => (
+                <div key={index}>{fav.nome}</div>
+            ))}
+        </div>
+    );
+};
+
+export default () => (
+    <RestauranteProvider>
+        <FavoritosProvider>
+            <ObserverRestauranteFavorito />
+        </FavoritosProvider>
+    </RestauranteProvider>
+);
+
+
+``````
+
+- A classe Restaurante atua como o Subject, mantendo o estado e notificando mudanças.
+- A classe Favoritos é o Observer, reagindo às notificações e mantendo os favoritos sincronizados.
+- O componente ObserverRestauranteFavorito funciona como a interface de interação para conectar e demonstrar o funcionamento do padrão Observer.
+
 ## Conclusão
+
+Em resumo, o padrão Observer foi implementado no ChefIndica como uma solução eficiente para manter a lista de Favoritos sempre atualizada e sincronizada com as alterações no menu e nas avaliações em tempo real. Esse padrão permite que o componente Favoritos reaja automaticamente a qualquer modificação no estado do restaurante, garantindo que os usuários tenham acesso a informações precisas e atualizadas sem a necessidade de ações manuais.
+
+Essa implementação não apenas melhora a experiência do usuário final, mas também contribui para a manutenção de um código mais organizado e escalável, já que separa os componentes, seguindo os princípios da programação orientada a objetos. O uso do Observer reforça a capacidade do sistema de lidar com atualizações dinâmicas de forma eficiente e intuitiva, beneficiando tanto a interface quanto a lógica interna do ChefIndica.
 
 ## Referências Bibliográficas
 
@@ -69,4 +217,7 @@ Com essa estrutura, a classe **Favoritos** é informada sempre que ocorrem atual
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |22/12/2024| Adiciona introdução e primeira versao do diagrama de classes | [Larissa Vieira](https://github.com/VieiraLaris) | [Izabella Alves](https://github.com/izabellaalves) |
-| `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) |  |
+| `1.1`  |01/01/2025| Adiciona metodologia | [Maria Alice](https://github.com/maliz30) | [Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.2`  |02/01/2025| Adiciona código | [Júlia Yoshida](https://github.com/juliaryoshida) |[Cecília Quaresma](https://github.com/cqcoding) |
+| `1.3` | 03/01/2025 | Adiciona conclusão | [Cecília Quaresma](https://github.com/cqcoding) | [Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.4` | 03/01/2025 | Atualiza código | [Júlia Yoshida](https://github.com/juliaryoshida) | [Larissa Vieira](https://github.com/VieiraLaris) |

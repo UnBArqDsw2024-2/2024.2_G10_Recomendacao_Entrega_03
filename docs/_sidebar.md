@@ -29,6 +29,7 @@
       - [3.5.2. Modelo Conceitual](/refatoracoes/modelo-conceitual.md)
       - [3.5.3. Modelo Lógico](/refatoracoes/modelo-logico.md)
       - [3.5.4. Modelo Físico](/refatoracoes/modelo-fisico.md)
+      - [3.5.5. Requisitos elicitados](/refatoracoes/novos-requisitos-elicitados.md)
     - [3.5. Participações - Padrões de Projeto](/PadroesDeProjeto/3.4.ParticipacoesPadroes.md)
     - [3.6. Iniciativas Extras - Padrões de Projeto](/PadroesDeProjeto/3.5.IniciativasExtras.md)
       

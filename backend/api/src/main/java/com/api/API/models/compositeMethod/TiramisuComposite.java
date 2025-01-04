@@ -1,7 +1,7 @@
 package com.api.models;
 
 // Clase Tiramisu
-public class Tiramisu implements ItemCardapio {
+public class TiramisuComposite implements ItemCardapioComposite {
     @Override
     public String getCategoria() {
         return "Sobremesa";

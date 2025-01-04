@@ -71,7 +71,7 @@ A classe Sobremesas representa um grupo de itens do cardápio. É uma categoria 
 
 ## Código
 
-As classes utilizadas para implementar o Composite Method em Java foram os itens simples [Tiramisu](/backend/api/src/main/java/com/api/API/models/compositeMethod/tiramisu.java), [Pudim](/backend/api/src/main/java/com/api/API/models/compositeMethod/PudimComposite.java), [PetitGateau](/backend/api/src/main/java/com/api/API/models/compositeMethod/PetitComposite.java) que implementam a interface [ItemCardapio](/backend/api/src/main/java/com/api/API/models/compositeMethod/compositeSobremesa.java), com a classe [Sobremesa](/backend/api/src/main/java/com/api/API/models/compositeMethod/SobremesaComposite.java). A controladora fica definida pela [menuController](/backend/api/src/main/java/com/api/API/controllers/menuController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto Estrutural Composite Method no projeto Chef Indica.
+As classes utilizadas para implementar o Composite Method em Java foram os itens simples [Tiramisu](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/compositeMethod/TiramisuComposite.java), [Pudim](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/compositeMethod/PudimComposite.java), [PetitGateau](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/compositeMethod/PetitComposite.java) que implementam a interface [ItemCardapio](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/compositeMethod/ItemCardapioComposite.java), com a classe [Sobremesa](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/compositeMethod/SobremesaComposite.java). A controladora fica definida pela [menuController](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/controllers/MenuController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto Estrutural Composite Method no projeto Chef Indica.
 
 ### Controller Menu
 
@@ -218,6 +218,9 @@ public class PetitGateau implements ItemCardapio {
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/MatsFidelis">Mateus Fidelis</a>, 2025</p></font>
 
 ## Conclusão
+A implementação do padrão estrutural Composite no projeto Chef Indica demonstrou ser uma abordagem eficiente para organizar e gerenciar itens do cardápio de maneira estruturada e flexível. O diagrama de classes e a codificação detalharam como a interface ItemCardapio e suas implementações (itens simples, como Tiramisu, Pudim, e PetitGateau, e a classe composta Sobremesas) foram utilizadas para modelar a hierarquia de itens no cardápio. O padrão Composite proporcionou uma abstração que facilita a manipulação de elementos individuais e agrupamentos de itens de maneira uniforme, simplificando a lógica de operações como cálculo de preços totais ou categorização. A interface ItemCardapio centralizou as operações principais, enquanto métodos opcionais, como add() e remove(), foram sobrescritos apenas nas classes que necessitam desses comportamentos. No código, a implementação da classe controladora MenuController demonstrou como o padrão pode ser utilizado para criar dinamicamente a estrutura de cardápios e calcular valores de forma eficiente. Essa separação clara de responsabilidades entre componentes contribui para a manutenção e escalabilidade do sistema.
+
+Por fim, o uso do padrão Composite no Chef Indica não apenas facilitou a organização dos elementos do cardápio, mas também estabeleceu uma base robusta para futuras expansões, como a inclusão de novas categorias ou funcionalidades mais complexas. 
 
 ## Referências Bibliográficas
 
@@ -242,3 +245,5 @@ public class PetitGateau implements ItemCardapio {
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Adiciona introdução e primeira versao do diagrama de classes |[Izabella Alves](https://github.com/izabellaalves)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
 | `1.1`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.2`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.3`  |03/01/2025| Adição da Conclusão |[Luana Medeiros](https://github.com/LuaMedeiros)||
