@@ -1,4 +1,4 @@
-package Restaurante;
+package MainDTO;
 
 public class Restaurante {
     private Long id;

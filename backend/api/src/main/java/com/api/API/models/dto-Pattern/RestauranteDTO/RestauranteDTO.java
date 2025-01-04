@@ -1,5 +1,4 @@
-package RestauranteDTO;
-
+package MainDTO;
 
 public class RestauranteDTO {
     private String nome;

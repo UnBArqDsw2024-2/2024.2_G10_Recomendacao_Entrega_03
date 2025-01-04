@@ -1,8 +1,6 @@
-package RestauranteController;
+package MainDTO;
 
 import java.util.List;
-import RestauranteDTO.RestauranteDTO;
-import RecomendacaoService.RecomendacaoService;
 
 public class RestauranteController {
     private final RecomendacaoService recomendacaoService;

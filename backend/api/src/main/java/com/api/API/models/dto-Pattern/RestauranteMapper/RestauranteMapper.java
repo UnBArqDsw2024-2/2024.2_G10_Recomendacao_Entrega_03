@@ -1,9 +1,7 @@
-package RestauranteMapper;
+package MainDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import RestauranteDTO.RestauranteDTO;
-import Restaurante.Restaurante;
 
 public class RestauranteMapper {
     public static RestauranteDTO toDTO(Restaurante restaurante) {

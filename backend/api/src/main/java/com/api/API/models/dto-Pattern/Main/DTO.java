@@ -1,12 +1,9 @@
-package Main;
+package MainDTO;
 
 import java.util.List;
-import RecomendacaoService.RecomendacaoService;
-import RestauranteController.RestauranteController;
-import RestauranteDTO.RestauranteDTO;
 
-public class Main {
-    public static void main(String[] args) {
+public class DTO {
+    public List<RestauranteDTO> obterRecomendacoes() {
         // Instanciando o servico de recomendacao
         RecomendacaoService recomendacaoService = new RecomendacaoService();
 
@@ -25,5 +22,7 @@ public class Main {
             System.out.println("Avaliacao: " + restaurante.getAvaliacao());
             System.out.println("Preco Medio: R$ " + restaurante.getPrecoMedio());
         }
+
+        return response;
     }
 }

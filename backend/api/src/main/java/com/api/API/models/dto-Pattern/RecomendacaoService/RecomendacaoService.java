@@ -1,10 +1,7 @@
-package RecomendacaoService;
+package MainDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import RestauranteDTO.RestauranteDTO;
-import Restaurante.Restaurante;
-import RestauranteMapper.RestauranteMapper;
 
 public class RecomendacaoService {
     public List<RestauranteDTO> recomendarRestaurantes() {
