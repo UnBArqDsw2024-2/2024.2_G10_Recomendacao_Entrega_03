@@ -8,6 +8,16 @@ Em essência, um DTO é um objeto simples, cuja única responsabilidade é carre
 
 ## Metodologia
 
+Para implementar o DTO Pattern no projeto, além dos demais padrões, foi realizada uma reunião no dia 17/12/2024. Essa reunião definiu quais seriam os padrões a serem implementados e quem faria cada parte da implementação e da documentação. 
+
+Para o presente padrão, dividimos da seguinte forma: 
+
+- A Introdução (teoria) seria escrita por Guilherme Brito;
+- A metodologia seria escrita por Zenilda Vieira;
+- A modelagem seria feita por Guilherme Brito;
+- O código seria feito em conjunto por Cecília Quaresma, Lucas Queiroz e Zenilda Vieira;
+- A conclusão seria escrita por Lucas Queiroz.
+
 ## Modelagem
 Para o `Chef Indica`, utilizamos o padrão DTO (Data Transfer Object), que desempenha um papel fundamental na otimização da transferência de dados. Especificamente, o DTO atua como uma ponte entre a camada de serviço, onde reside a lógica de negócio da aplicação, e a camada de apresentação, responsável por exibir as informações ao usuário e interagir com ele.
 
