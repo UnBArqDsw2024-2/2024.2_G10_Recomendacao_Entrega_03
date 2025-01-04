@@ -50,6 +50,9 @@ _Trechos de código relacionados à implementação serão incluídos nesta seç
 
 ## Conclusão
 
+A aplicação do padrão de projeto **Prototype** no sistema *Chef Indica* evidenciou sua eficiência na simplificação de implementações e na otimização de processos de criação de objetos. Conforme demonstrado na modelagem, a interface `PrototipoPrato` define a base para a clonagem, enquanto a classe concreta `Prato` implementa essa funcionalidade. Essa abordagem permite ao sistema criar novas instâncias de `Prato` a partir de um protótipo existente, sem a necessidade de inicializações complexas ou recriações do zero.
+
+Além de acelerar o desenvolvimento, essa solução promove a reutilização de código, melhora a modularidade e reduz a probabilidade de erros associados à criação manual de objetos. Assim, o padrão **Prototype** contribui para a escalabilidade e manutenção do sistema *Chef Indica*, mostrando-se uma escolha eficaz para atender às demandas de flexibilidade e personalização no gerenciamento de pratos.
 
 ## Referências Bibliográficas
 
@@ -62,5 +65,6 @@ _Trechos de código relacionados à implementação serão incluídos nesta seç
 | Versão | Data       | Descrição         | Autor                          | Revisor          |
 |--------|------------|-------------------|--------------------------------|------------------|
 | `1.0`  | 27/12/2024 | Adição Metodologia| [Luana Medeiros](https://github.com/LuaMedeiros) |     [Lucas Víctor](https://github.com/Lucas13032003)             |
-| `1.1`  | 02/01/2025 | Adição Introdução e Conclusão | [Lucas Víctor](https://github.com/Lucas13032003)  | [Maria Alice]() |
+| `1.1`  | 02/01/2025 | Adição Introdução e Modelagem | [Lucas Víctor](https://github.com/Lucas13032003)  | [Maria Alice](https://github.com/maliz30) |
+| `1.2`  | 04/01/2025 | Adição da conclusão | [Maria Alice](https://github.com/maliz30) | [Caio Mesquita](https://github.com/Caiomesvie) |
 
