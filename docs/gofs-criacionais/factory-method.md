@@ -150,8 +150,9 @@ public abstract class Avaliacao {
     public abstract String validar();
     public abstract String editar();
 }
+```
 
-
+``` java
 // Classe AvaliacaoFactory - cria objetos Avaliacao
 @Component
 public abstract class AvaliacaoFactory {
@@ -172,8 +173,9 @@ public abstract class AvaliacaoFactory {
     public abstract Avaliacao criaAvaliacao();
 
 }
+```
 
-
+``` java
 @Component
 @Primary
 public class AvaliacaoImagemFactory extends AvaliacaoFactory{
@@ -183,8 +185,9 @@ public class AvaliacaoImagemFactory extends AvaliacaoFactory{
         return new AvaliacaoImagem();
     }
 }
+```
 
-
+``` java
 @Component
 public class AvaliacaoTextoFactory extends AvaliacaoFactory {
 
@@ -193,7 +196,9 @@ public class AvaliacaoTextoFactory extends AvaliacaoFactory {
         return new AvaliacaoTexto();
     }
 }
+```
 
+``` java
 
 @Component
 public class AvaliacaoVideoFactory extends AvaliacaoFactory{
@@ -202,7 +207,9 @@ public class AvaliacaoVideoFactory extends AvaliacaoFactory{
         return new AvaliacaoVideo();
     }
 }
+```
 
+``` java
 @Data
 @NoArgsConstructor
 public class AvaliacaoImagem extends Avaliacao{
@@ -233,9 +240,9 @@ public class AvaliacaoImagem extends Avaliacao{
         return "Avaliação de imagem editada com sucesso!";
     }
 }
+```
 
-
-
+``` java
 @Data
 @NoArgsConstructor
 public class AvaliacaoTexto extends Avaliacao {
@@ -268,7 +275,9 @@ public class AvaliacaoTexto extends Avaliacao {
         return "Avaliação de texto editada com sucesso!";
     }
 }
+```
 
+``` java
 
 @Data
 @NoArgsConstructor
@@ -302,7 +311,9 @@ public class AvaliacaoVideo extends Avaliacao{
         return "Avaliação de vídeo editada com sucesso!";
     }
 }
+```
 
+``` java
 // define a controladora
 @RestController
 @RequestMapping("/avaliacoes")
