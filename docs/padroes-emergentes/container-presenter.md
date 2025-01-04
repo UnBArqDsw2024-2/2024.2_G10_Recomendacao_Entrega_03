@@ -70,6 +70,11 @@ Essa classe centraliza a lógica de interação com o banco de dados e manipula�
 
 ## Conclusão
 
+O padrão Container-Presenter se mostrou uma estratégia eficaz no desenvolvimento do projeto Chef Indica, particularmente na parte de gestão de avaliações de restaurantes. A sua implementação possibilitou uma distinção nítida entre a lógica de negócios e a apresentação da interface, alinhando-se aos princípios fundamentais do React, como a modularidade e a composição.
+
+A classe RestauranteAvaliacaoContainer concentrou as funções relacionadas ao processamento de dados e à conexão com o banco de dados, enquanto a classe RestauranteAvaliacaoPresenter assegurou que a interface do usuário fosse criada de forma independente da lógica de negócios. Essa divisão resultou em um código mais organizado, modular e fácil de manter. Além disso, a possibilidade de aproveitar componentes de apresentação em diferentes contextos destacou a versatilidade do padrão, e a definição clara de responsabilidades vai facilitar a elaboração de testes específicos para cada camada.
+
+Ao implementar o padrão Container-Presenter, a equipe adotou uma estratégia que não apenas melhora a manutenção do código, mas também incorpora boas práticas reconhecidas no desenvolvimento com React, o que era nossa intenção desde o princípio ao trazer pro projeto padrões que se integrassem bem com a tecnologia escolhida.
 
 #### Conceitos
 
