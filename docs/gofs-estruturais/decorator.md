@@ -37,10 +37,12 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 
 ## Código
+As classes utilizadas para implementar o Decorator foram: [Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\Avaliacao.jsx), [AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\AvaliacaoBase.jsx), [DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorAvaliacao.jsx), [DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorComentario.jsx), [DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorImagem.jsx), [DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorTags.jsx), [DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorVideo.jsx), [Main](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\mains.jsx).
 
+O código abaixo foram retirados dos códigos citados acima:
 ### Código da Avaliação
 
-``` Java
+``` jsx
 
 import React from 'react';
 
@@ -65,7 +67,7 @@ export function Avaliacao() {
 
 ### Código da Avaliação Base
 
-``` Java
+``` jsx
 
 import { Avaliacao } from './Avaliacao';
 
@@ -94,7 +96,7 @@ export function AvaliacaoBase(notaInicial) {
 
 ### Código do DecoratorAvaliacao
 
-``` Java
+``` jsx
 
 import { Avaliacao } from './Avaliacao';
 
@@ -119,7 +121,7 @@ export function DecoratorAvaliacao(componente) {
 
 ### Código do DecoratorComentario
 
-``` Java
+``` jsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
@@ -146,7 +148,7 @@ export function DecoratorComentario(componente, initialComentario) {
 
 ### Código do DecoratorImagem
 
-``` Java
+``` jsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
@@ -173,7 +175,7 @@ export function DecoratorImagem(componente, urlImagem) {
 
 ### Código do DecoratorTags
 
-``` Java
+``` jsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
@@ -200,7 +202,7 @@ export function DecoratorTags(componente, listaTags) {
 
 ### Código do DecoratorVideo
 
-``` Java
+``` jsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
@@ -227,7 +229,7 @@ export function DecoratorVideo(componente, urlVideo) {
 
 ### Código da Main
 
-``` Java
+``` jsx
 
 import React from 'react';
 import { AvaliacaoBase } from './decorator/AvaliacaoBase';
