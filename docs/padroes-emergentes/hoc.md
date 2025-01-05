@@ -244,12 +244,15 @@ export default withUsuario(Cliente);
 <font size="3"><p style="text-align: center"><b>Fonte:</b> Larissa Vieira, 2024</p></font>
 </center>
 
-## Conclusão
-Este trabalho explorou o conceito de High-Order Components (HOCs) no React, demonstrando sua importância para a reutilização de lógica e organização de código. Através da metodologia proposta, que abrange desde a identificação de padrões repetitivos até a documentação e testes, foi possível evidenciar como os HOCs podem ser aplicados de forma eficaz em projetos reais.
+### Conclusão
 
-É importante ressaltar que, embora os HOCs ofereçam inúmeras vantagens, a utilização indiscriminada pode levar ao problema conhecido como "Wrapper Hell", dificultando a leitura e a depuração do código.
+Este trabalho explorou os High-Order Components (HOCs) no React, destacando sua importância na reutilização de lógica e na organização de código em aplicações modernas. A metodologia proposta mostrou-se eficaz ao abordar aspectos fundamentais, como identificação de padrões repetitivos, criação de componentes genéricos, e testes para assegurar a qualidade do software. 
 
-Os HOCs continuam sendo uma ferramenta valiosa no arsenal do desenvolvedor React, e a compreensão de seus princípios e melhores práticas é fundamental para o desenvolvimento de aplicações robustas e escaláveis.
+Os exemplos fornecidos demonstraram como HOCs podem ser aplicados para resolver desafios práticos, como a implementação de autenticação e a separação de responsabilidades entre diferentes tipos de usuários. Além disso, foram apresentados cuidados necessários para evitar problemas como o "Wrapper Hell", que pode dificultar a manutenção do código.
+
+Embora os HOCs sejam poderosos e promovam um desenvolvimento mais modular, sua aplicação deve ser ponderada e planejada para evitar complexidades desnecessárias. Desenvolvedores devem considerar alternativas, como hooks e context APIs, que podem oferecer soluções mais simples para determinados cenários.
+
+Por fim, os HOCs continuam sendo uma abordagem sólida para projetos React, especialmente em situações que exigem alta reutilização de lógica e extensibilidade. Sua compreensão e uso consciente são diferenciais que contribuem para a criação de aplicações escaláveis, organizadas e robustas.
 
 
 ## Referências Bibliográficas
@@ -270,4 +273,5 @@ Os HOCs continuam sendo uma ferramenta valiosa no arsenal do desenvolvedor React
 | `1.1`  |19/12/2024| Adição do diagrama| [Cecília Quaresma](https://github.com/cqcoding)  | [Júlia Yoshida](https://github.com/juliaryoshida) |
 | `1.2`  |02/01/2025| Adição do código | [Larissa Vieira](https://github.com/VieiraLaris)  | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.3`  |03/01/2025| Adição da modelagem | [Cecília Quaresma](https://github.com/cqcoding)  | [Guilherme Brito](https://github.com/GuilhermeB12) |
-| `1.4`  |03/01/2025| Adição da conclusão | [Guilherme Brito](https://github.com/GuilhermeB12)  | |
+| `1.4`  |03/01/2025| Adição da conclusão | [Guilherme Brito](https://github.com/GuilhermeB12)  |[Lucas Víctor](https://github.com/Lucas.13032003) |
+| `1.5`  |05/01/2025| Atualização da conclusão | [Lucas Víctor](https://github.com/Lucas.13032003)  | [Guilherme Brito](https://github.com/GuilhermeB12) |
