@@ -24,14 +24,14 @@ Durante a reunião pré-desenvolvimento da entrega, do dia 17/12/2024 com mais i
 
 - **Júlia Rodrigues Yoshida**: Encarregada do texto de introdução ao padrão e a modelagem do diagrama de classes.  
 - **Caio Mesquita Vieira**: Encarregado do desenvolvimento da metodologia.  
-- **Luana de Lima Medeiros**: Encarregada da implementação do código modelado do padrão.  
+- **Luana de Lima Medeiros** e **Maria Alice Bernardo da Costa Silva**: Encarregadas da implementação do código modelado do padrão.  
 - **Izabella Alves Pereira**: Encarregada pela conclusão do artefato e a consolidação dos aprendizados da equipe.
 
 Feita a divisão, Seguimos para a introdução, modelagem e implementação do código por seus responsáveis.
 
 ## Modelagem
 
-<p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico de</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
+<p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
 
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Diagrama UML do Container Presenter.</p>
@@ -106,8 +106,13 @@ public class Restaurante {
         return endereco;
     }
 }
-```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+``` 
+
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
 
 ### Classe Avaliacao
 ``` java
@@ -137,7 +142,11 @@ public class Avaliacao {
     }
 }
 ```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
 
 ### Classe Cliente
 ``` java
@@ -161,147 +170,153 @@ public class Cliente {
     }
 }
 ```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
 
 ### Classe RestauranteAvaliacaoContainer
-``` java
-import java.util.ArrayList;
-import java.util.List;
+``` typescript
+import React from 'react';
+import RestauranteAvaliacaoPresenter from './RestauranteAvaliacaoPresenter';
 
-public class RestauranteAvaliacaoContainer {
-    private Restaurante restaurante; // Objeto representando o restaurante.
-    private Cliente cliente; // Objeto representando o cliente autenticado.
-    private List<Avaliacao> avaliacoes; // Lista que armazena as avaliações do restaurante.
+const RestauranteAvaliacaoContainer = () => {
 
-    // Construtor: inicializa o restaurante, cliente e a lista de avaliações.
-    public RestauranteAvaliacaoContainer(Restaurante restaurante, Cliente cliente) {
-        this.restaurante = restaurante;
-        this.cliente = cliente;
-        this.avaliacoes = new ArrayList<>();
-    }
+    // define os dados simulados
+    const restaurante = { id: 1, nome: 'Restaurante da Luana' };
+    const cliente = { id: 1, nome: 'Maria Alice' };
+    const avaliacoes = [
+        { id: 1, clienteId: 1, comentario: 'Gostei muito!', nota: 5 },
+    ];
 
-    // Método para buscar os dados de um restaurante com base no ID.
-    public void buscarDadosRestaurante(int idRestaurante) {
-        // Simulação de busca no banco de dados.
-        this.restaurante = new Restaurante(idRestaurante, "Restaurante Exemplo", "Endereço Exemplo");
-        System.out.println("Dados do restaurante carregados.");
-    }
+    // declara as funções usadas pelo componente presenter
+    const publicarAvaliacao = (dadosAvaliacao: { clienteId: number; comentario: string; nota: number }): void => {
+        console.log('Avaliação publicada:', dadosAvaliacao);
+    };
 
-    // Método para publicar uma nova avaliação.
-    public void publicarAvaliacao(Avaliacao avaliacao) {
-        this.avaliacoes.add(avaliacao); // Adiciona a nova avaliação à lista.
-        System.out.println("Nova avaliação publicada: " + avaliacao.getComentario());
-    }
+    const arquivarAvaliacao = (idAvaliacao: number): void => {
+        console.log('Avaliação arquivada:', idAvaliacao);
+    };
 
-    // Método para arquivar uma avaliação específica.
-    public void arquivarAvaliacao(int idAvaliacao) {
-        // Remove a avaliação cujo ID corresponda ao informado.
-        avaliacoes.removeIf(avaliacao -> avaliacao.getId() == idAvaliacao);
-        System.out.println("Avaliação com ID " + idAvaliacao + " arquivada.");
-    }
+    return ( // envia os dados para o componente presenter
+        <RestauranteAvaliacaoPresenter
+        restaurante={restaurante}
+        cliente={cliente}
+        avaliacoes={avaliacoes}
+        onEnviarAvaliacao={publicarAvaliacao}
+        onArquivarAvaliacao={arquivarAvaliacao}
+        />
+    );
+};
 
-    // Getters: métodos para acessar os atributos da classe.
-    public Restaurante getRestaurante() {
-        return restaurante;
-    }
+export default RestauranteAvaliacaoContainer;
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
-    }
-}
 ```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a>
+    </p>
+</font>
 
 ### Classe RestauranteAvaliacaoPresenter
-``` java
-public class RestauranteAvaliacaoPresenter {
-    private Restaurante restaurante; // Dados do restaurante.
-    private Cliente cliente; // Dados do cliente autenticado.
-    private List<Avaliacao> avaliacoes; // Lista de avaliações.
+``` typescript
+import React, { useState } from 'react';
 
-    // Construtor: inicializa os dados necessários para exibição.
-    public RestauranteAvaliacaoPresenter(Restaurante restaurante, Cliente cliente, List<Avaliacao> avaliacoes) {
-        this.restaurante = restaurante;
-        this.cliente = cliente;
-        this.avaliacoes = avaliacoes;
-    }
+const RestauranteAvaliacaoPresenter = ({ // declara os props a serem exibidos
+    restaurante,
+    cliente,
+    avaliacoes,
+    onEnviarAvaliacao,
+    onArquivarAvaliacao,
+}: { // define os tipos dos props
+    restaurante: { id: number; nome: string };
+    cliente: { id: number; nome: string };
+    avaliacoes: { id: number; clienteId: number; comentario: string; nota: number }[];
+    onEnviarAvaliacao: (dadosAvaliacao: { clienteId: number; comentario: string; nota: number }) => void;
+    onArquivarAvaliacao: (idAvaliacao: number) => void;
+}) => {
+    const [comentario, setComentario] = useState('');
+    const [nota, setNota] = useState(0);
 
-    // Método para exibir os detalhes do restaurante.
-    public void renderizarDetalhesRestaurante() {
-        System.out.println("Restaurante: " + restaurante.getNome());
-        System.out.println("Endereço: " + restaurante.getEndereco());
-    }
+  return ( // exibe os dados obtidos pelos props, vindos do container
+    <div>
+      <div>
+        <h2>Bem-vindo, {cliente.nome}!</h2>
+        <h1>{restaurante.nome}</h1>
+      </div>
 
-    // Método para exibir um formulário de avaliação.
-    public void renderizarFormularioAvaliacao() {
-        System.out.println("Formulário para nova avaliação:");
-        System.out.println("Digite seu comentário e nota.");
-    }
+      <div>
+        <h2>Avaliações</h2>
 
-    // Método para exibir as avaliações do restaurante.
-    public void renderizarAvaliacoes() {
-        System.out.println("Avaliações:");
-        for (Avaliacao avaliacao : avaliacoes) {
-            System.out.println("ID: " + avaliacao.getId() + " | Comentário: " + avaliacao.getComentario() + " | Nota: " + avaliacao.getNota());
-        }
-    }
-}
+        <div>
+        <textarea
+          placeholder="Sua Avaliação"
+          value={comentario}
+          onChange={(e) => setComentario(e.target.value)}
+        />
+        <select value={nota} onChange={(e) => setNota(Number(e.target.value))}>
+          {[1, 2, 3, 4, 5].map((numeroNota) => (
+            <option key={numeroNota} value={numeroNota}>
+              {numeroNota}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => {
+            onEnviarAvaliacao({ clienteId: cliente.id, comentario, nota });
+            setComentario('');
+            setNota(nota);
+          }}
+        >
+          Enviar
+        </button>
+      </div>
+
+        <div>
+          {avaliacoes.length > 0 ? (
+            avaliacoes.map((a) => (
+              <div key={a.id}>
+                <p>{a.comentario}</p>
+                <p>Nota: {a.nota}</p>
+                <button onClick={() => onArquivarAvaliacao(a.id)}>Arquivar</button>
+              </div>
+            ))
+          ) : (
+            <p>Nenhuma avaliação encontrada!</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RestauranteAvaliacaoPresenter;
+
 ```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a>
+    </p>
+</font>
 
-### Classe Principal para Testes
-``` java
-public class Main {
-    public static void main(String[] args) {
-        // Criando objetos iniciais.
-        Restaurante restaurante = new Restaurante(1, "Restaurante Chef Indica", "Rua Principal, 123");
-        Cliente cliente = new Cliente(1, "Luana Medeiros");
-        RestauranteAvaliacaoContainer container = new RestauranteAvaliacaoContainer(restaurante, cliente);
+### Como testar
 
-        // Buscando dados do restaurante.
-        container.buscarDadosRestaurante(1);
+Para testar a funcionalidade, adicione `/containerPresent` à URL do site ao rodá-lo localmente. Isso exibirá uma tela que contém textos e funções simplificadas, utilizadas para demonstrar o uso do padrão de projeto Container Presenter.
 
-        // Criando o Presenter.
-        RestauranteAvaliacaoPresenter presenter = new RestauranteAvaliacaoPresenter(
-                container.getRestaurante(),
-                container.getCliente(),
-                container.getAvaliacoes()
-        );
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Print do código implementado </p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/printContainerPresent.png?raw=true" alt="Exemplo de uso do Adapter" >
+</div
 
-        // Exibindo os detalhes do restaurante.
-        presenter.renderizarDetalhesRestaurante();
-
-        // Publicando uma avaliação.
-        Avaliacao avaliacao1 = new Avaliacao(1, "Comida excelente!", 5);
-        container.publicarAvaliacao(avaliacao1);
-
-        // Atualizando o Presenter e exibindo as avaliações.
-        presenter = new RestauranteAvaliacaoPresenter(
-                container.getRestaurante(),
-                container.getCliente(),
-                container.getAvaliacoes()
-        );
-        presenter.renderizarAvaliacoes();
-
-        // Arquivando uma avaliação.
-        container.arquivarAvaliacao(1);
-
-        // Exibindo as avaliações após arquivar.
-        presenter = new RestauranteAvaliacaoPresenter(
-                container.getRestaurante(),
-                container.getCliente(),
-                container.getAvaliacoes()
-        );
-        presenter.renderizarAvaliacoes();
-    }
-}
-```
-<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
-
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a> e
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
+</center>
 
 ## Conclusão
 
@@ -332,3 +347,4 @@ Ao implementar o padrão Container-Presenter, a equipe adotou uma estratégia qu
 | `1.1`  |31/12/2024| Adição da modelagem do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|[Luana Medeiros](https://github.com/LuaMedeiros)|
 | `1.2`  |04/01/2025| Adição dos códigos |[Luana Medeiros](https://github.com/LuaMedeiros)| [Caio Mesquita](https://github.com/Caiomesvie) |
 | `1.3`  |04/01/2025| Adição da Metodologia |[Caio Mesquita](https://github.com/Caiomesvie)| [Luana Medeiros](https://github.com/LuaMedeiros) |
+| `1.4`  |05/01/2025| Adição, ajustes e revisão dos códigos |[Maria Alice](https://github.com/maliz30)| [Luana Medeiros](https://github.com/LuaMedeiros) |
