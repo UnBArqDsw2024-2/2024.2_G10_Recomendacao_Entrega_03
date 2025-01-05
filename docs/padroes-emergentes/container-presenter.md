@@ -67,6 +67,232 @@ Essa classe centraliza a lógica de interação com o banco de dados e manipula�
     - renderizarAvaliacoes(): JSX: Renderiza a lista de avaliações existentes para o restaurante, incluindo opções para arquivar uma avaliação, se aplicável.
 
 ## Código
+A seguir, apresentamos a implementação do padrão Container-Presenter aplicado à funcionalidade de gerenciamento de avaliações do sistema Chef Indica. Essa abordagem separa claramente a lógica de negócios, centralizada no Container, da exibição da interface, realizada pelo Presenter, promovendo modularidade, reutilização e facilidade de manutenção no código.
+
+### Classe Restaurante
+
+``` java
+public class Restaurante {
+    private int id; // Identificador único do restaurante.
+    private String nome; // Nome do restaurante.
+    private String endereco; // Endereço do restaurante.
+
+    // Construtor: inicializa os atributos do restaurante.
+    public Restaurante(int id, String nome, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    // Getters: métodos para acessar os atributos do restaurante.
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
+### Classe Avaliacao
+``` java
+public class Avaliacao {
+    private int id; // Identificador único da avaliação.
+    private String comentario; // Comentário da avaliação feita pelo cliente.
+    private int nota; // Nota atribuída ao restaurante.
+
+    // Construtor: inicializa os atributos da avaliação.
+    public Avaliacao(int id, String comentario, int nota) {
+        this.id = id;
+        this.comentario = comentario;
+        this.nota = nota;
+    }
+
+    // Getters: métodos para acessar os atributos da avaliação.
+    public int getId() {
+        return id;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
+### Classe Cliente
+``` java
+public class Cliente {
+    private int id; // Identificador único do cliente.
+    private String nome; // Nome do cliente.
+
+    // Construtor: inicializa os atributos do cliente.
+    public Cliente(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    // Getters: métodos para acessar os atributos do cliente.
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
+### Classe RestauranteAvaliacaoContainer
+``` java
+import java.util.ArrayList;
+import java.util.List;
+
+public class RestauranteAvaliacaoContainer {
+    private Restaurante restaurante; // Objeto representando o restaurante.
+    private Cliente cliente; // Objeto representando o cliente autenticado.
+    private List<Avaliacao> avaliacoes; // Lista que armazena as avaliações do restaurante.
+
+    // Construtor: inicializa o restaurante, cliente e a lista de avaliações.
+    public RestauranteAvaliacaoContainer(Restaurante restaurante, Cliente cliente) {
+        this.restaurante = restaurante;
+        this.cliente = cliente;
+        this.avaliacoes = new ArrayList<>();
+    }
+
+    // Método para buscar os dados de um restaurante com base no ID.
+    public void buscarDadosRestaurante(int idRestaurante) {
+        // Simulação de busca no banco de dados.
+        this.restaurante = new Restaurante(idRestaurante, "Restaurante Exemplo", "Endereço Exemplo");
+        System.out.println("Dados do restaurante carregados.");
+    }
+
+    // Método para publicar uma nova avaliação.
+    public void publicarAvaliacao(Avaliacao avaliacao) {
+        this.avaliacoes.add(avaliacao); // Adiciona a nova avaliação à lista.
+        System.out.println("Nova avaliação publicada: " + avaliacao.getComentario());
+    }
+
+    // Método para arquivar uma avaliação específica.
+    public void arquivarAvaliacao(int idAvaliacao) {
+        // Remove a avaliação cujo ID corresponda ao informado.
+        avaliacoes.removeIf(avaliacao -> avaliacao.getId() == idAvaliacao);
+        System.out.println("Avaliação com ID " + idAvaliacao + " arquivada.");
+    }
+
+    // Getters: métodos para acessar os atributos da classe.
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
+### Classe RestauranteAvaliacaoPresenter
+``` java
+public class RestauranteAvaliacaoPresenter {
+    private Restaurante restaurante; // Dados do restaurante.
+    private Cliente cliente; // Dados do cliente autenticado.
+    private List<Avaliacao> avaliacoes; // Lista de avaliações.
+
+    // Construtor: inicializa os dados necessários para exibição.
+    public RestauranteAvaliacaoPresenter(Restaurante restaurante, Cliente cliente, List<Avaliacao> avaliacoes) {
+        this.restaurante = restaurante;
+        this.cliente = cliente;
+        this.avaliacoes = avaliacoes;
+    }
+
+    // Método para exibir os detalhes do restaurante.
+    public void renderizarDetalhesRestaurante() {
+        System.out.println("Restaurante: " + restaurante.getNome());
+        System.out.println("Endereço: " + restaurante.getEndereco());
+    }
+
+    // Método para exibir um formulário de avaliação.
+    public void renderizarFormularioAvaliacao() {
+        System.out.println("Formulário para nova avaliação:");
+        System.out.println("Digite seu comentário e nota.");
+    }
+
+    // Método para exibir as avaliações do restaurante.
+    public void renderizarAvaliacoes() {
+        System.out.println("Avaliações:");
+        for (Avaliacao avaliacao : avaliacoes) {
+            System.out.println("ID: " + avaliacao.getId() + " | Comentário: " + avaliacao.getComentario() + " | Nota: " + avaliacao.getNota());
+        }
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
+### Classe Principal para Testes
+``` java
+public class Main {
+    public static void main(String[] args) {
+        // Criando objetos iniciais.
+        Restaurante restaurante = new Restaurante(1, "Restaurante Chef Indica", "Rua Principal, 123");
+        Cliente cliente = new Cliente(1, "Luana Medeiros");
+        RestauranteAvaliacaoContainer container = new RestauranteAvaliacaoContainer(restaurante, cliente);
+
+        // Buscando dados do restaurante.
+        container.buscarDadosRestaurante(1);
+
+        // Criando o Presenter.
+        RestauranteAvaliacaoPresenter presenter = new RestauranteAvaliacaoPresenter(
+                container.getRestaurante(),
+                container.getCliente(),
+                container.getAvaliacoes()
+        );
+
+        // Exibindo os detalhes do restaurante.
+        presenter.renderizarDetalhesRestaurante();
+
+        // Publicando uma avaliação.
+        Avaliacao avaliacao1 = new Avaliacao(1, "Comida excelente!", 5);
+        container.publicarAvaliacao(avaliacao1);
+
+        // Atualizando o Presenter e exibindo as avaliações.
+        presenter = new RestauranteAvaliacaoPresenter(
+                container.getRestaurante(),
+                container.getCliente(),
+                container.getAvaliacoes()
+        );
+        presenter.renderizarAvaliacoes();
+
+        // Arquivando uma avaliação.
+        container.arquivarAvaliacao(1);
+
+        // Exibindo as avaliações após arquivar.
+        presenter = new RestauranteAvaliacaoPresenter(
+                container.getRestaurante(),
+                container.getCliente(),
+                container.getAvaliacoes()
+        );
+        presenter.renderizarAvaliacoes();
+    }
+}
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+
 
 ## Conclusão
 
@@ -90,3 +316,4 @@ Essa classe centraliza a lógica de interação com o banco de dados e manipula�
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |31/12/2024| Adição da introdução do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|[Luana Medeiros](https://github.com/LuaMedeiros)|
 | `1.1`  |31/12/2024| Adição da modelagem do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|[Luana Medeiros](https://github.com/LuaMedeiros)|
+| `1.2`  |04/01/2025| Adição dos códigos |[Luana Medeiros](https://github.com/LuaMedeiros)| - |
