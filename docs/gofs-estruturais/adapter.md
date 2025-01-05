@@ -56,7 +56,7 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 
 
 ## Código
-O código do Mediator encontra-se nos arquivos [AvaliacaoAdapter](#), [AvaliacaoBase](#), [AvaliacaoImagem](#), [AvaliacaoTexto](#), [AvaliacaoVideo](#) e [index](#).
+O código do Mediator encontra-se nos arquivos [AvaliacaoAdapter](#), [AvaliacaoBase](#), [AvaliacaoImagem](#), [AvaliacaoTexto](#), [AvaliacaoVideo](#), [index](#) e [AvaliacaoAdapter.test](#).
 
 Abaixo, estão imagens da implementação.
 
@@ -188,7 +188,7 @@ export default AvaliacaoVideo;
 ``` 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
 
-#### Código do index 
+#### Código do index C
 
 ``` tsx
 export { default as AvaliacaoBase } from "./AvaliacaoBase";
@@ -198,6 +198,81 @@ export { default as AvaliacaoVideo } from "./AvaliacaoVideo";
 export { default as AvaliacaoAdapter } from "./AvaliacaoAdapter";
 
 
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoAdapter
+``` tsx
+import { render, screen } from "@testing-library/react";
+import AvaliacaoAdapter from "../components/AvaliacaoAdapter";
+
+jest.mock("../components/AvaliacaoTexto", () => {
+  return function MockAvaliacaoTexto({ texto, tamanhoTexto }: any) {
+    return (
+      <div>
+        Mock Texto: {texto}, Tamanho: {tamanhoTexto}
+      </div>
+    );
+  };
+});
+
+jest.mock("../components/AvaliacaoImagem", () => {
+  return function MockAvaliacaoImagem({ urlImagem }: any) {
+    return <img alt="Mock Imagem" src={urlImagem} />;
+  };
+});
+
+jest.mock("../components/AvaliacaoVideo", () => {
+  return function MockAvaliacaoVideo({ urlVideo, duracao }: any) {
+    return (
+      <div>
+        Mock Video: {urlVideo}, Duração: {duracao} segundos
+      </div>
+    );
+  };
+});
+
+
+// Dados de mock para os testes
+const mockTexto = {
+  texto: "Este é um texto de avaliação",
+  tamanhoTexto: 20,
+};
+
+const mockImagem = {
+  urlImagem: "http://exemplo.com/imagem.png",
+};
+
+const mockVideo = {
+  urlVideo: "http://exemplo.com/video.mp4",
+  duracao: 60,
+};
+
+describe("AvaliacaoAdapter", () => {
+  it("deve renderizar todos os componentes dependentes corretamente", () => {
+    render(
+      <AvaliacaoAdapter texto={mockTexto} imagem={mockImagem} video={mockVideo} />
+    );
+
+    // Verifica se o título está presente
+    expect(screen.getByText(/Avaliação Completa/i)).toBeInTheDocument();
+
+    // Verifica o mock do componente AvaliacaoTexto
+    expect(
+      screen.getByText(/Mock Texto: Este é um texto de avaliação, Tamanho: 20/i)
+    ).toBeInTheDocument();
+
+    // Verifica o mock do componente AvaliacaoImagem
+    const imagem = screen.getByAltText("Mock Imagem");
+    expect(imagem).toHaveAttribute("src", "http://exemplo.com/imagem.png");
+
+    // Verifica o mock do componente AvaliacaoVideo
+    expect(
+      screen.getByText(/Mock Video: http:\/\/exemplo.com\/video.mp4, Duração: 60 segundos/i)
+    ).toBeInTheDocument();
+  });
+});
 
 ``` 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
@@ -229,4 +304,5 @@ Assim, o Adapter unifica diferentes tipos de dados, permitindo a publicação de
 | `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
 | `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |
 | `1.5`  |04/01/2025| Adição dos Códigos | [Lucas Víctor](https://github.com/Lucas13032003)|[Izabella Alves](https://github.com/izabellaalves)|
-| `1.6`  | 04/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) | |
+| `1.6`  | 05/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) | |
+| `1.7`  |05/01/2025| Adição dos testes e do mock | [Lucas Víctor](https://github.com/Lucas13032003)||
