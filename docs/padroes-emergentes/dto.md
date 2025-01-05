@@ -191,6 +191,10 @@ public class RestauranteMapper {
 
 ## Conclusão
 
+A implementação do padrão DTO no ChefIndica foi essencial para otimizar a transferência de dados entre as camadas do sistema e garantir um maior desacoplamento entre a lógica de negócio e a interface de usuário. Com os DTOs, conseguimos simplificar a comunicação, tornando o sistema mais organizado e flexível a mudanças.
+
+Além disso, essa abordagem contribuiu para uma arquitetura mais limpa e fácil de manter, permitindo que alterações nas entidades de domínio não afetassem diretamente outras partes do sistema. 
+
 ## Referências Bibliográficas
 
 > [1] Medium. "O Padrão DTO (Objetos de Transferência de Dados)". Disponível em: https://medium.com/@orcunyilmazoy/the-dto-pattern-data-transfer-objects-8146b262636e
@@ -205,4 +209,4 @@ public class RestauranteMapper {
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |03/01/2025| Criação da Introdução, Modelagem e Referências | [Guilherme Brito](https://github.com/GuilhermeB12) | [Cecília Quaresma](https://github.com/cqcoding) |
-| `1.1`  | 04/01/2025 | Adição do código | [Cecília Quaresma](https://github.com/cqcoding) | |
+| `1.1`  | 04/01/2025 | Adição do código e conclusão | [Cecília Quaresma](https://github.com/cqcoding) | |
