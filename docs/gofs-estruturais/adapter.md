@@ -54,7 +54,153 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/maliz30">Maria Alice</a>, 2024.</p></font>
 </center>
 
+
 ## Código
+O código do Mediator encontra-se nos arquivos [AvaliacaoAdapter](#), [AvaliacaoBase](#), [AvaliacaoImagem](#), [AvaliacaoTexto](#), [AvaliacaoVideo](#) e [index](#).
+
+Abaixo, estão imagens da implementação.
+
+#### Código da AvaliacaoAdapter 
+
+``` tsx
+import React from "react";
+import AvaliacaoTexto from "./AvaliacaoTexto";
+import AvaliacaoImagem from "./AvaliacaoImagem";
+import AvaliacaoVideo from "./AvaliacaoVideo";
+
+interface AvaliacaoAdapterProps {
+  texto: { texto: string; tamanhoTexto: number };
+  imagem: { urlImagem: string };
+  video: { urlVideo: string; duracao: number };
+}
+
+const AvaliacaoAdapter: React.FC<AvaliacaoAdapterProps> = ({ texto, imagem, video }) => {
+  return (
+    <div className="avaliacao-adapter">
+      <h2>Avaliação Completa</h2>
+      <AvaliacaoTexto texto={texto.texto} tamanhoTexto={texto.tamanhoTexto} />
+      <AvaliacaoImagem urlImagem={imagem.urlImagem} />
+      <AvaliacaoVideo urlVideo={video.urlVideo} duracao={video.duracao} />
+    </div>
+  );
+};
+
+export default AvaliacaoAdapter;
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoBase 
+
+``` tsx
+import React from "react";
+
+export interface AvaliacaoProps {
+  autor: string;
+  restaurante: string;
+  estado: string;
+  tags: string[];
+}
+
+const AvaliacaoBase: React.FC<AvaliacaoProps> = ({ autor, restaurante, estado, tags }) => {
+  return (
+    <div className="avaliacao-base">
+      <h3>{restaurante}</h3>
+      <p>Autor: {autor}</p>
+      <p>Estado: {estado}</p>
+      <p>Tags: {tags.join(", ")}</p>
+    </div>
+  );
+};
+
+export default AvaliacaoBase;
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoImagem 
+
+``` tsx
+import React from "react";
+
+interface AvaliacaoImagemProps {
+  urlImagem: string;
+}
+
+const AvaliacaoImagem: React.FC<AvaliacaoImagemProps> = ({ urlImagem }) => {
+  return (
+    <div className="avaliacao-imagem">
+      <img src={urlImagem} alt="Avaliação" />
+    </div>
+  );
+};
+
+export default AvaliacaoImagem;
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoTexto 
+
+``` tsx
+import React from "react";
+
+interface AvaliacaoTextoProps {
+  texto: string;
+  tamanhoTexto: number;
+}
+
+const AvaliacaoTexto: React.FC<AvaliacaoTextoProps> = ({ texto, tamanhoTexto }) => {
+  return (
+    <div className="avaliacao-texto">
+      <p>Texto: {texto}</p>
+      <p>Tamanho: {tamanhoTexto} caracteres</p>
+    </div>
+  );
+};
+
+export default AvaliacaoTexto;
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoVideo 
+
+``` tsx
+
+import React from "react";
+
+interface AvaliacaoVideoProps {
+  urlVideo: string;
+  duracao: number;
+}
+
+const AvaliacaoVideo: React.FC<AvaliacaoVideoProps> = ({ urlVideo, duracao }) => {
+  return (
+    <div className="avaliacao-video">
+      <video src={urlVideo} controls />
+      <p>Duração: {duracao} segundos</p>
+    </div>
+  );
+};
+
+export default AvaliacaoVideo;
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código do index 
+
+``` tsx
+export { default as AvaliacaoBase } from "./AvaliacaoBase";
+export { default as AvaliacaoTexto } from "./AvaliacaoTexto";
+export { default as AvaliacaoImagem } from "./AvaliacaoImagem";
+export { default as AvaliacaoVideo } from "./AvaliacaoVideo";
+export { default as AvaliacaoAdapter } from "./AvaliacaoAdapter";
+
+
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
 
 ## Conclusão
 
@@ -76,3 +222,4 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 | `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
 | `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
 | `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |
+| `1.5`  |04/01/2025| Adição dos Códigos | [Lucas Víctor](https://github.com/Lucas13032003)|[Izabella Alves](https://github.com/izabellaalves)|
