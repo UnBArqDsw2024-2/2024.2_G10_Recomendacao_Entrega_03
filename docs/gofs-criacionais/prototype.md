@@ -189,7 +189,7 @@ Além de acelerar o desenvolvimento, essa solução promove a reutilização de 
 
 | Versão | Data       | Descrição         | Autor                          | Revisor          |
 |--------|------------|-------------------|--------------------------------|------------------|
-| `1.0`  | 27/12/2024 | Adição Metodologia| [Luana Medeiros](https://github.com/LuaMedeiros) |               |
+| `1.0`  | 27/12/2024 | Adição Metodologia| [Luana Medeiros](https://github.com/LuaMedeiros) | [Lucas Víctor](https://github.com/Lucas13032003)     |
 | `1.1`  | 02/01/2025 | Adição Introdução e Modelagem | [Lucas Víctor](https://github.com/Lucas13032003)  | [Maria Alice](https://github.com/maliz30) |
 | `1.2`  | 04/01/2025 | Adição da conclusão | [Maria Alice](https://github.com/maliz30) | [Caio Mesquita](https://github.com/Caiomesvie) |
 | `1.3`  | 04/01/2025 | Adição do Código e da Explicação |  [Caio Mesquita](https://github.com/Caiomesvie) | [Lucas Víctor](https://github.com/Lucas13032003)   |
