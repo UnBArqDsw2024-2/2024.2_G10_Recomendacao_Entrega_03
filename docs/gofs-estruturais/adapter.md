@@ -277,6 +277,36 @@ describe("AvaliacaoAdapter", () => {
 ``` 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
 
+#### Validação
+
+O objetivo do teste é validar a implementação do padrão **Adapter** no componente `AvaliacaoAdapter`. Esse padrão permite que diferentes formatos de avaliação (texto, imagem e vídeo) sejam tratados de maneira uniforme pelo frontend, sem depender diretamente das implementações dos componentes específicos, como `AvaliacaoTexto`, `AvaliacaoImagem` e `AvaliacaoVideo`. 
+
+Para garantir a independência do backend e o correto funcionamento do Adapter, foram utilizados mocks que simulam o comportamento dos componentes dependentes. Os mocks testam se:
+- Um texto de avaliação é exibido com seu conteúdo e tamanho adequados.
+- Uma imagem é renderizada com o atributo `src` correto.
+- Um vídeo é exibido com a URL e duração especificadas.
+
+O teste principal verifica a integração entre o `AvaliacaoAdapter` e os componentes simulados. Ao renderizar o `AvaliacaoAdapter` com dados mockados, os seguintes cenários são validados:
+1. A presença de um título identificando a avaliação completa.
+2. A correta exibição do conteúdo textual da avaliação.
+3. A renderização de uma imagem com o atributo `src` esperado.
+4. A exibição de informações sobre o vídeo, incluindo URL e duração.
+
+Esses testes garantem que o `AvaliacaoAdapter` atua como um mediador eficaz, abstraindo as diferenças entre os formatos de avaliação e permitindo que a UI interaja de forma coesa com o estado e as funções de contexto da aplicação.
+
+
+Ao rodar os testes, a saída observada foi a seguinte: 
+
+
+<center>
+<p style="text-align: center"><b>Figura 4:</b> Teste dos códigos criados</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/mock-observer/docs/imagens/teste_observer.png" alt="Testes do observer" >
+</div>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/juliaryoshida">Júlia Yoshida</a>, 2025.</p></font>
+</center>
+
+
 ## Conclusão
 
 A implementação do padrão Adapter no projeto Chef Indica foi essencial para resolver o desafio da integração de diferentes tipos de dados associados às avaliações. No sistema, o usuário pode criar avaliações utilizando três formatos distintos: texto, imagem e vídeo. Cada um desses formatos possui suas próprias características e estruturas — como o texto, que pode variar em tamanho; imagens, que são representadas por URLs; e vídeos, que incluem informações como URL e duração. Essas diferenças, somadas à possibilidade de os dados serem opcionais, poderiam gerar inconsistências no momento de consolidar e publicar as avaliações.
