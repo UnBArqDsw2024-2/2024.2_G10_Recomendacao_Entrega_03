@@ -20,6 +20,16 @@
 
 ## Metodologia
 
+
+Durante a reunião pré-desenvolvimento da entrega, do dia 17/12/2024 com mais informações na [Ata da Reunião](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/atas-reuniao/ata-reuniao-17-12), foi definido que o padrão Container-Presenter seria uma boa opção de padrão para complementar nosso trabalho sendo aplicado ao Front-End. Após definido o Padrão, foram atribuidas as tarefas da seguinte maneira:
+
+- **Júlia Rodrigues Yoshida**: Encarregada do texto de introdução ao padrão e a modelagem do diagrama de classes.  
+- **Caio Mesquita Vieira**: Encarregado do desenvolvimento da metodologia.  
+- **Luana de Lima Medeiros**: Encarregada da implementação do código modelado do padrão.  
+- **Izabella Alves Pereira**: Encarregada pela conclusão do artefato e a consolidação dos aprendizados da equipe.
+
+Feita a divisão, Seguimos para a introdução, modelagem e implementação do código por seus responsáveis.
+
 ## Modelagem
 
 <p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico de</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
