@@ -1,7 +1,12 @@
 # Mediator
 
 ## Introdução
-No projeto Chef Indica, focamos na aplicação do padrão de projeto Mediator, um dos padrões comportamentais do GoF, para organizar a comunicação entre diferentes componentes do sistema. Nosso objetivo é criar uma estrutura que facilite a troca de informações entre classes, promovendo um design mais limpo e desacoplado. Essa abordagem é fundamental para implementar funcionalidades como os fóruns de restaurantes, onde diferentes entidades interagem, como usuários, tópicos e mensagens.
+
+No projeto Chef Indica, utilizamos o padrão de projeto Mediator, um dos padrões comportamentais descritos por Gamma et al. (1994) [1], como uma solução eficaz para organizar a comunicação entre diferentes componentes do sistema. Esse padrão tem como principal objetivo encapsular a interação entre objetos, promovendo um design mais limpo e desacoplado, onde as classes deixam de depender diretamente umas das outras.
+
+A aplicação do Mediator é particularmente relevante para a implementação de funcionalidades complexas, como os fóruns de restaurantes. Nesse contexto, diferentes entidades, como usuários, tópicos e mensagens, precisam interagir de maneira coordenada. O Mediator atua como um ponto central de comunicação, simplificando a troca de informações e garantindo que cada componente permaneça focado em suas responsabilidades individuais (Freeman & Robson, 2020) [2].
+
+Esse padrão contribui significativamente para a manutenção e escalabilidade do sistema, reduzindo a complexidade das interações e facilitando futuras expansões ou alterações no comportamento das classes (Fowler, 2003) [3].
 
 ## Metodologia
 
@@ -14,7 +19,7 @@ Após a decisão, foram definidas quatro pessoas da equipe para trabalhar neste 
 - **Izabella Alves Pereira**: responsável pela documentação da metodologia, descrevendo os passos seguidos para a adoção do padrão.  
 - **Caio Mesquita Vieira**: encarregado pela conclusão do artefato e a consolidação dos aprendizados da equipe.
 
-Além disso, todos os membros contribuíram no processo de revisão do artefato e do código, garantindo a qualidade final da entrega.
+O trabalho teve início com a criação do diagrama de classes, que foi modelado com base nos requisitos identificados. O diagrama reflete a estrutura principal do padrão Mediator, contendo a interface que define a comunicação entre os componentes, uma implementação concreta do Mediator que centraliza a lógica de interação e diversos componentes como UserComponent, FilterComponent e RestaurantComponent, que interagem por meio do Mediator para manterem-se desacoplados.
 
 ## Modelagem
 
@@ -25,7 +30,7 @@ Os principais elementos do diagrama incluem a interface Mediator, que gerencia a
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Diagrama UML para o Mediator utilizado no projeto.</p>
 <div align="center">
-  <img src="https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/docs/imagens/Diagrama_Mediator.jpeg" alt="Diagrama de classes do Mediator" >
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/Diagrama_Mediator.jpeg?raw=true" alt="Diagrama de classes do Mediator" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>, 2024</p></font>
 </center>
@@ -36,6 +41,12 @@ Os principais elementos do diagrama incluem a interface Mediator, que gerencia a
 ## Conclusão
 
 ## Referências Bibliográficas
+
+> [1] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley.
+>
+> [2] Freeman, E., & Robson, E. (2020). Head First Design Patterns: A Brain-Friendly Guide (2nd ed.). O'Reilly Media.
+>
+> [3] Fowler, M. (2003). Patterns of Enterprise Application Architecture. Addison-Wesley.
 
 ## Bibliografia
 

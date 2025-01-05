@@ -132,7 +132,7 @@ Porém, ao modelarmos essa estrutura, observamos que tínhamos apenas uma famíl
 
 ## Código
 
-As classes utilizadas para implementar o Factory Method em Java foram a [AvaliacaoFactory](/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoFactory.java), [AvaliacaoImagemFactory](/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoImagemFactory.java), [AvaliacaoTextoFactory](/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoTextoFactory.java), [AvaliacaoVideoFactory](/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoVideoFactory.java) entre outras mais genéricas como [AvaliacaoImagem](/backend/api/src/main/java/com/api/API/models/AvaliacaoImagem.java), [AvaliacaoTexto](/backend/api/src/main/java/com/api/API/models/AvaliacaoTexto.java) e [AvaliacaoVideo](/backend/api/src/main/java/com/api/API/models/AvaliacaoVideo.java) além da classe abstrata principal da [Avaliação](/backend/api/src/main/java/com/api/API/models/Avaliacao.java). A controladora fica definida pela [AvaliacaoController](/backend/api/src/main/java/com/api/API/controllers/AvaliacaoController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto criacional Factory Method no projeto Chef Indica.
+As classes utilizadas para implementar o Factory Method em Java foram a [AvaliacaoFactory](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoFactory.java), [AvaliacaoImagemFactory](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoImagemFactory.java), [AvaliacaoTextoFactory](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoTextoFactory.java), [AvaliacaoVideoFactory](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/factoryMethod/AvaliacaoVideoFactory.java) entre outras mais genéricas como [AvaliacaoImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/AvaliacaoImagem.java), [AvaliacaoTexto](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/AvaliacaoTexto.java) e [AvaliacaoVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/AvaliacaoVideo.java) além da classe abstrata principal da [Avaliação](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/models/Avaliacao.java). A controladora fica definida pela [AvaliacaoController](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/backend/api/src/main/java/com/api/API/controllers/AvaliacaoController.java). O código abaixo é uma adaptação para demonstrar a utilização do padrão de projeto criacional Factory Method no projeto Chef Indica.
 
 ```Java
 
@@ -150,8 +150,9 @@ public abstract class Avaliacao {
     public abstract String validar();
     public abstract String editar();
 }
+```
 
-
+``` java
 // Classe AvaliacaoFactory - cria objetos Avaliacao
 @Component
 public abstract class AvaliacaoFactory {
@@ -172,8 +173,9 @@ public abstract class AvaliacaoFactory {
     public abstract Avaliacao criaAvaliacao();
 
 }
+```
 
-
+``` java
 @Component
 @Primary
 public class AvaliacaoImagemFactory extends AvaliacaoFactory{
@@ -183,8 +185,9 @@ public class AvaliacaoImagemFactory extends AvaliacaoFactory{
         return new AvaliacaoImagem();
     }
 }
+```
 
-
+``` java
 @Component
 public class AvaliacaoTextoFactory extends AvaliacaoFactory {
 
@@ -193,7 +196,9 @@ public class AvaliacaoTextoFactory extends AvaliacaoFactory {
         return new AvaliacaoTexto();
     }
 }
+```
 
+``` java
 
 @Component
 public class AvaliacaoVideoFactory extends AvaliacaoFactory{
@@ -202,7 +207,9 @@ public class AvaliacaoVideoFactory extends AvaliacaoFactory{
         return new AvaliacaoVideo();
     }
 }
+```
 
+``` java
 @Data
 @NoArgsConstructor
 public class AvaliacaoImagem extends Avaliacao{
@@ -233,9 +240,9 @@ public class AvaliacaoImagem extends Avaliacao{
         return "Avaliação de imagem editada com sucesso!";
     }
 }
+```
 
-
-
+``` java
 @Data
 @NoArgsConstructor
 public class AvaliacaoTexto extends Avaliacao {
@@ -268,7 +275,9 @@ public class AvaliacaoTexto extends Avaliacao {
         return "Avaliação de texto editada com sucesso!";
     }
 }
+```
 
+``` java
 
 @Data
 @NoArgsConstructor
@@ -302,7 +311,9 @@ public class AvaliacaoVideo extends Avaliacao{
         return "Avaliação de vídeo editada com sucesso!";
     }
 }
+```
 
+``` java
 // define a controladora
 @RestController
 @RequestMapping("/avaliacoes")
@@ -360,6 +371,10 @@ public class AvaliacaoController {
 
 ## Conclusão
 
+O uso do padrão Factory Method foi uma escolha estratégica para o projeto Chef Indica, pois permitiu delegar a criação de diferentes tipos de avaliações (texto, imagem e vídeo), promovendo flexibilidade e desacoplamento no código. A adaptação do Factory Method foi adotada após a constatação de que o Abstract Factory não atendia ao contexto de uma única família de produtos, as avaliações, e trouxe vantagens como a modularização e a reutilização de código sem redundâncias.
+
+Isso possibilitou a fácil expansão do sistema com novas variações de avaliações, mantendo o código modular e objetivo. Além disso, garantiu que futuras modificações, como a inclusão de novos tipos de avaliações ou funcionalidades, possam ser implementadas de forma eficiente, sem a necessidade de grandes modificações.
+
 ## Referências Bibliográficas
 > [1] GAMMA, Erich; HELM, Richard; JOHNSON, Ralph; VLISSIDES, John. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1994.
 >
@@ -374,3 +389,5 @@ public class AvaliacaoController {
 | `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Zenilda Vieira](https://github.com/zenildavieira)| [Izabella Alves](https://github.com/izabellaalves) |
 | `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.3`  |31/12/2024| Adição do código e imagens| [Cecília Quaresma](https://github.com/cqcoding) <br> [Izabella Alves](https://github.com/izabellaalves) |  [Zenilda Vieira](https://github.com/zenildavieira)  |
+| `1.4`  |02/01/2025| Adição da conclusão | [Larissa Vieira](https://github.com/VieiraLaris) |  |
+| `1.5`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|

@@ -1,7 +1,7 @@
 package com.api.models;
 
 // Classe Pudim
-public class Pudim implements ItemCardapio {
+public class PudimComposite implements ItemCardapioComposite {
     @Override
     public String getCategoria() {
         return "Sobremesa";
