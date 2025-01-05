@@ -389,5 +389,5 @@ Isso possibilitou a fácil expansão do sistema com novas variações de avalia�
 | `1.1`  |27/12/2024| Adição da introdução teórica e modelagem | [Zenilda Vieira](https://github.com/zenildavieira)| [Izabella Alves](https://github.com/izabellaalves) |
 | `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.3`  |31/12/2024| Adição do código e imagens| [Cecília Quaresma](https://github.com/cqcoding) <br> [Izabella Alves](https://github.com/izabellaalves) |  [Zenilda Vieira](https://github.com/zenildavieira)  |
-| `1.4`  |02/01/2025| Adição da conclusão | [Larissa Vieira](https://github.com/VieiraLaris) |  |
+| `1.4`  |02/01/2025| Adição da conclusão | [Larissa Vieira](https://github.com/VieiraLaris) | [Mateus Fidelis](https://github.com/MatsFidelis) |
 | `1.5`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|

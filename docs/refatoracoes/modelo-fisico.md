@@ -213,4 +213,4 @@ CREATE TABLE dislike (
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |25/12/2024| Adiciona introdução e metodologia  |[Izabella Alves](https://github.com/izabellaalves) |[Larissa Vieira](https://github.com/VieiraLaris) | 
-| `1.1`  |25/12/2024| Adiciona script físico  |[Larissa Vieira](https://github.com/VieiraLaris) |  |
+| `1.1`  |25/12/2024| Adiciona script físico  |[Larissa Vieira](https://github.com/VieiraLaris) | [Caio Mesquita](https://github.com/Caiomesvie) |
