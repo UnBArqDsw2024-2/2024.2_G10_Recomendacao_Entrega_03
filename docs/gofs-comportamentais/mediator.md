@@ -350,6 +350,8 @@ public interface Mediator {
 
 ## Conclusão
 
+Para finalizar, vimos como a adoção do padrão mediator foi de grande relevância na sua implementação devido a sua flexibilização de uso em operações complexas, como no caso do ChefInidica em seu sistema de recomendação e seus diversos componentes. A implementação deste padrão gera uma organização maior da quantidade de classes elevada da funcionalidade, além de ajudar com a manutenabilidade do código no longo prazo durante o ciclo de vida do nosso produto.
+
 ## Referências Bibliográficas
 
 > [1] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley.
