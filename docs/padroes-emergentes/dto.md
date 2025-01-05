@@ -43,7 +43,7 @@ Abaixo está um resumo da implementação do padrão DTO no projeto ChefIndica. 
 
 
 ```
-Java
+java
 
 package MainDTO;
 
@@ -73,8 +73,11 @@ public class DTO {
         return response;
     }
 }
+```
 
 
+```
+java
 package MainDTO;
 
 import java.util.ArrayList;
@@ -93,8 +96,11 @@ public class RecomendacaoService {
         return restaurantes;
     }
 }
+```
 
 
+```
+java
 package MainDTO;
 
 public class Restaurante {
@@ -124,9 +130,11 @@ public class Restaurante {
     public double getAvaliacao() { return avaliacao; }
     public double getPrecoMedio() { return precoMedio; }
 }
+```
 
 
-
+```
+java
 package MainDTO;
 
 import java.util.List;
@@ -142,8 +150,11 @@ public class RestauranteController {
         return recomendacaoService.recomendarRestaurantes();
     }
 }
+```
 
 
+```
+java
 package MainDTO;
 
 public class RestauranteDTO {
@@ -165,7 +176,10 @@ public class RestauranteDTO {
     public double getPrecoMedio() { return precoMedio; }
 }
 
+```
 
+```
+java
 
 package MainDTO;
 
