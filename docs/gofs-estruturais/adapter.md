@@ -56,7 +56,7 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 
 
 ## Código
-O código do Mediator encontra-se nos arquivos [AvaliacaoAdapter](#), [AvaliacaoBase](#), [AvaliacaoImagem](#), [AvaliacaoTexto](#), [AvaliacaoVideo](#), [index](#) e [AvaliacaoAdapter.test](#).
+O código do Adapter encontra-se nos arquivos [AvaliacaoAdapter](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoAdapter.tsx), [AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoBase.tsx), [AvaliacaoImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoBase.tsx), [AvaliacaoTexto](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoTexto.tsx), [AvaliacaoVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoVideo.tsx), [index](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/index.tsx) e [AvaliacaoAdapter.test](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/index.tsx).
 
 Abaixo, estão imagens da implementação.
 
@@ -301,9 +301,9 @@ Ao rodar os testes, a saída observada foi a seguinte:
 <center>
 <p style="text-align: center"><b>Figura 4:</b> Teste dos códigos criados</p>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/mock-observer/docs/imagens/teste_observer.png" alt="Testes do observer" >
+  <img src="https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/docs/imagens/teste_adapter.png?raw=true" alt="Testes do observer" >
 </div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/juliaryoshida">Júlia Yoshida</a>, 2025.</p></font>
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
 </center>
 
 
@@ -332,7 +332,8 @@ Assim, o Adapter unifica diferentes tipos de dados, permitindo a publicação de
 | `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
 | `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
-| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |
+| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) |[Lucas Víctor](https://github.com/Lucas13032003) |
 | `1.5`  |04/01/2025| Adição dos Códigos | [Lucas Víctor](https://github.com/Lucas13032003)|[Izabella Alves](https://github.com/izabellaalves)|
-| `1.6`  | 05/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) | |
+| `1.6`  | 05/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) |[Lucas Víctor](https://github.com/Lucas13032003) |
 | `1.7`  |05/01/2025| Adição dos testes e do mock | [Lucas Víctor](https://github.com/Lucas13032003)||
+| `1.8`  |05/01/2025| Adição da validação do mock | [Lucas Víctor](https://github.com/Lucas13032003)||
