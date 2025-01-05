@@ -20,9 +20,18 @@
 
 ## Metodologia
 
+Durante a reunião pré-desenvolvimento da entrega, do dia 17/12/2024 com mais informações na [Ata da Reunião](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/atas-reuniao/ata-reuniao-17-12), foi definido que o padrão Container-Presenter seria uma boa opção de padrão para complementar nosso trabalho sendo aplicado ao Front-End. Após definido o Padrão, foram atribuidas as tarefas da seguinte maneira:
+
+- **Júlia Rodrigues Yoshida**: Encarregada do texto de introdução ao padrão e a modelagem do diagrama de classes.  
+- **Caio Mesquita Vieira**: Encarregado do desenvolvimento da metodologia.  
+- **Luana de Lima Medeiros** e **Maria Alice Bernardo da Costa Silva**: Encarregadas da implementação do código modelado do padrão.  
+- **Izabella Alves Pereira**: Encarregada pela conclusão do artefato e a consolidação dos aprendizados da equipe.
+
+Feita a divisão, Seguimos para a introdução, modelagem e implementação do código por seus responsáveis.
+
 ## Modelagem
 
-<p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico de</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
+<p style="text-align: justify; text-indent: 2em;"> Com base no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes">diagrama de classes</a> e no <a href="https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/modelo-logico">modelo lógico</a>, criamos o diagrama UML a seguir que mostra como o padrão Container-Presenter poderia ser aplicado no Chef Indica, considerando, por exemplo, a funcionalidade de gerenciamento de avaliações de restaurantes.</p>
 
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Diagrama UML do Container Presenter.</p>
@@ -67,6 +76,247 @@ Essa classe centraliza a lógica de interação com o banco de dados e manipula�
     - renderizarAvaliacoes(): JSX: Renderiza a lista de avaliações existentes para o restaurante, incluindo opções para arquivar uma avaliação, se aplicável.
 
 ## Código
+A seguir, apresentamos a implementação do padrão Container-Presenter aplicado à funcionalidade de gerenciamento de avaliações do sistema Chef Indica. Essa abordagem separa claramente a lógica de negócios, centralizada no Container, da exibição da interface, realizada pelo Presenter, promovendo modularidade, reutilização e facilidade de manutenção no código.
+
+### Classe Restaurante
+
+``` java
+public class Restaurante {
+    private int id; // Identificador único do restaurante.
+    private String nome; // Nome do restaurante.
+    private String endereco; // Endereço do restaurante.
+
+    // Construtor: inicializa os atributos do restaurante.
+    public Restaurante(int id, String nome, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    // Getters: métodos para acessar os atributos do restaurante.
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+}
+``` 
+
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
+
+### Classe Avaliacao
+``` java
+public class Avaliacao {
+    private int id; // Identificador único da avaliação.
+    private String comentario; // Comentário da avaliação feita pelo cliente.
+    private int nota; // Nota atribuída ao restaurante.
+
+    // Construtor: inicializa os atributos da avaliação.
+    public Avaliacao(int id, String comentario, int nota) {
+        this.id = id;
+        this.comentario = comentario;
+        this.nota = nota;
+    }
+
+    // Getters: métodos para acessar os atributos da avaliação.
+    public int getId() {
+        return id;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+}
+```
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
+
+### Classe Cliente
+``` java
+public class Cliente {
+    private int id; // Identificador único do cliente.
+    private String nome; // Nome do cliente.
+
+    // Construtor: inicializa os atributos do cliente.
+    public Cliente(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    // Getters: métodos para acessar os atributos do cliente.
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+```
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
+
+### Classe RestauranteAvaliacaoContainer
+``` typescript
+import React from 'react';
+import RestauranteAvaliacaoPresenter from './RestauranteAvaliacaoPresenter';
+
+const RestauranteAvaliacaoContainer = () => {
+
+    // define os dados simulados
+    const restaurante = { id: 1, nome: 'Restaurante da Luana' };
+    const cliente = { id: 1, nome: 'Maria Alice' };
+    const avaliacoes = [
+        { id: 1, clienteId: 1, comentario: 'Gostei muito!', nota: 5 },
+    ];
+
+    // declara as funções usadas pelo componente presenter
+    const publicarAvaliacao = (dadosAvaliacao: { clienteId: number; comentario: string; nota: number }): void => {
+        console.log('Avaliação publicada:', dadosAvaliacao);
+    };
+
+    const arquivarAvaliacao = (idAvaliacao: number): void => {
+        console.log('Avaliação arquivada:', idAvaliacao);
+    };
+
+    return ( // envia os dados para o componente presenter
+        <RestauranteAvaliacaoPresenter
+        restaurante={restaurante}
+        cliente={cliente}
+        avaliacoes={avaliacoes}
+        onEnviarAvaliacao={publicarAvaliacao}
+        onArquivarAvaliacao={arquivarAvaliacao}
+        />
+    );
+};
+
+export default RestauranteAvaliacaoContainer;
+
+```
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a>
+    </p>
+</font>
+
+### Classe RestauranteAvaliacaoPresenter
+``` typescript
+import React, { useState } from 'react';
+
+const RestauranteAvaliacaoPresenter = ({ // declara os props a serem exibidos
+    restaurante,
+    cliente,
+    avaliacoes,
+    onEnviarAvaliacao,
+    onArquivarAvaliacao,
+}: { // define os tipos dos props
+    restaurante: { id: number; nome: string };
+    cliente: { id: number; nome: string };
+    avaliacoes: { id: number; clienteId: number; comentario: string; nota: number }[];
+    onEnviarAvaliacao: (dadosAvaliacao: { clienteId: number; comentario: string; nota: number }) => void;
+    onArquivarAvaliacao: (idAvaliacao: number) => void;
+}) => {
+    const [comentario, setComentario] = useState('');
+    const [nota, setNota] = useState(0);
+
+  return ( // exibe os dados obtidos pelos props, vindos do container
+    <div>
+      <div>
+        <h2>Bem-vindo, {cliente.nome}!</h2>
+        <h1>{restaurante.nome}</h1>
+      </div>
+
+      <div>
+        <h2>Avaliações</h2>
+
+        <div>
+        <textarea
+          placeholder="Sua Avaliação"
+          value={comentario}
+          onChange={(e) => setComentario(e.target.value)}
+        />
+        <select value={nota} onChange={(e) => setNota(Number(e.target.value))}>
+          {[1, 2, 3, 4, 5].map((numeroNota) => (
+            <option key={numeroNota} value={numeroNota}>
+              {numeroNota}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => {
+            onEnviarAvaliacao({ clienteId: cliente.id, comentario, nota });
+            setComentario('');
+            setNota(nota);
+          }}
+        >
+          Enviar
+        </button>
+      </div>
+
+        <div>
+          {avaliacoes.length > 0 ? (
+            avaliacoes.map((a) => (
+              <div key={a.id}>
+                <p>{a.comentario}</p>
+                <p>Nota: {a.nota}</p>
+                <button onClick={() => onArquivarAvaliacao(a.id)}>Arquivar</button>
+              </div>
+            ))
+          ) : (
+            <p>Nenhuma avaliação encontrada!</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RestauranteAvaliacaoPresenter;
+
+```
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a>
+    </p>
+</font>
+
+### Como testar
+
+Para testar a funcionalidade, adicione `/containerPresent` à URL do site ao rodá-lo localmente. Isso exibirá uma tela que contém textos e funções simplificadas, utilizadas para demonstrar o uso do padrão de projeto Container Presenter.
+
+<center>
+<p style="text-align: center"><b>Figura 1:</b> Print do código implementado </p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/printContainerPresent.png?raw=true" alt="Exemplo de uso do Adapter" >
+</div
+
+<font size="2">
+    <p style="text-align: center"><b>Fonte:</b>
+        <a href="https://github.com/maliz30">Maria Alice</a> e
+        <a href="https://github.com/LuaMedeiros">Luana Medeiros</a>
+    </p>
+</font>
+</center>
 
 ## Conclusão
 
@@ -93,5 +343,8 @@ Ao implementar o padrão Container-Presenter, a equipe adotou uma estratégia qu
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| `1.0`  |31/12/2024| Adição da introdução do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|--|
-| `1.1`  |31/12/2024| Adição da modelagem do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|--|
+| `1.0`  |31/12/2024| Adição da introdução do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|[Luana Medeiros](https://github.com/LuaMedeiros)|
+| `1.1`  |31/12/2024| Adição da modelagem do documento |[Júlia Yoshida](https://github.com/juliaryoshida)|[Luana Medeiros](https://github.com/LuaMedeiros)|
+| `1.2`  |04/01/2025| Adição dos códigos |[Luana Medeiros](https://github.com/LuaMedeiros)| [Caio Mesquita](https://github.com/Caiomesvie) |
+| `1.3`  |04/01/2025| Adição da Metodologia |[Caio Mesquita](https://github.com/Caiomesvie)| [Luana Medeiros](https://github.com/LuaMedeiros) |
+| `1.4`  |05/01/2025| Adição, ajustes e revisão dos códigos |[Maria Alice](https://github.com/maliz30)| [Luana Medeiros](https://github.com/LuaMedeiros) |
