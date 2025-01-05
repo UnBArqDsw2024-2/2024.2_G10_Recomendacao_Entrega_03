@@ -58,6 +58,12 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 
 ## Conclusão
 
+A implementação do padrão Adapter no projeto Chef Indica foi essencial para resolver o desafio da integração de diferentes tipos de dados associados às avaliações. No sistema, o usuário pode criar avaliações utilizando três formatos distintos: texto, imagem e vídeo. Cada um desses formatos possui suas próprias características e estruturas — como o texto, que pode variar em tamanho; imagens, que são representadas por URLs; e vídeos, que incluem informações como URL e duração. Essas diferenças, somadas à possibilidade de os dados serem opcionais, poderiam gerar inconsistências no momento de consolidar e publicar as avaliações.
+
+O Adapter foi projetado para resolver exatamente esse tipo de problema. Ele atua como um intermediário que unifica os dados desses diferentes formatos, encapsulando suas particularidades e fornecendo uma interface consistente para a classe principal `Avaliação`. Essa abordagem elimina a necessidade de a classe `Avaliação` lidar diretamente com as diferenças de estrutura entre os formatos, centralizando a lógica de integração na classe `AvaliaçãoAdapter`. Por exemplo, o Adapter permite que, mesmo que apenas um ou dois formatos sejam fornecidos, a avaliação ainda possa ser publicada sem erros ou inconsistências, tornando o sistema mais robusto e confiável.
+
+Assim, o Adapter unifica diferentes tipos de dados, permitindo a publicação de avaliações de forma simples e independente do formato utilizado, garantindo um sistema organizado, escalável e eficiente.
+
 ## Referências Bibliográficas
 
 >
@@ -75,4 +81,5 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 | `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
 | `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
-| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |
+| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) |[Júlia Yoshida](https://github.com/juliaryoshida) |
+| `1.5`  | 04/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) | |
