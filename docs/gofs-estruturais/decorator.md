@@ -38,6 +38,223 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 ## Código
 
+### Código da Avaliação
+
+``` Java
+
+import React from 'react';
+
+export function Avaliacao() {
+  const exibir = () => {
+    return "Exibindo avaliação";
+  };
+
+  const excluir = () => {
+    console.log("Avaliação excluída");
+  };
+
+  const arquivar = () => {
+    console.log("Avaliação arquivada");
+  };
+
+  return { exibir, excluir, arquivar };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código da Avaliação Base
+
+``` Java
+
+import { Avaliacao } from './Avaliacao';
+
+export function AvaliacaoBase(notaInicial) {
+  let nota = notaInicial;
+  let arquivado = false;
+
+  const exibir = () => {
+    return `Nota: ${nota}, Arquivado: ${arquivado}`;
+  };
+
+  const excluir = () => {
+    console.log('Avaliação excluída.\n');
+  };
+
+  const arquivar = () => {
+    arquivado = true;
+    console.log('Avaliação arquivada.\n');
+  };
+
+  return { exibir, excluir, arquivar };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código do DecoratorAvaliacao
+
+``` Java
+
+import { Avaliacao } from './Avaliacao';
+
+export function DecoratorAvaliacao(componente) {
+  const exibir = () => {
+    return componente.exibir();
+  };
+
+  const excluir = () => {
+    componente.excluir();
+  };
+
+  const arquivar = () => {
+    componente.arquivar();
+  };
+
+  return { exibir, excluir, arquivar };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código do DecoratorComentario
+
+``` Java
+
+import { DecoratorAvaliacao } from './DecoratorAvaliacao';
+
+export function DecoratorComentario(componente, initialComentario) {
+  let comentario = initialComentario;
+
+  const exibir = () => {
+    return `${componente.exibir()}, Comentário: ${comentario}`;
+  };
+
+  const addComentario = (novoComentario) => {
+    comentario = novoComentario;
+  };
+
+  return {
+    ...componente, 
+    exibir,
+    addComentario,
+  };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código do DecoratorImagem
+
+``` Java
+
+import { DecoratorAvaliacao } from './DecoratorAvaliacao';
+
+export function DecoratorImagem(componente, urlImagem) {
+  const imagem = urlImagem;
+
+  const exibir = () => {
+    return `${componente.exibir()}, Imagem: ${imagem}`;
+  };
+
+  const getImagem = () => {
+    return imagem;
+  };
+
+  return {
+    ...componente,  
+    exibir,         
+    getImagem,      
+  };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código do DecoratorTags
+
+``` Java
+
+import { DecoratorAvaliacao } from './DecoratorAvaliacao';
+
+export function DecoratorTags(componente, listaTags) {
+  const tags = listaTags;
+
+  const exibir = () => {
+    return `${componente.exibir()}, Tags: ${tags.join(', ')}`;
+  };
+
+  const listarTags = () => {
+    return tags;
+  };
+
+  return {
+    ...componente,  
+    exibir,         
+    listarTags,     
+  };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código do DecoratorVideo
+
+``` Java
+
+import { DecoratorAvaliacao } from './DecoratorAvaliacao';
+
+export function DecoratorVideo(componente, urlVideo) {
+  const video = urlVideo;
+
+  const exibir = () => {
+    return `${componente.exibir()}, Vídeo: ${video}`;
+  };
+
+  const getVideo = () => {
+    return video;
+  };
+
+  return {
+    ...componente,  
+    exibir,         
+    getVideo,       
+  };
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
+### Código da Main
+
+``` Java
+
+import React from 'react';
+import { AvaliacaoBase } from './decorator/AvaliacaoBase';
+import { DecoratorImagem } from './decorator/DecoratorImagem';
+import { DecoratorComentario } from './decorator/DecoratorComentario';
+import { DecoratorVideo } from './decorator/DecoratorVideo';
+import { DecoratorTags } from './decorator/DecoratorTags';
+import { DecoratorAvaliacao } from './decorator/DecoratorAvaliacao';
+
+export default function App() {
+  const avaliacao = AvaliacaoBase(4);
+
+  const decorator = DecoratorAvaliacao(avaliacao);
+
+  const avaliacaoComImagem = DecoratorImagem(decorator, 'https://imagem.com/foto.jpg');
+  const avaliacaoComComentario = DecoratorComentario(avaliacaoComImagem, 'Muito bom!');
+  const avaliacaoComVideo = DecoratorVideo(avaliacaoComComentario, 'https://video.com/video.mp4');
+  const avaliacaoComTags = DecoratorTags(avaliacaoComVideo, ['Recomendo', 'Favorito']);
+
+  console.log(avaliacaoComTags.exibir());
+  avaliacaoComTags.arquivar();
+
+}
+
+```
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
+
 ## Conclusão
 
 ## Referências Bibliográficas
@@ -61,4 +278,5 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |25/12/2024| Adiciona metodologia | [Larissa Vieira](https://github.com/VieiraLaris) | [Caio Mesquita](https://github.com/Caiomesvie) |
-| `1.1`  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | |
+| `1.1`  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | [Guilherme Brito](https://github.com/GuilhermeB12) |
+| `1.2`  |01/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  |  |
