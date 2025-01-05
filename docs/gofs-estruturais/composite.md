@@ -244,6 +244,7 @@ Por fim, o uso do padrão Composite no Chef Indica não apenas facilitou a organ
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |19/12/2024| Adiciona introdução e primeira versao do diagrama de classes |[Izabella Alves](https://github.com/izabellaalves)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
-| `1.1`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
-| `1.2`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
-| `1.3`  |03/01/2025| Adição da Conclusão |[Luana Medeiros](https://github.com/LuaMedeiros)||
+| `1.1`  |24/12/2024| Adiciona metodologia |[Pedro Sampaio](https://github.com/PedroSampaioDias)|[Zenilda Vieira](https://github.com/ZenildaVieira)|
+| `1.2`  |02/01/2025| Adcionando Código do Composite Method |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.3`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.4`  |03/01/2025| Adição da Conclusão |[Luana Medeiros](https://github.com/LuaMedeiros)||

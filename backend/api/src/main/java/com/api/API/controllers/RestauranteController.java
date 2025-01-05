@@ -5,10 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.api.API.models.Restaurante;
+// importações do iterator
+import com.api.API.models.Restaurante; 
 import com.api.API.models.Prato;
 import modelo.iterador.Iterador;
+
+// importações do DTO 
+import MainDTO.DTO;
+import MainDTO.RestauranteDTO;
 
 @RestController
 @RequestMapping("/restaurantes")
@@ -21,6 +27,12 @@ public class RestauranteController {
         restaurante.getMenu().adicionarPrato(new Prato("File Mignon ao Molho Madeira", 65.90));
         restaurante.getMenu().adicionarPrato(new Prato("Salmao Grelhado", 58.00));
         restaurante.getMenu().adicionarPrato(new Prato("Tiramisu", 25.00));
+    }
+
+    @GetMapping("/recomendacoes")
+    public ResponseEntity<List<RestauranteDTO>> obterRecomendacoes() {
+        DTO dtoMock = new DTO();
+        return ResponseEntity.ok(dtoMock.obterRecomendacoes());
     }
 
     @GetMapping("/menu")
