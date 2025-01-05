@@ -348,3 +348,4 @@ Ao implementar o padrão Container-Presenter, a equipe adotou uma estratégia qu
 | `1.2`  |04/01/2025| Adição dos códigos |[Luana Medeiros](https://github.com/LuaMedeiros)| [Caio Mesquita](https://github.com/Caiomesvie) |
 | `1.3`  |04/01/2025| Adição da Metodologia |[Caio Mesquita](https://github.com/Caiomesvie)| [Luana Medeiros](https://github.com/LuaMedeiros) |
 | `1.4`  |05/01/2025| Adição, ajustes e revisão dos códigos |[Maria Alice](https://github.com/maliz30)| [Luana Medeiros](https://github.com/LuaMedeiros) |
+| `1.5`  |05/01/2025| Adiciona conclusão |[Izabella Alves](https://github.com/izabellaalves)| [Luana Medeiros](https://github.com/LuaMedeiros) |
