@@ -42,8 +42,7 @@ Abaixo está um resumo da implementação do padrão DTO no projeto ChefIndica. 
 [RestauranteMapper.java](/backend/api/src/main/java/com/api/API/models/dto-Pattern/RestauranteMapper/RestauranteMapper.java).<br>
 
 
-```
-java
+```java
 
 package MainDTO;
 
@@ -76,8 +75,7 @@ public class DTO {
 ```
 
 
-```
-java
+```java
 package MainDTO;
 
 import java.util.ArrayList;
@@ -99,8 +97,7 @@ public class RecomendacaoService {
 ```
 
 
-```
-java
+```java
 package MainDTO;
 
 public class Restaurante {
@@ -133,8 +130,7 @@ public class Restaurante {
 ```
 
 
-```
-java
+```java
 package MainDTO;
 
 import java.util.List;
@@ -153,8 +149,7 @@ public class RestauranteController {
 ```
 
 
-```
-java
+```java
 package MainDTO;
 
 public class RestauranteDTO {
@@ -178,8 +173,7 @@ public class RestauranteDTO {
 
 ```
 
-```
-java
+```java
 
 package MainDTO;
 
@@ -223,4 +217,5 @@ Além disso, essa abordagem contribuiu para uma arquitetura mais limpa e fácil 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |03/01/2025| Criação da Introdução, Modelagem e Referências | [Guilherme Brito](https://github.com/GuilhermeB12) | [Cecília Quaresma](https://github.com/cqcoding) |
-| `1.1`  | 04/01/2025 | Adição do código e conclusão | [Cecília Quaresma](https://github.com/cqcoding) | |
+| `1.1`  | 04/01/2025 | Adição da metodologia | [Zenilda Vieira](https://github.com/zenildavieira) |[Cecília Quaresma](https://github.com/cqcoding)  |
+| `1.2`  | 04/01/2025 | Adição do código e conclusão | [Cecília Quaresma](https://github.com/cqcoding) | |
