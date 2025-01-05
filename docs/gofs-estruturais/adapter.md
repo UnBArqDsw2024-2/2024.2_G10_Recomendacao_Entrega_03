@@ -56,7 +56,7 @@ Para solucionar o problema, foi criada uma classe adaptadora que realiza a uniã
 
 
 ## Código
-O código do Mediator encontra-se nos arquivos [AvaliacaoAdapter](#), [AvaliacaoBase](#), [AvaliacaoImagem](#), [AvaliacaoTexto](#), [AvaliacaoVideo](#) e [index](#).
+O código do Adapter encontra-se nos arquivos [AvaliacaoAdapter](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoAdapter.tsx), [AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoBase.tsx), [AvaliacaoImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoBase.tsx), [AvaliacaoTexto](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoTexto.tsx), [AvaliacaoVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/AvaliacaoVideo.tsx), [index](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/index.tsx) e [AvaliacaoAdapter.test](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/frontend/app/src/components/index.tsx).
 
 Abaixo, estão imagens da implementação.
 
@@ -188,7 +188,7 @@ export default AvaliacaoVideo;
 ``` 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
 
-#### Código do index 
+#### Código do index C
 
 ``` tsx
 export { default as AvaliacaoBase } from "./AvaliacaoBase";
@@ -201,6 +201,111 @@ export { default as AvaliacaoAdapter } from "./AvaliacaoAdapter";
 
 ``` 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Código da AvaliacaoAdapter
+``` tsx
+import { render, screen } from "@testing-library/react";
+import AvaliacaoAdapter from "../components/AvaliacaoAdapter";
+
+jest.mock("../components/AvaliacaoTexto", () => {
+  return function MockAvaliacaoTexto({ texto, tamanhoTexto }: any) {
+    return (
+      <div>
+        Mock Texto: {texto}, Tamanho: {tamanhoTexto}
+      </div>
+    );
+  };
+});
+
+jest.mock("../components/AvaliacaoImagem", () => {
+  return function MockAvaliacaoImagem({ urlImagem }: any) {
+    return <img alt="Mock Imagem" src={urlImagem} />;
+  };
+});
+
+jest.mock("../components/AvaliacaoVideo", () => {
+  return function MockAvaliacaoVideo({ urlVideo, duracao }: any) {
+    return (
+      <div>
+        Mock Video: {urlVideo}, Duração: {duracao} segundos
+      </div>
+    );
+  };
+});
+
+
+// Dados de mock para os testes
+const mockTexto = {
+  texto: "Este é um texto de avaliação",
+  tamanhoTexto: 20,
+};
+
+const mockImagem = {
+  urlImagem: "http://exemplo.com/imagem.png",
+};
+
+const mockVideo = {
+  urlVideo: "http://exemplo.com/video.mp4",
+  duracao: 60,
+};
+
+describe("AvaliacaoAdapter", () => {
+  it("deve renderizar todos os componentes dependentes corretamente", () => {
+    render(
+      <AvaliacaoAdapter texto={mockTexto} imagem={mockImagem} video={mockVideo} />
+    );
+
+    // Verifica se o título está presente
+    expect(screen.getByText(/Avaliação Completa/i)).toBeInTheDocument();
+
+    // Verifica o mock do componente AvaliacaoTexto
+    expect(
+      screen.getByText(/Mock Texto: Este é um texto de avaliação, Tamanho: 20/i)
+    ).toBeInTheDocument();
+
+    // Verifica o mock do componente AvaliacaoImagem
+    const imagem = screen.getByAltText("Mock Imagem");
+    expect(imagem).toHaveAttribute("src", "http://exemplo.com/imagem.png");
+
+    // Verifica o mock do componente AvaliacaoVideo
+    expect(
+      screen.getByText(/Mock Video: http:\/\/exemplo.com\/video.mp4, Duração: 60 segundos/i)
+    ).toBeInTheDocument();
+  });
+});
+
+``` 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+
+#### Validação
+
+O objetivo do teste é validar a implementação do padrão **Adapter** no componente `AvaliacaoAdapter`. Esse padrão permite que diferentes formatos de avaliação (texto, imagem e vídeo) sejam tratados de maneira uniforme pelo frontend, sem depender diretamente das implementações dos componentes específicos, como `AvaliacaoTexto`, `AvaliacaoImagem` e `AvaliacaoVideo`. 
+
+Para garantir a independência do backend e o correto funcionamento do Adapter, foram utilizados mocks que simulam o comportamento dos componentes dependentes. Os mocks testam se:
+- Um texto de avaliação é exibido com seu conteúdo e tamanho adequados.
+- Uma imagem é renderizada com o atributo `src` correto.
+- Um vídeo é exibido com a URL e duração especificadas.
+
+O teste principal verifica a integração entre o `AvaliacaoAdapter` e os componentes simulados. Ao renderizar o `AvaliacaoAdapter` com dados mockados, os seguintes cenários são validados:
+1. A presença de um título identificando a avaliação completa.
+2. A correta exibição do conteúdo textual da avaliação.
+3. A renderização de uma imagem com o atributo `src` esperado.
+4. A exibição de informações sobre o vídeo, incluindo URL e duração.
+
+Esses testes garantem que o `AvaliacaoAdapter` atua como um mediador eficaz, abstraindo as diferenças entre os formatos de avaliação e permitindo que a UI interaja de forma coesa com o estado e as funções de contexto da aplicação.
+
+
+Ao rodar os testes, a saída observada foi a seguinte: 
+
+
+<center>
+<p style="text-align: center"><b>Figura 4:</b> Teste dos códigos criados</p>
+<div align="center">
+  <img src="https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/codigo-adapter/docs/imagens/teste_adapter.png?raw=true" alt="Testes do observer" >
+</div>
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/Lucas13032003">Lucas Víctor</a>, 2024</p></font>
+</center>
+
 
 ## Conclusão
 
@@ -227,6 +332,8 @@ Assim, o Adapter unifica diferentes tipos de dados, permitindo a publicação de
 | `1.1`  |25/12/2024| Adição da Introdução | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)  |
 | `1.2`  | 27/12/2024 | Adição da metodologia | [Cecília](https://github.com/cqcoding) |  [Maria Alice](https://github.com/maliz30) |
 | `1.3`  | 01/01/2025 | Alteração da bibliografia para Referências Bibliográficas | [Maria Alice](https://github.com/maliz30) |[Cecília](https://github.com/cqcoding)|
-| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) | |
+| `1.4`  | 04/01/2025 | Alteração da metodologia | [Cecília](https://github.com/cqcoding) |[Lucas Víctor](https://github.com/Lucas13032003) |
 | `1.5`  |04/01/2025| Adição dos Códigos | [Lucas Víctor](https://github.com/Lucas13032003)|[Izabella Alves](https://github.com/izabellaalves)|
-| `1.6`  | 04/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) | |
+| `1.6`  | 05/01/2025 | Adição da conclusão | [Júlia Yoshida](https://github.com/juliaryoshida) |[Lucas Víctor](https://github.com/Lucas13032003) |
+| `1.7`  |05/01/2025| Adição dos testes e do mock | [Lucas Víctor](https://github.com/Lucas13032003)||
+| `1.8`  |05/01/2025| Adição da validação do mock | [Lucas Víctor](https://github.com/Lucas13032003)||
