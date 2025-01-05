@@ -360,6 +360,12 @@ public interface Mediator {
 
 ## Bibliografia
 
+1. Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley.  
+2. Freeman, E., & Robson, E. (2020). *Head First Design Patterns: A Brain-Friendly Guide* (2nd ed.). O'Reilly Media.  
+3. Fowler, M. (2003). *Patterns of Enterprise Application Architecture*. Addison-Wesley.  
+
+
+
 ## Histórico de Versões
 
 | Versão | Data | Descrição | Autor | Revisor |
