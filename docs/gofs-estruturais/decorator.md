@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O padrão Decorator é um padrão de projeto estrutural onde há o acomplamento de novos comportamentos à objetos de maneira dinâmica, os inserindo em invólucros de objetos que contém os novos comportamentos [1]. Em sua definição GOF, apresenta o decorator como uma alternativa ao uso de herança no código através do uso de composição. [2]. É um padrão indicado para o uso onde teremos uma classe central básica que poderá ter atributos métodos e acressentados conforme necessidade. É um padrão parecido com o [Composite](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/gofs-estruturais/composite) pelo uso de composição em sua estrutura.
+O padrão Decorator é um padrão de projeto estrutural onde há o acomplamento de novos comportamentos à objetos de maneira dinâmica, os inserindo em invólucros de objetos que contém os novos comportamentos [1]. Em sua definição GOF, apresenta o decorator como uma alternativa ao uso de herança no código através do uso de composição. [2]. É um padrão indicado para o uso onde teremos uma classe central básica que poderá ter atributos métodos e acrescentados conforme necessidade. É um padrão parecido com o [Composite](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/gofs-estruturais/composite) pelo uso de composição em sua estrutura.
 Abaixo segue um exemplo base de diagrama UML seguindo o padrão decorator:
 
 <center>
@@ -24,10 +24,10 @@ Dentre os padrões selecionados, cinco pessoas ficaram responsáveis pela implem
 As tarefas foram distribuídas da seguinte forma: **Caio Mesquita** ficou encarregado da modelagem do diagrama de classes e da introdução; **Larissa Vieira** assumiu a descrição da metodologia; **Guilherme Brito** e **Lucas Queiroz** dividiram a implementação do código; e **Zenilda Vieira** ficou responsável pela redação da conclusão.
 
 ## Modelagem
-Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorator, onde temos a implementação do sistema de avaliação que se encaixa muito bem no padrão, uma vez que o sistema de avalialção conta com uma nota base no sistema dada pelo usuário e pode ser incrementada com outros atributos como imagens e um comentário escrito. O digrama diz respeito a implementação da interface base da avaliação, da componente concreto de uma avaliação base, do decorator referenciado ao componente e dos 4 decorator's concretos que incrementam a avaliação base em 4 novas funcionalidades, onde é adicionado um comentário, imagens, vídeos ou tags de marcação.
+Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorator, onde temos a implementação do sistema de avaliação que se encaixa muito bem no padrão, uma vez que o sistema de avaliação conta com uma nota base no sistema dada pelo usuário e pode ser incrementada com outros atributos como imagens e um comentário escrito. O diagrama diz respeito a implementação da interface base da avaliação, da componente concreto de uma avaliação base, do decorator referenciado ao componente e dos 4 decorator's concretos que incrementam a avaliação base em 4 novas funcionalidades, onde é adicionado um comentário, imagens, vídeos ou tags de marcação.
 
 <center>
-<p style="text-align: center"><b>Figura 1:</b> Primeira versão do Diagrama de Classes do Padrão Composite</p>
+<p style="text-align: center"><b>Figura 1:</b> Primeira versão do Diagrama de Classes do Padrão Decorator</p>
 <div align="center">
   <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/diagrama_decorator.png?raw=true" alt="Padrão Decorator" >
 </div>
@@ -37,7 +37,15 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 
 ## Código
-As classes utilizadas para implementar o Decorator foram: [Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\Avaliacao.jsx), [AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\AvaliacaoBase.jsx), [DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorAvaliacao.jsx), [DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorComentario.jsx), [DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorImagem.jsx), [DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorTags.jsx), [DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorVideo.jsx), [Main](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\mains.jsx).
+As classes utilizadas para implementar o Decorator foram: 
+[Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\Avaliacao.jsx), 
+[AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\AvaliacaoBase.jsx), 
+[DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorAvaliacao.jsx), 
+[DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorComentario.jsx), 
+[DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorImagem.jsx), 
+[DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorTags.jsx), 
+[DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorVideo.jsx), 
+[Main](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\mains.jsx).
 
 O código abaixo foram retirados dos códigos citados acima:
 ### Código da Avaliação
@@ -259,6 +267,12 @@ export default function App() {
 
 ## Conclusão
 
+A aplicação do padrão de projeto Decorator demonstrou ser uma solução eficiente para estender dinamicamente as funcionalidades de um sistema sem a necessidade de modificar suas classes base. Durante o desenvolvimento do projeto Chef Indica, o padrão foi utilizado na implementação do sistema de avaliações, possibilitando a adição de comentários, imagens, vídeos e tags de maneira flexível e escalável. Essa abordagem promoveu a reutilização de código e manteve a estrutura do sistema coesa e de fácil manutenção.
+
+Além disso, a adoção do padrão Decorator reforçou o uso de princípios como o Open/Closed Principle, garantindo que o sistema esteja aberto para extensões, mas fechado para modificações diretas. O uso de composição ao invés de herança evitou a criação de uma hierarquia complexa de classes, tornando o código mais modular e fácil de testar.
+
+A experiência prática adquirida com a implementação do Decorator foi enriquecedora para toda a equipe, permitindo uma melhor compreensão dos padrões de projeto estruturais e de como aplicá-los em situações reais. Essa prática contribui para o aprimoramento das habilidades em engenharia de software, promovendo a escrita de códigos mais robustos, flexíveis e alinhados com boas práticas de desenvolvimento.
+
 ## Referências Bibliográficas
 
 >
@@ -281,4 +295,5 @@ export default function App() {
 | :----: | ---- | --------- | ----- | ------- |
 | `1.0`  |25/12/2024| Adiciona metodologia | [Larissa Vieira](https://github.com/VieiraLaris) | [Caio Mesquita](https://github.com/Caiomesvie) |
 | `1.1`  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | [Guilherme Brito](https://github.com/GuilhermeB12) |
-| `1.2`  |01/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  |  |
+| `1.2`  |04/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  | [Zenilda Vieira](https://github.com/zenildavieira) |
+| `1.3`  |05/01/2025| Adição da conclusão | [Zenilda Vieira](https://github.com/zenildavieira)  | [Izabella Alves](izabellaalves) |
