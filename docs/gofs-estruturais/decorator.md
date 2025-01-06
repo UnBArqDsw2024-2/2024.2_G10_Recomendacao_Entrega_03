@@ -236,12 +236,12 @@ export class DecoratorVideo extends DecoratorAvaliacao {
 ``` tsx
 
 import React from 'react';
-import { AvaliacaoBase } from './components/AvaliacaoBase';
-import { DecoratorAvaliacao } from './components/decorator/DecoratorAvaliacao';
-import { DecoratorComentario } from './components/decorator/DecoratorComentario';
-import { DecoratorImagem } from './components/decorator/DecoratorImagem';
-import { DecoratorTags } from './components/decorator/DecoratorTags';
-import { DecoratorVideo } from './components/decorator/DecoratorVideo';
+import { AvaliacaoBase } from './Decorator/components/AvaliacaoBaseDecorator';
+import { DecoratorAvaliacao } from './Decorator/components/decorator/DecoratorAvaliacao';
+import { DecoratorComentario } from './Decorator/components/decorator/DecoratorComentario';
+import { DecoratorImagem } from './Decorator/components/decorator/DecoratorImagem';
+import { DecoratorTags } from './Decorator/components/decorator/DecoratorTags';
+import { DecoratorVideo } from './Decorator/components/decorator/DecoratorVideo';
 
 function App() {
   const avaliacao = new AvaliacaoBase(4);
