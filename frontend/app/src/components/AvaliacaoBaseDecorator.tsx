@@ -1,4 +1,4 @@
-import { Avaliacao } from './Avaliacao';
+import { Avaliacao } from './AvaliacaoDecorator';
 
 export class AvaliacaoBase implements Avaliacao {
   private nota: number;

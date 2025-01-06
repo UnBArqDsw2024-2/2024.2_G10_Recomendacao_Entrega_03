@@ -38,8 +38,8 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 ## Código
 As classes utilizadas para implementar o Decorator foram: 
-[Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\Avaliacao.tsx), 
-[AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\AvaliacaoBase.tsx), 
+[AvaliacaoDecorator](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\AvaliacaoDecorator.tsx), 
+[AvaliacaoBaseDecorator](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\AvaliacaoBaseDecorator.tsx), 
 [DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorAvaliacao.tsx), 
 [DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorComentario.tsx), 
 [DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorImagem.tsx), 
@@ -65,7 +65,7 @@ export interface Avaliacao {
 
 ``` tsx
 
-import { Avaliacao } from './Avaliacao';
+import { Avaliacao } from './AvaliacaoDecorator';
 
 export class AvaliacaoBase implements Avaliacao {
   private nota: number;
@@ -98,7 +98,7 @@ export class AvaliacaoBase implements Avaliacao {
 
 ``` tsx
 
-import { Avaliacao } from '../Avaliacao';
+import { Avaliacao } from '../AvaliacaoDecorator';
 
 export class DecoratorAvaliacao implements Avaliacao {
   protected componente: Avaliacao;
@@ -119,6 +119,7 @@ export class DecoratorAvaliacao implements Avaliacao {
     this.componente.arquivar();
   }
 }
+
 
 
 ```
@@ -300,3 +301,5 @@ A experiência prática adquirida com a implementação do Decorator foi enrique
 | `1.2`  |04/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  | [Zenilda Vieira](https://github.com/zenildavieira) |
 | `1.3`  |05/01/2025| Adição da conclusão | [Zenilda Vieira](https://github.com/zenildavieira)  | [Izabella Alves](izabellaalves) |
 | `1.4`  |06/01/2025| Correção e Atualização do Código e Documento | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
+| `1.5`  |06/01/2025| Atualização da Nomemclatura | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
+

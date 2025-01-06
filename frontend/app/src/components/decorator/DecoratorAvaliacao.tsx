@@ -1,4 +1,4 @@
-import { Avaliacao } from '../Avaliacao';
+import { Avaliacao } from '../AvaliacaoDecorator';
 
 export class DecoratorAvaliacao implements Avaliacao {
   protected componente: Avaliacao;

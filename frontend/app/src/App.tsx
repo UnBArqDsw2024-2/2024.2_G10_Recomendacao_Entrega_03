@@ -1,5 +1,5 @@
 import React from 'react';
-import { AvaliacaoBase } from './components/AvaliacaoBase';
+import { AvaliacaoBase } from './components/AvaliacaoBaseDecorator';
 import { DecoratorAvaliacao } from './components/decorator/DecoratorAvaliacao';
 import { DecoratorComentario } from './components/decorator/DecoratorComentario';
 import { DecoratorImagem } from './components/decorator/DecoratorImagem';
