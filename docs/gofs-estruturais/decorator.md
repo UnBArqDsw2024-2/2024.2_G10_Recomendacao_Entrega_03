@@ -21,7 +21,7 @@ Após uma [reunião no dia 17/12](https://unbarqdsw2024-2.github.io/2024.2_G10_R
 
 Dentre os padrões selecionados, cinco pessoas ficaram responsáveis pela implementação do padrão Decorator. Essa responsabilidade inclui a elaboração de uma introdução com as referências bibliográficas utilizadas, a descrição da metodologia de produção, a modelagem de um diagrama de classes representativo (baseado no [Diagrama de Classes](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_03/#/refatoracoes/diagrama-de-classes) principal do projeto), a implementação do código correspondente e a redação da conclusão.
 
-As tarefas foram distribuídas da seguinte forma: *Caio Mesquita* ficou encarregado da modelagem do diagrama de classes e da introdução; *Larissa Vieira* assumiu a descrição da metodologia; *Guilherme Brito* e *Lucas Queiroz* dividiram a implementação do código; e *Zenilda Vieira* ficou responsável pela redação da conclusão.
+As tarefas foram distribuídas da seguinte forma: **Caio Mesquita** ficou encarregado da modelagem do diagrama de classes e da introdução; **Larissa Vieira** assumiu a descrição da metodologia; **Guilherme Brito** e **Lucas Queiroz** dividiram a implementação do código; e **Zenilda Vieira** ficou responsável pela redação da conclusão.
 
 ## Modelagem
 Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorator, onde temos a implementação do sistema de avaliação que se encaixa muito bem no padrão, uma vez que o sistema de avaliação conta com uma nota base no sistema dada pelo usuário e pode ser incrementada com outros atributos como imagens e um comentário escrito. O diagrama diz respeito a implementação da interface base da avaliação, da componente concreto de uma avaliação base, do decorator referenciado ao componente e dos 4 decorator's concretos que incrementam a avaliação base em 4 novas funcionalidades, onde é adicionado um comentário, imagens, vídeos ou tags de marcação.
@@ -207,7 +207,7 @@ export class DecoratorTags extends DecoratorAvaliacao {
 
 ### Código do DecoratorVideo
 
-```jsx
+```tsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
@@ -231,17 +231,17 @@ export class DecoratorVideo extends DecoratorAvaliacao {
 
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
-### Código do App
+### Código do decorator
 
 ```tsx
 
 import React from 'react';
-import { AvaliacaoBase } from './Decorator/components/AvaliacaoBaseDecorator';
-import { DecoratorAvaliacao } from './Decorator/components/decorator/DecoratorAvaliacao';
-import { DecoratorComentario } from './Decorator/components/decorator/DecoratorComentario';
-import { DecoratorImagem } from './Decorator/components/decorator/DecoratorImagem';
-import { DecoratorTags } from './Decorator/components/decorator/DecoratorTags';
-import { DecoratorVideo } from './Decorator/components/decorator/DecoratorVideo';
+import { AvaliacaoBase } from './AvaliacaoBaseDecorator';
+import { DecoratorAvaliacao } from './decorator/DecoratorAvaliacao';
+import { DecoratorComentario } from './decorator/DecoratorComentario';
+import { DecoratorImagem } from './decorator/DecoratorImagem';
+import { DecoratorTags } from './decorator/DecoratorTags';
+import { DecoratorVideo } from './decorator/DecoratorVideo';
 
 function App() {
   const avaliacao = new AvaliacaoBase(4);
@@ -296,9 +296,10 @@ A experiência prática adquirida com a implementação do Decorator foi enrique
 
 | Versão | Data | Descrição | Autor | Revisor |
 | :----: | ---- | --------- | ----- | ------- |
-| 1.0  |25/12/2024| Adiciona metodologia | [Larissa Vieira](https://github.com/VieiraLaris) | [Caio Mesquita](https://github.com/Caiomesvie) |
-| 1.1  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | [Guilherme Brito](https://github.com/GuilhermeB12) |
-| 1.2  |04/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  | [Zenilda Vieira](https://github.com/zenildavieira) |
-| 1.3  |05/01/2025| Adição da conclusão | [Zenilda Vieira](https://github.com/zenildavieira)  | [Izabella Alves](izabellaalves) |
-| 1.4  |06/01/2025| Correção e Atualização do Código e Documento | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
-| 1.5  |06/01/2025| Atualização da Nomemclatura | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
+| `1.0`  |25/12/2024| Adiciona metodologia | [Larissa Vieira](https://github.com/VieiraLaris) | [Caio Mesquita](https://github.com/Caiomesvie) |
+| `1.1`  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | [Guilherme Brito](https://github.com/GuilhermeB12) |
+| `1.2`  |04/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  | [Zenilda Vieira](https://github.com/zenildavieira) |
+| `1.3`  |05/01/2025| Adição da conclusão | [Zenilda Vieira](https://github.com/zenildavieira)  | [Izabella Alves](izabellaalves) |
+| `1.4`  |06/01/2025| Correção e Atualização do Código e Documento | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
+| `1.5`  |06/01/2025| Atualização da Nomemclatura | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
+| `1.5`  |06/01/2025| Correção de erros | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
