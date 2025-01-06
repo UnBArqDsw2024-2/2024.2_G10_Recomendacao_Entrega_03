@@ -26,7 +26,7 @@ Os DTOs criam uma camada intermediária. A camada de apresentação interage ape
 <center>
 <p style="text-align: center"><b>Figura 1:</b> Diagrama UML para o DTO Pattenr.</p>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/docs/imagens/dto-pattern.jpeg" alt="Diagrama do DTO Pattern" >
+  <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/dto-pattern.jpeg?raw=true" alt="Diagrama do DTO Pattern" >
 </div>
 <font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a>, 2025</p></font>
 </center>
