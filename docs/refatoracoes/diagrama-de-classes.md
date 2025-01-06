@@ -2,26 +2,27 @@
 
 ## Introdução
 
-O diagrama de classes em UML é uma ferramenta utilizada para modelar a estrutura estática de um sistema, representando classes, seus atributos, métodos e os relacionamentos entre elas. Ele mapeia os principais objetos de um sistema, mostrando como eles se conectam e interagem, de forma a estruturar as entidades e suas responsabilidades de maneira organizada. Cada classe é uma abstração de um elemento do domínio do sistema, incluindo características (atributos) e comportamentos (métodos) que descrevem suas funcionalidades.
+O diagrama de classes é uma das ferramentas fundamentais da linguagem UML (Unified Modeling Language) para modelar a estrutura estática de sistemas orientados a objetos. Ele ilustra as classes, seus atributos, métodos e os relacionamentos entre elas, permitindo a visualização clara da organização e responsabilidades das entidades do sistema. Essa representação facilita o entendimento das conexões e interações entre os principais objetos, servindo como um guia para implementação, documentação e comunicação entre equipes.
 
-Atributos correspondem às informações que um objeto armazena. Operações correspondem às ações que um objeto sabe realizar, segundo o livro Análise e Projeto de Sistemas Orientados a Objetos: Com Exemplos em Java (2ª edição, Eduardo Bezerra)[1].
+Segundo Eduardo Bezerra em seu livro *Análise e Projeto de Sistemas Orientados a Objetos: Com Exemplos em Java* (2ª edição, 2006), atributos representam as informações armazenadas por um objeto, enquanto métodos ou operações definem as ações que ele pode realizar. Além disso, o diagrama de classes detalha os relacionamentos como associações, agregações, composições e heranças, que são essenciais para estruturar o sistema em módulos e identificar pontos de integração. 
 
-Além das classes, o diagrama destaca os relacionamentos entre elas, como associações, agregações, composições e heranças, permitindo a visualização das dependências e conexões. Esses relacionamentos ajudam a estruturar o sistema em módulos, a identificar possíveis pontos de integração e a definir os papéis de cada entidade no contexto geral. O diagrama de classes é utilizado como base para implementação, documentação e comunicação entre os membros da equipe de desenvolvimento.
+O uso de diagramas de classes é crucial para garantir uma arquitetura bem organizada, promovendo uma base sólida para desenvolvimento e evolução do sistema.
 
 ## Metodologia
 
-O diagrama de classes foi desenvolvido de forma colaborativa. Inicialmente, identificamos as classes principais e organizamos sua estrutura de acordo com as funcionalidades previstas nos [Requisitos Elicitados](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-estatica/diagrama-de-classes). A partir dessa base, foram definidos atributos e métodos que aparentavam ser necessários para cada classe. Com a progressão do desenvolvimento, as relações entre as classes foram estabelecidas, o que permitiu identificar inconsistências e elementos redundantes. Esse processo resultou na remoção de classes, atributos e métodos desnecessários, culminando no diagrama final.
+O desenvolvimento do diagrama de classes seguiu um processo iterativo e colaborativo, envolvendo toda a equipe. O primeiro passo foi identificar as principais classes a partir dos [Requisitos Elicitados](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-estatica/diagrama-de-classes) e organizar suas estruturas iniciais. Cada classe foi analisada em relação às funcionalidades previstas, definindo-se atributos e métodos necessários. Em seguida, foram mapeados os relacionamentos entre as classes, como associações e hierarquias, para identificar redundâncias e inconsistências.
 
-O modelo final possui uma estrutura clara, com as seguintes classes principais:
+O processo iterativo possibilitou a refatoração contínua do diagrama, eliminando elementos desnecessários e garantindo uma modelagem mais robusta. A estrutura final inclui as seguintes classes principais:
 
-- Usuário: Concentra informações relacionadas ao indivíduo e suas interações, como histórico de avaliações.
-- Restaurante: Agrega dados relacionadas aos estabelecimentos.
-- Avaliação: Representa as interações entre usuários e restaurantes, armazenando informações específicas das avaliações realizadas.
-- Categoria: Organiza os tipos de classificação de restaurantes utilizando uma estrutura enumerada.
+- **Usuário**: Representa os indivíduos do sistema e suas interações, como histórico de avaliações.
+- **Restaurante**: Armazena informações relacionadas aos estabelecimentos cadastrados.
+- **Avaliação**: Captura as interações entre usuários e restaurantes, registrando dados específicos das avaliações realizadas.
+- **Categoria**: Define uma estrutura enumerada para organizar os tipos de classificação de restaurantes.
 
-Este diagrama serviu como base para o desenvolvimento também da Modelagem de Dados, e isso pode ser visto nos documentos de: [Modelo Conceitual](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-conceitual), [Modelo Lógico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-logico) e [Modelo Físico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-fisico).
+Este diagrama foi essencial para a modelagem de dados, servindo como base para os [Modelos Conceitual, Lógico e Físico](https://unbarqdsw2024-2.github.io/2024.2_G10_Recomendacao_Entrega_02/#/modelagem-dados/modelo-conceitual). 
 
-Após a segunda entrega do trabalho, sentimos a necessidade de refatorar e ampliar o diagrama de classes para podermos aplicar padrões de design em nosso projeto para a terceira entrega. Assim, atualizamos essa documentação com o novo diagrama de classes elaborado.
+Para a terceira entrega do projeto, o diagrama foi revisado e ampliado para incorporar padrões de design e atender às novas demandas do sistema. Esse processo resultou na atualização da documentação e no refinamento do diagrama, que agora reflete as melhores práticas de engenharia de software.
+
 
 ## Diagrama de Classes
 
@@ -71,7 +72,7 @@ Por padrão utilizamos os seguintes elementos em nosso diagrama:
 | `1.0`  | 16/11/2024 | Adição do diagrama de classes | [Pedro Sampaio](https://github.com/PedroSampaioDias) | [Cecília Quaresma](https://github.com/cqcoding) |
 | `1.1`  | 23/11/2024 | Adição legenda e composição | [Mateus Fidelis](https://github.com/MatsFidelis) | [Lucas Queiroz](https://github.com/lucasqueiroz23) |
 | `1.2`  | 25/11/2024 | Correção das datas de acesso | [Pedro Sampaio](https://github.com/PedroSampaioDias) | [Cecília Quaresma](https://github.com/cqcoding) |
-| `1.3`  | 28/11/2024 | Revisão final | [Zenilda Vieira](https://github.com/ZenildaVieira) |  |
+| `1.3`  | 28/11/2024 | Revisão final | [Zenilda Vieira](https://github.com/ZenildaVieira) |  [Cecília Quaresma](https://github.com/cqcoding) |
 | `1.4`  | 04/01/2025 | Adição do texto da metodologia para entrega 3 | [Zenilda Vieira](https://github.com/ZenildaVieira) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.5`  | 04/01/2025 | Adição do diagrama de classes refatorado |  [Izabella Alves](https://github.com/izabellaalves) | [Lucas Victor](https://github.com/Lucas13032003) |
-| `1.6`  | 04/11/2025 | Revisão final | [Lucas Victor](https://github.com/Lucas13032003)  |  |
+| `1.6`  | 05/01/2025 | Revisão final | [Lucas Victor](https://github.com/Lucas13032003)  |  [Izabella Alves](https://github.com/izabellaalves) |
