@@ -45,7 +45,7 @@ As classes utilizadas para implementar o Decorator foram:
 [DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorImagem.tsx), 
 [DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorTags.tsx), 
 [DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorVideo.tsx), 
-[decorator](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\decorator.tsx).
+[decorator](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator.tsx).
 
 O código abaixo foram retirados dos códigos citados acima:
 ### Código da Avaliação
