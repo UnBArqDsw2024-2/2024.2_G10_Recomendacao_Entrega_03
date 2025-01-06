@@ -299,3 +299,4 @@ A experiência prática adquirida com a implementação do Decorator foi enrique
 | `1.1`  |01/01/2025| Adiciona diagrama e introdução  | [Caio Mesquita](https://github.com/Caiomesvie) | [Guilherme Brito](https://github.com/GuilhermeB12) |
 | `1.2`  |04/01/2025| Adição do código | [Guilherme Brito](https://github.com/GuilhermeB12) <br> [Lucas Queiroz](https://github.com/lucasqueiroz23) <br> [Zenilda Vieira](https://github.com/zenildavieira)  | [Zenilda Vieira](https://github.com/zenildavieira) |
 | `1.3`  |05/01/2025| Adição da conclusão | [Zenilda Vieira](https://github.com/zenildavieira)  | [Izabella Alves](izabellaalves) |
+| `1.4`  |06/01/2025| Correção e Atualização do Código e Documento | [Guilherme Brito](https://github.com/GuilhermeB12)  |  |
