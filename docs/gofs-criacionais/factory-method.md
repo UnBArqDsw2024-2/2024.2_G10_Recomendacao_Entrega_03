@@ -152,6 +152,8 @@ public abstract class Avaliacao {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ``` java
 // Classe AvaliacaoFactory - cria objetos Avaliacao
 @Component
@@ -175,6 +177,8 @@ public abstract class AvaliacaoFactory {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ``` java
 @Component
 @Primary
@@ -187,6 +191,8 @@ public class AvaliacaoImagemFactory extends AvaliacaoFactory{
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ``` java
 @Component
 public class AvaliacaoTextoFactory extends AvaliacaoFactory {
@@ -198,6 +204,8 @@ public class AvaliacaoTextoFactory extends AvaliacaoFactory {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ``` java
 
 @Component
@@ -208,6 +216,8 @@ public class AvaliacaoVideoFactory extends AvaliacaoFactory{
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ``` java
 @Data
@@ -241,6 +251,8 @@ public class AvaliacaoImagem extends Avaliacao{
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ``` java
 @Data
@@ -276,6 +288,8 @@ public class AvaliacaoTexto extends Avaliacao {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ``` java
 
@@ -313,6 +327,8 @@ public class AvaliacaoVideo extends Avaliacao{
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ``` java
 // define a controladora
 @RestController
@@ -344,6 +360,8 @@ public class AvaliacaoController {
 }
 
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ### Imagens
 
@@ -390,4 +408,4 @@ Isso possibilitou a fácil expansão do sistema com novas variações de avalia�
 | `1.2`  |30/12/2024| Adição da modificação de decisão para Factory Method adaptado| [Zenilda Vieira](https://github.com/zenildavieira) <br> [Júlia Yoshida](https://github.com/juliaryoshida) | [Izabella Alves](https://github.com/izabellaalves) |
 | `1.3`  |31/12/2024| Adição do código e imagens| [Cecília Quaresma](https://github.com/cqcoding) <br> [Izabella Alves](https://github.com/izabellaalves) |  [Zenilda Vieira](https://github.com/zenildavieira)  |
 | `1.4`  |02/01/2025| Adição da conclusão | [Larissa Vieira](https://github.com/VieiraLaris) | [Mateus Fidelis](https://github.com/MatsFidelis) |
-| `1.5`  |03/01/2025| Adcionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|
+| `1.5`  |03/01/2025| Adicionando Correções nos links |[Mateus Fidelis](https://github.com/MatsFidelis)|[Izabella Alves](https://github.com/izabellaalves)|

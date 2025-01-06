@@ -154,6 +154,9 @@ public class Logger {
 
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
+
 O LoggerController é um controlador REST que facilita a interação com o serviço de logging da classe Logger. Ele expõe o endpoint GET /logger/obterLog para recuperar o log completo e encapsula métodos para registrar avaliações, erros e tags no log. O controlador serve como ponte entre os clientes e o sistema de logging, centralizando o acesso e garantindo segurança e organização.
 
 ```Java
@@ -192,6 +195,8 @@ public class LoggerController {
 }
 
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
 
 O TagController foi modificado para gerar logs sempre que uma nova tag é criada, registrando o evento no sistema de logging.
 
@@ -234,6 +239,9 @@ public class TagController {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
 
 O AvaliacaoController foi modificado para gerar logs sempre que uma avaliação é criada ou ocorre um erro relacionado ao processo de criação, registrando esses eventos no sistema de logging.
 
@@ -285,6 +293,9 @@ public class AvaliacaoController {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/PedroSampaioDias">Pedro Sampaio</a>, 2025</p></font>
+
 
 ## Imagens
 

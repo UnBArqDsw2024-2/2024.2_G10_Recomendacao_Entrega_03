@@ -73,7 +73,7 @@ public class DTO {
     }
 }
 ```
-
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
 
 ```java
 package MainDTO;
@@ -96,6 +96,7 @@ public class RecomendacaoService {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
 
 ```java
 package MainDTO;
@@ -129,6 +130,8 @@ public class Restaurante {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
+
 
 ```java
 package MainDTO;
@@ -147,6 +150,8 @@ public class RestauranteController {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
 
 
 ```java
@@ -173,6 +178,8 @@ public class RestauranteDTO {
 
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
+
 ```java
 
 package MainDTO;
@@ -196,6 +203,8 @@ public class RestauranteMapper {
 }
 
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/zenildavieira">Zenilda Vieira</a> e <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a>, 2025</p></font>
 
 ## Conclusão
 

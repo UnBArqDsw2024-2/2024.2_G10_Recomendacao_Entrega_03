@@ -66,7 +66,7 @@ A classe Sobremesas representa um grupo de itens do cardápio. É uma categoria 
 <div align="center">
   <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/composite-chefindica1.png?raw=true" alt="Imagem do Rich Picture" >
 </div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> Izabella Alves, 2024.</p></font>
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a>, 2024.</p></font>
 </center>
 
 ## Código

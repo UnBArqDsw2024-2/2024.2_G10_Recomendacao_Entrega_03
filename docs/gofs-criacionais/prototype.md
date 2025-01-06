@@ -85,6 +85,8 @@ export default ClientePrototype;
 
 ``` 
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/caiomesvie">Caio Mesquita</a>, 2025</p></font>
+
 ### Código Prato
 
 ``` java
@@ -103,6 +105,8 @@ class Prato extends PrototipoPrato {
 export default Prato;
 
 ``` 
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/caiomesvie">Caio Mesquita</a>, 2025</p></font>
 
 ### Código Prótipo Prato
 
@@ -123,6 +127,8 @@ class PrototipoPrato {
 export default PrototipoPrato;
 
 ``` 
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/caiomesvie">Caio Mesquita</a>, 2025</p></font>
 
 A Classe ClientePrototype foi implementada com a função de interagir diretamente com o cliente que poderá gerenciar e clonar os pratos existentes. Devido ao escopo da entrega, a classe foi implementada com pratos pré-estabelecidos para fins de teste da função principal de clonagem. O seu funcionamento base é a criação de uma lista inicial de pratos e a utilização do método Clonar().
 
@@ -164,13 +170,17 @@ describe("ClientePrototype", () => {
 
 ``` 
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/caiomesvie">Caio Mesquita</a>, 2025</p></font>
+
 A saída do teste, confirmando o funcionamento das funções, foi :
 
 <center>
 <div align="center">
   <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/teste_prototype.png?raw=true" alt="Teste Prototype" >
 </div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> Caio Mesquita</p></font>
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/caiomesvie">Caio Mesquita</a>, 2025</p></font>
+
 </center>
 
 ## Conclusão

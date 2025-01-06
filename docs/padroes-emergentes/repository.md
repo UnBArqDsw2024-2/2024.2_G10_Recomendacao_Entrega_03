@@ -63,11 +63,15 @@ public class Tag {
 }
 ```
 
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ### Classe TagRepository
 ``` java
 public interface TagRepository extends JpaRepository<Tag, Integer> {
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ### Classe TagService
 ``` java
@@ -90,6 +94,8 @@ public class TagService {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
 
 ### Classe TagController
 ``` java
@@ -115,6 +121,9 @@ public class TagController {
     }
 }
 ```
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 ### Exemplo de requisição
 
 <center>
@@ -122,7 +131,9 @@ public class TagController {
 <div align="center">
   <img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/refs/heads/main/docs/imagens/repository-example.png?raw=true" alt="Diagrama do CQRS" >
 </div>
-<font size="3"><p style="text-align: center"><b>Fonte:</b>Izabella Alves e Zenilda Vieira</a>, 2024</p></font>
+
+<font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/izabellaalves">Izabella Alves</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2024</p></font>
+
 </center>
 
 

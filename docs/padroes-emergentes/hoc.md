@@ -180,6 +180,8 @@ const withUsuario = <P extends object>(
 export default withUsuario;
 
 ```
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/VieiraLaris">Larissa Vieira</a>, 2025.</p></font>
+
 Decorando o componente [Funcionario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend/app/src/components/funcionario.tsx) com a HOC Usuario:
 
 ```typescript
@@ -205,6 +207,7 @@ const Funcionario: React.FC<{ usuario: { nome: string, senha: string, email: str
 export default withUsuario(Funcionario);
 
 ```
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/VieiraLaris">Larissa Vieira</a>, 2025.</p></font>
 
 Decorando o componente [Cliente](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend/app/src/components/cliente.tsx) com a HOC Usuario:
 
@@ -240,9 +243,9 @@ const Cliente: React.FC<{ usuario: { nome: string, senha: string, email: string 
 export default withUsuario(Cliente);
 
 ```
-<center>
-<font size="3"><p style="text-align: center"><b>Fonte:</b> Larissa Vieira, 2024</p></font>
-</center>
+
+<font size="3"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/VieiraLaris">Larissa Vieira</a>, 2025.</p></font>
+
 
 ### Conclusão
 
