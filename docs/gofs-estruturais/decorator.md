@@ -38,171 +38,167 @@ Abaixo se encontra a primeira versão do diagrama de classes do padrão Decorato
 
 ## Código
 As classes utilizadas para implementar o Decorator foram: 
-[Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\Avaliacao.jsx), 
-[AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\AvaliacaoBase.jsx), 
-[DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorAvaliacao.jsx), 
-[DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorComentario.jsx), 
-[DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorImagem.jsx), 
-[DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorTags.jsx), 
-[DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\decorator\DecoratorVideo.jsx), 
-[Main](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\DecoratorChefIndica\src\mains.jsx).
+[Avaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\Avaliacao.tsx), 
+[AvaliacaoBase](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\AvaliacaoBase.tsx), 
+[DecoratorAvaliacao](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorAvaliacao.tsx), 
+[DecoratorComentario](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorComentario.tsx), 
+[DecoratorImagem](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorImagem.tsx), 
+[DecoratorTags](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorTags.tsx), 
+[DecoratorVideo](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\components\decorator\DecoratorVideo.tsx), 
+[App](https://github.com/UnBArqDsw2024-2/2024.2_G10_Recomendacao_Entrega_03/blob/main/frontend\app\src\App.tsx).
 
 O código abaixo foram retirados dos códigos citados acima:
 ### Código da Avaliação
 
-``` jsx
+``` tsx
 
-import React from 'react';
-
-export function Avaliacao() {
-  const exibir = () => {
-    return "Exibindo avaliação";
-  };
-
-  const excluir = () => {
-    console.log("Avaliação excluída");
-  };
-
-  const arquivar = () => {
-    console.log("Avaliação arquivada");
-  };
-
-  return { exibir, excluir, arquivar };
-}
+export interface Avaliacao {
+    exibir(): string;
+    excluir(): void;
+    arquivar(): void;
+  }
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
 ### Código da Avaliação Base
 
-``` jsx
+``` tsx
 
 import { Avaliacao } from './Avaliacao';
 
-export function AvaliacaoBase(notaInicial) {
-  let nota = notaInicial;
-  let arquivado = false;
+export class AvaliacaoBase implements Avaliacao {
+  private nota: number;
+  private arquivado: boolean;
 
-  const exibir = () => {
-    return `Nota: ${nota}, Arquivado: ${arquivado}`;
-  };
+  constructor(nota: number) {
+    this.nota = nota;
+    this.arquivado = false;
+  }
 
-  const excluir = () => {
+  exibir(): string {
+    return `Nota: ${this.nota}, Arquivado: ${this.arquivado}`;
+  }
+
+  excluir(): void {
     console.log('Avaliação excluída.\n');
-  };
+  }
 
-  const arquivar = () => {
-    arquivado = true;
+  arquivar(): void {
+    this.arquivado = true;
     console.log('Avaliação arquivada.\n');
-  };
-
-  return { exibir, excluir, arquivar };
+  }
 }
+
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
 ### Código do DecoratorAvaliacao
 
-``` jsx
+``` tsx
 
-import { Avaliacao } from './Avaliacao';
+import { Avaliacao } from '../Avaliacao';
 
-export function DecoratorAvaliacao(componente) {
-  const exibir = () => {
-    return componente.exibir();
-  };
+export class DecoratorAvaliacao implements Avaliacao {
+  protected componente: Avaliacao;
 
-  const excluir = () => {
-    componente.excluir();
-  };
+  constructor(componente: Avaliacao) {
+    this.componente = componente;
+  }
 
-  const arquivar = () => {
-    componente.arquivar();
-  };
+  exibir(): string {
+    return this.componente.exibir();
+  }
 
-  return { exibir, excluir, arquivar };
+  excluir(): void {
+    this.componente.excluir();
+  }
+
+  arquivar(): void {
+    this.componente.arquivar();
+  }
 }
+
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
 ### Código do DecoratorComentario
 
-``` jsx
+``` tsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
-export function DecoratorComentario(componente, initialComentario) {
-  let comentario = initialComentario;
+export class DecoratorComentario extends DecoratorAvaliacao {
+  private comentario: string;
 
-  const exibir = () => {
-    return `${componente.exibir()}, Comentário: ${comentario}`;
-  };
+  constructor(componente: DecoratorAvaliacao, comentario: string) {
+    super(componente);
+    this.comentario = comentario;
+  }
 
-  const addComentario = (novoComentario) => {
-    comentario = novoComentario;
-  };
+  exibir(): string {
+    return `${super.exibir()}, Comentário: ${this.comentario}`;
+  }
 
-  return {
-    ...componente, 
-    exibir,
-    addComentario,
-  };
+  addComentario(comentario: string): void {
+    this.comentario = comentario;
+  }
 }
+
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
 ### Código do DecoratorImagem
 
-``` jsx
+``` tsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
-export function DecoratorImagem(componente, urlImagem) {
-  const imagem = urlImagem;
+export class DecoratorImagem extends DecoratorAvaliacao {
+  private urlImagem: string;
 
-  const exibir = () => {
-    return `${componente.exibir()}, Imagem: ${imagem}`;
-  };
+  constructor(componente: DecoratorAvaliacao, urlImagem: string) {
+    super(componente);
+    this.urlImagem = urlImagem;
+  }
 
-  const getImagem = () => {
-    return imagem;
-  };
+  exibir(): string {
+    return `${super.exibir()}, Imagem: ${this.urlImagem}`;
+  }
 
-  return {
-    ...componente,  
-    exibir,         
-    getImagem,      
-  };
+  getImagem(): string {
+    return this.urlImagem;
+  }
 }
+
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
 ### Código do DecoratorTags
 
-``` jsx
+``` tsx
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
-export function DecoratorTags(componente, listaTags) {
-  const tags = listaTags;
+export class DecoratorTags extends DecoratorAvaliacao {
+  private listaTags: string[];
 
-  const exibir = () => {
-    return `${componente.exibir()}, Tags: ${tags.join(', ')}`;
-  };
+  constructor(componente: DecoratorAvaliacao, listaTags: string[]) {
+    super(componente);
+    this.listaTags = listaTags;
+  }
 
-  const listarTags = () => {
-    return tags;
-  };
+  exibir(): string {
+    return `${super.exibir()}, Tags: ${this.listaTags.join(', ')}`;
+  }
 
-  return {
-    ...componente,  
-    exibir,         
-    listarTags,     
-  };
+  listarTags(): string[] {
+    return this.listaTags;
+  }
 }
 
 ```
@@ -214,53 +210,59 @@ export function DecoratorTags(componente, listaTags) {
 
 import { DecoratorAvaliacao } from './DecoratorAvaliacao';
 
-export function DecoratorVideo(componente, urlVideo) {
-  const video = urlVideo;
+export class DecoratorVideo extends DecoratorAvaliacao {
+  private urlVideo: string;
 
-  const exibir = () => {
-    return `${componente.exibir()}, Vídeo: ${video}`;
-  };
+  constructor(componente: DecoratorAvaliacao, urlVideo: string) {
+    super(componente);
+    this.urlVideo = urlVideo;
+  }
 
-  const getVideo = () => {
-    return video;
-  };
+  exibir(): string {
+    return `${super.exibir()}, Vídeo: ${this.urlVideo}`;
+  }
 
-  return {
-    ...componente,  
-    exibir,         
-    getVideo,       
-  };
+  getVideo(): string {
+    return this.urlVideo;
+  }
 }
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
 
-### Código da Main
+### Código do App
 
-``` jsx
+``` tsx
 
 import React from 'react';
-import { AvaliacaoBase } from './decorator/AvaliacaoBase';
-import { DecoratorImagem } from './decorator/DecoratorImagem';
-import { DecoratorComentario } from './decorator/DecoratorComentario';
-import { DecoratorVideo } from './decorator/DecoratorVideo';
-import { DecoratorTags } from './decorator/DecoratorTags';
-import { DecoratorAvaliacao } from './decorator/DecoratorAvaliacao';
+import { AvaliacaoBase } from './components/AvaliacaoBase';
+import { DecoratorAvaliacao } from './components/decorator/DecoratorAvaliacao';
+import { DecoratorComentario } from './components/decorator/DecoratorComentario';
+import { DecoratorImagem } from './components/decorator/DecoratorImagem';
+import { DecoratorTags } from './components/decorator/DecoratorTags';
+import { DecoratorVideo } from './components/decorator/DecoratorVideo';
 
-export default function App() {
-  const avaliacao = AvaliacaoBase(4);
+function App() {
+  const avaliacao = new AvaliacaoBase(4);
+  const decorator = new DecoratorAvaliacao(avaliacao);
 
-  const decorator = DecoratorAvaliacao(avaliacao);
-
-  const avaliacaoComImagem = DecoratorImagem(decorator, 'https://imagem.com/foto.jpg');
-  const avaliacaoComComentario = DecoratorComentario(avaliacaoComImagem, 'Muito bom!');
-  const avaliacaoComVideo = DecoratorVideo(avaliacaoComComentario, 'https://video.com/video.mp4');
-  const avaliacaoComTags = DecoratorTags(avaliacaoComVideo, ['Recomendo', 'Favorito']);
+  const avaliacaoComImagem = new DecoratorImagem(decorator, 'https://imagem.com/foto.jpg');
+  const avaliacaoComComentario = new DecoratorComentario(avaliacaoComImagem, 'Muito bom!');
+  const avaliacaoComVideo = new DecoratorVideo(avaliacaoComComentario, 'https://video.com/video.mp4');
+  const avaliacaoComTags = new DecoratorTags(avaliacaoComVideo, ['Recomendo', 'Favorito']);
 
   console.log(avaliacaoComTags.exibir());
   avaliacaoComTags.arquivar();
 
+  return (
+    <div>
+      <h1>Avaliação Decorada</h1>
+      <p>{avaliacaoComTags.exibir()}</p>
+    </div>
+  );
 }
+
+export default App;
 
 ```
 <font size="2"><p style="text-align: center"><b>Fonte:</b> <a href="https://github.com/GuilhermeB12">Guilherme Brito</a> , <a href="https://github.com/lucasqueiroz23">Lucas Queiroz</a> e <a href="https://github.com/zenildavieira">Zenilda Vieira</a>, 2025</p></font>
